@@ -1,0 +1,211 @@
+/* ============================================================
+   RED MARTEN — AUTONOMOUS OPERATING SYSTEM
+   Landing surface. A warm editorial system: paper, hairlines,
+   mono instrumentation, one copper accent. Structure comes from
+   rules and grid, never from cards or shadows. Squared geometry
+   throughout; only actions are round. Every token is --rm-* so
+   this file cannot collide with the legacy design system.
+   ============================================================ */
+
+.rm-root,
+.rm-enter{
+  /* --- surface --- */
+  --paper:#F7F2EA;
+  --ivory:#FBF8F3;
+  --sand:#E7D8C6;
+  --sand-soft:#F0E6D9;
+
+  /* --- ink --- */
+  --ink:#151413;
+  --brown:#3A2518;
+  --fg:#151413;
+  --fg-2:#5C4633;
+  --fg-3:#8C7862;
+  --fg-4:#AD9C88;
+
+  /* --- accent --- */
+  --copper:#C97D3C;
+  --amber:#E4A154;
+  --bronze:#91532A;
+
+  /* --- system states (used as a legend, never as decoration) --- */
+  --growth:#6D8B6C;
+  --exec:#D9793D;
+  --learn:#D4B36C;
+  --gov:#5E6E75;
+
+  /* --- rules --- */
+  --line:#E3D5C2;
+  --wire:#D6C2A9;
+  --line-soft:#EEE4D6;
+  --line-ink:#1A1614;
+
+  /* --- night mood (about / autonomous / enter) --- */
+  --night:#151413;
+  --night-2:#1D1815;
+  --night-fg:#F4ECE1;
+  --night-fg-2:rgba(244,236,225,.64);
+  --night-fg-3:rgba(244,236,225,.38);
+  --night-line:rgba(231,216,198,.16);
+
+  /* --- type --- */
+  --f-display:var(--font-familjen),"Familjen Grotesk",-apple-system,BlinkMacSystemFont,sans-serif;
+  --f-sans:var(--font-geist-sans),"Geist",-apple-system,BlinkMacSystemFont,sans-serif;
+  --f-mono:var(--font-geist-mono),"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --f-edit:var(--font-instrument),"Instrument Serif",Georgia,serif;
+
+  /* --- motion --- */
+  --e:cubic-bezier(.22,1,.36,1);
+  --e-io:cubic-bezier(.65,0,.35,1);
+  --t-fast:180ms;
+  --t-base:420ms;
+  --t-slow:860ms;
+
+  /* --- measure --- */
+  --px:clamp(20px,4.4vw,72px);
+  --maxw:1520px;
+}
+
+.rm-root{
+  position:relative;
+  z-index:2;
+  background:var(--paper);
+  color:var(--fg);
+  font:400 16px/1.6 var(--f-sans);
+  min-height:100vh;
+  overflow-x:clip;
+  transform-origin:50% 34%;
+  transition:transform 620ms var(--e), filter 620ms var(--e);
+}
+
+/* Connecting is not a modal on top of a site — the site itself powers
+   down and the operating system comes up in its place. */
+[data-rm-enter="1"] .rm-root{
+  transform:scale(.982);
+  filter:brightness(.34) saturate(.7);
+  pointer-events:none;
+  transition:transform 720ms var(--e), filter 720ms var(--e);
+}
+
+/* the legacy paper-grain overlay is red; this surface brings its own light */
+body:has(.rm-root){ background:#F7F2EA; }
+body:has(.rm-root) .grain{ display:none; }
+
+.rm-root ::selection{ background:var(--copper); color:#fff; }
+.rm-root :focus-visible{ outline:2px solid var(--copper); outline-offset:3px; box-shadow:none; border-radius:0; }
+
+.rm-wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--px); }
+.rm-rule{ height:1px; background:var(--line); border:0; }
+
+/* ---------- micro-typography: the instrument layer ---------- */
+.rm-eyebrow{
+  font:500 10.5px/1 var(--f-mono);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--fg-3);
+  display:flex; align-items:center; gap:12px;
+}
+.rm-eyebrow b{ color:var(--copper); font-weight:500; }
+.rm-eyebrow .tick{ width:26px; height:1px; background:var(--line); flex:none; }
+.rm-mono{ font-family:var(--f-mono); font-variant-numeric:tabular-nums; }
+
+/* ---------- actions: the only round geometry on the page ---------- */
+.rm-btn{
+  display:inline-flex; align-items:center; gap:10px;
+  height:46px; padding:0 22px; border-radius:999px;
+  font:500 14px/1 var(--f-sans); letter-spacing:-.005em;
+  border:1px solid transparent; cursor:pointer; white-space:nowrap;
+  transition:background var(--t-fast) var(--e), color var(--t-fast) var(--e),
+             border-color var(--t-fast) var(--e), transform var(--t-fast) var(--e);
+}
+.rm-btn:active{ transform:translateY(1px); }
+.rm-btn-pri{ background:var(--ink); color:var(--paper); }
+.rm-btn-pri:hover{ background:var(--bronze); }
+.rm-btn-cop{ background:var(--copper); color:#fff; }
+.rm-btn-cop:hover{ background:var(--bronze); }
+.rm-btn-sec{ background:transparent; color:var(--fg); border-color:var(--line); }
+.rm-btn-sec:hover{ border-color:var(--ink); }
+.rm-btn-lg{ height:54px; padding:0 28px; font-size:15px; }
+.rm-btn .dot{ width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.9; }
+.rm-btn-night{ background:var(--night-fg); color:var(--ink); }
+.rm-btn-night:hover{ background:#fff; }
+.rm-btn-night-sec{ background:transparent; color:var(--night-fg); border-color:var(--night-line); }
+.rm-btn-night-sec:hover{ border-color:var(--night-fg); }
+
+/* text link with a copper underline that draws on hover */
+.rm-tl{
+  position:relative; display:inline-flex; align-items:center; gap:8px;
+  font:500 14px/1 var(--f-sans); color:var(--fg); background:none; border:0; padding:4px 0; cursor:pointer;
+}
+.rm-tl::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:var(--copper); transform:scaleX(0); transform-origin:left;
+  transition:transform var(--t-base) var(--e);
+}
+.rm-tl:hover::after{ transform:scaleX(1); }
+.rm-tl .arw{ transition:transform var(--t-base) var(--e); }
+.rm-tl:hover .arw{ transform:translateX(4px); }
+
+/* ---------- masthead ---------- */
+.rm-nav{
+  position:sticky; top:0; z-index:60;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(160%) blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.rm-nav-in{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--px);
+  height:68px; display:flex; align-items:center; gap:28px;
+}
+.rm-brand{ display:inline-flex; align-items:center; gap:10px; color:var(--ink); }
+.rm-brand .rm-mark{ color:var(--copper); }
+.rm-brand b{ font:600 17px/1 var(--f-display); letter-spacing:-.03em; }
+.rm-brand span{
+  font:500 8.5px/1 var(--f-mono); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--fg-3); border-left:1px solid var(--line); padding-left:10px; margin-left:2px;
+}
+.rm-links{ display:flex; align-items:center; gap:2px; margin-left:auto; }
+.rm-link{
+  position:relative; padding:9px 13px;
+  font:450 13.5px/1 var(--f-sans); color:var(--fg-2);
+  transition:color var(--t-fast) var(--e);
+}
+.rm-link::after{
+  content:""; position:absolute; left:13px; right:13px; bottom:2px; height:1px;
+  background:var(--copper); transform:scaleX(0); transform-origin:left;
+  transition:transform var(--t-base) var(--e);
+}
+.rm-link:hover{ color:var(--ink); }
+.rm-link:hover::after,.rm-link[data-on="1"]::after{ transform:scaleX(1); }
+.rm-link[data-on="1"]{ color:var(--ink); }
+.rm-nav-rt{ display:flex; align-items:center; gap:14px; margin-left:20px; }
+.rm-nav-login{ font:450 13.5px/1 var(--f-sans); color:var(--fg-2); background:none; border:0; cursor:pointer; padding:9px 4px; }
+.rm-nav-login:hover{ color:var(--copper); }
+.rm-nav-burger{ display:none; }
+.rm-progress{
+  position:absolute; left:0; bottom:-1px; height:1px; background:var(--copper);
+  transform-origin:left; transform:scaleX(0); width:100%;
+}
+
+/* ---------- section shell ---------- */
+.rm-sec{ position:relative; padding:clamp(80px,7.4vw,124px) 0; border-top:1px solid var(--line); scroll-margin-top:80px; }
+.rm-sec-head{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.82fr); gap:clamp(24px,4vw,64px); align-items:end; margin-bottom:clamp(38px,4vw,64px); }
+.rm-h2{
+  font:600 clamp(31px,3.8vw,54px)/1.03 var(--f-display);
+  letter-spacing:-.038em; max-width:19ch; margin-top:18px;
+}
+.rm-h2 em{ font-family:var(--f-edit); font-style:italic; font-weight:400; letter-spacing:-.01em; color:var(--bronze); }
+.rm-dek{ font:400 clamp(15px,1.15vw,17.5px)/1.62 var(--f-sans); color:var(--fg-2); max-width:52ch; }
+.rm-dek b{ color:var(--ink); font-weight:500; }
+
+/* entrance: an 8px settle, never a slide-show */
+.rm-in{ opacity:0; transform:translateY(10px); }
+.rm-in.on{
+  opacity:1; transform:none;
+  transition:opacity var(--t-slow) var(--e), transform var(--t-slow) var(--e);
+  transition-delay:calc(var(--i,0) * 70ms);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .rm-in{ opacity:1 !important; transform:none !important; transition:none !important; }
+}

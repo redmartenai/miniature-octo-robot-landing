@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RevOS — The Operating System Above Your Revenue Stack</title>
+<meta name="description" content="AI handles the operational work. Humans handle the decisions. RevOS sits above HubSpot, Outreach, LinkedIn data and more — surfacing only the decisions that need you." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#05060a;
+    --bg-2:#0a0c14;
+    --panel:#0e1120;
+    --panel-2:#12162a;
+    --line:rgba(255,255,255,.08);
+    --line-2:rgba(255,255,255,.14);
+    --text:#eef1f8;
+    --muted:#9aa3bd;
+    --muted-2:#6b7391;
+    --brand:#6d8bff;
+    --brand-2:#a879ff;
+    --mint:#5ff0c2;
+    --amber:#ffbf6b;
+    --rose:#ff7b93;
+    --glow:0 0 60px rgba(109,139,255,.35);
+    --radius:22px;
+    --maxw:1180px;
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+    line-height:1.55;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  .serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-style:italic}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);
+    padding:7px 14px;border:1px solid var(--line);border-radius:100px;
+    background:rgba(255,255,255,.02);
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
+  h1,h2,h3{margin:0;letter-spacing:-.02em;line-height:1.05}
+  .grad-text{
+    background:linear-gradient(100deg,#fff 10%,#c7d0ff 45%,#a879ff 78%,#5ff0c2 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-weight:600;font-size:15px;
+    padding:14px 22px;border-radius:100px;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s;
+  }
+  .btn-primary{
+    background:linear-gradient(100deg,var(--brand),var(--brand-2));
+    color:#fff;box-shadow:0 10px 30px rgba(109,139,255,.35);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(109,139,255,.5)}
+  .btn-ghost{background:rgba(255,255,255,.04);border-color:var(--line-2);color:var(--text)}
+  .btn-ghost:hover{background:rgba(255,255,255,.08);transform:translateY(-2px)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:linear-gradient(180deg,rgba(5,6,10,.85),rgba(5,6,10,.55));
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;font-size:18px}
+  .logo .mark{
+    width:30px;height:30px;border-radius:9px;
+    background:conic-gradient(from 200deg,var(--brand),var(--brand-2),var(--mint),var(--brand));
+    box-shadow:var(--glow);position:relative;
+  }
+  .logo .mark::after{content:"";position:absolute;inset:6px;border-radius:5px;background:var(--bg)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-size:14.5px;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:860px){.nav-links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:96px 0 60px;overflow:hidden}
+  .aurora{position:absolute;inset:-20% -10% auto -10%;height:900px;z-index:0;filter:blur(90px);opacity:.55;pointer-events:none}
+  .aurora .b1{position:absolute;width:640px;height:640px;left:5%;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(109,139,255,.55),transparent 62%)}
+  .aurora .b2{position:absolute;width:560px;height:560px;right:2%;top:-60px;border-radius:50%;background:radial-gradient(circle,rgba(168,121,255,.5),transparent 62%)}
+  .aurora .b3{position:absolute;width:520px;height:520px;left:38%;top:120px;border-radius:50%;background:radial-gradient(circle,rgba(95,240,194,.32),transparent 62%)}
+  .grid-overlay{position:absolute;inset:0;z-index:0;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:54px 54px;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 20%,transparent 75%);
+  }
+  .hero-inner{position:relative;z-index:2;text-align:center;max-width:900px;margin:0 auto}
+  .hero h1{font-size:clamp(40px,6.4vw,74px);font-weight:800;margin:24px 0 0}
+  .hero p.sub{font-size:clamp(17px,2.1vw,21px);color:var(--muted);max-width:640px;margin:22px auto 0}
+  .hero .cta{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .trusted{margin-top:42px;color:var(--muted-2);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+  .logos{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:16px;opacity:.8}
+  .logos span{font-weight:700;font-size:16px;color:var(--muted);letter-spacing:-.01em}
+
+  /* ---------- HERO DASHBOARD MOCK ---------- */
+  .brief{
+    position:relative;z-index:2;max-width:960px;margin:56px auto 0;
+    border-radius:var(--radius);
+    border:1px solid var(--line-2);
+    background:linear-gradient(180deg,rgba(20,24,44,.9),rgba(10,12,20,.95));
+    box-shadow:0 40px 120px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.06);
+    overflow:hidden;
+  }
+  .brief-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid var(--line)}
+  .brief-top .dots{display:flex;gap:7px}
+  .brief-top .dots i{width:11px;height:11px;border-radius:50%;display:block}
+  .brief-top .dots i:nth-child(1){background:#ff5f57}
+  .brief-top .dots i:nth-child(2){background:#febc2e}
+  .brief-top .dots i:nth-child(3){background:#28c840}
+  .brief-top .url{margin-left:12px;font-size:12.5px;color:var(--muted-2);font-family:ui-monospace,monospace}
+  .brief-top .clock{margin-left:auto;font-size:12.5px;color:var(--mint);font-weight:600}
+  .brief-body{padding:26px}
+  .brief-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+  .brief-head h3{font-size:22px}
+  .brief-head .greet{color:var(--muted);font-size:14px;margin-top:6px}
+  .brief-head .pill{font-size:12px;color:var(--mint);border:1px solid rgba(95,240,194,.3);background:rgba(95,240,194,.08);padding:6px 12px;border-radius:100px;font-weight:600}
+  .dcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  @media(max-width:720px){.dcards{grid-template-columns:1fr}}
+  .dcard{
+    text-align:left;border:1px solid var(--line);border-radius:16px;padding:18px;
+    background:rgba(255,255,255,.02);position:relative;overflow:hidden;
+    transition:transform .3s var(--ease),border-color .3s;
+  }
+  .dcard:hover{transform:translateY(-4px);border-color:var(--line-2)}
+  .dcard .tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
+  .dcard h4{font-size:15px;margin:10px 0 8px;line-height:1.3}
+  .dcard p{font-size:13px;color:var(--muted);margin:0 0 14px}
+  .dcard .act{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600}
+  .dcard .approve{color:var(--mint)}
+  .dcard .signal{position:absolute;top:16px;right:16px;width:8px;height:8px;border-radius:50%}
+  .s-mint{background:var(--mint);box-shadow:0 0 12px var(--mint)}
+  .s-amber{background:var(--amber);box-shadow:0 0 12px var(--amber)}
+  .s-rose{background:var(--rose);box-shadow:0 0 12px var(--rose)}
+  .bar{height:5px;border-radius:100px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:2px}
+  .bar i{display:block;height:100%;border-radius:100px}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{position:relative;padding:100px 0}
+  .sec-head{max-width:720px;margin:0 auto 56px;text-align:center}
+  .sec-head h2{font-size:clamp(30px,4.4vw,48px);font-weight:800}
+  .sec-head p{color:var(--muted);font-size:17px;margin-top:16px}
+
+  /* ---------- BEFORE / AFTER ---------- */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.ba{grid-template-columns:1fr}}
+  .ba-col{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:var(--panel)}
+  .ba-col.before{background:linear-gradient(180deg,rgba(255,123,147,.05),transparent)}
+  .ba-col.after{background:linear-gradient(180deg,rgba(95,240,194,.06),transparent);border-color:rgba(95,240,194,.2)}
+  .ba-col .label{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+  .ba-col.before .label{color:var(--rose)}
+  .ba-col.after .label{color:var(--mint)}
+  .ba-col h3{font-size:22px;margin-bottom:6px}
+  .ba-col .time{font-size:13px;color:var(--muted-2);margin-bottom:22px}
+  .steps{list-style:none;margin:0;padding:0;counter-reset:s}
+  .steps li{
+    counter-increment:s;position:relative;padding:11px 0 11px 40px;
+    font-size:14.5px;color:var(--muted);border-bottom:1px solid var(--line);
+  }
+  .steps li:last-child{border-bottom:0}
+  .steps li::before{
+    content:counter(s);position:absolute;left:0;top:9px;
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    font-size:12px;font-weight:700;color:var(--muted);
+    background:rgba(255,255,255,.04);border:1px solid var(--line);
+  }
+  .after .steps li{color:var(--text)}
+  .after .steps li::before{color:#05060a;background:var(--mint);border-color:var(--mint)}
+  .verdict{margin-top:22px;font-size:14px;padding:14px 16px;border-radius:14px}
+  .before .verdict{background:rgba(255,123,147,.08);color:#ffc0cc}
+  .after .verdict{background:rgba(95,240,194,.09);color:#b7f7e2}
+
+  /* ---------- CAPABILITIES ---------- */
+  .caps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:900px){.caps{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.caps{grid-template-columns:1fr}}
+  .cap{
+    border:1px solid var(--line);border-radius:20px;padding:26px;
+    background:linear-gradient(180deg,var(--panel),rgba(10,12,20,.6));
+    position:relative;overflow:hidden;transition:transform .3s var(--ease),border-color .3s;
+  }
+  .cap:hover{transform:translateY(-5px);border-color:var(--line-2)}
+  .cap::before{content:"";position:absolute;top:-40px;right:-40px;width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(109,139,255,.25),transparent 70%);opacity:0;transition:opacity .4s}
+  .cap:hover::before{opacity:1}
+  .cap .ico{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;
+    background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:22px}
+  .cap h3{font-size:18px;margin-bottom:9px}
+  .cap p{font-size:14px;color:var(--muted);margin:0 0 16px}
+  .cap .demo{border-top:1px dashed var(--line);padding-top:14px;font-size:13px}
+  .cap .q{color:var(--brand);font-family:ui-monospace,monospace;font-size:12.5px}
+  .cap .a{color:var(--muted);margin-top:6px}
+  .chiprow{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .chip{font-size:11.5px;padding:4px 9px;border-radius:100px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
+
+  /* ---------- TIMELINE / DAY ---------- */
+  .day{position:relative;max-width:820px;margin:0 auto}
+  .day::before{content:"";position:absolute;left:22px;top:8px;bottom:8px;width:2px;
+    background:linear-gradient(180deg,var(--brand),var(--brand-2),var(--mint));opacity:.4}
+  .tl{position:relative;padding:0 0 34px 66px}
+  .tl:last-child{padding-bottom:0}
+  .tl .node{position:absolute;left:12px;top:2px;width:22px;height:22px;border-radius:50%;
+    background:var(--bg);border:2px solid var(--brand);display:grid;place-items:center}
+  .tl .node i{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+  .tl .t{font-size:12.5px;color:var(--mint);font-weight:700;letter-spacing:.05em}
+  .tl h3{font-size:19px;margin:6px 0 8px}
+  .tl p{color:var(--muted);font-size:14.5px;margin:0}
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  @media(max-width:820px){.stats{grid-template-columns:1fr 1fr}}
+  .stat{text-align:center;border:1px solid var(--line);border-radius:20px;padding:30px 18px;background:var(--panel)}
+  .stat .n{font-size:clamp(34px,5vw,50px);font-weight:800;letter-spacing:-.03em}
+  .stat .l{color:var(--muted);font-size:13.5px;margin-top:6px}
+
+  /* ---------- LAYER DIAGRAM ---------- */
+  .layer{max-width:760px;margin:44px auto 0}
+  .layer .os{
+    border:1px solid rgba(109,139,255,.4);border-radius:18px;padding:22px 24px;text-align:center;
+    background:linear-gradient(100deg,rgba(109,139,255,.14),rgba(168,121,255,.14));
+    box-shadow:0 20px 60px rgba(109,139,255,.2);
+  }
+  .layer .os b{font-size:19px}
+  .layer .os p{color:var(--muted);font-size:13.5px;margin:6px 0 0}
+  .layer .connect{height:34px;width:2px;margin:0 auto;background:linear-gradient(180deg,var(--brand),transparent)}
+  .layer .tools{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:640px){.layer .tools{grid-template-columns:repeat(2,1fr)}}
+  .layer .tool{border:1px solid var(--line);border-radius:14px;padding:16px 10px;text-align:center;font-size:13px;color:var(--muted);background:var(--panel);font-weight:600}
+
+  /* ---------- CTA ---------- */
+  .final{position:relative;overflow:hidden;border-top:1px solid var(--line)}
+  .final .card{
+    max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:2;
+    border:1px solid var(--line-2);border-radius:28px;padding:60px 40px;
+    background:linear-gradient(180deg,rgba(20,24,44,.7),rgba(10,12,20,.9));
+    box-shadow:0 40px 120px rgba(0,0,0,.5);
+  }
+  .final h2{font-size:clamp(30px,4.6vw,52px);font-weight:800}
+  .final p{color:var(--muted);font-size:18px;margin:18px auto 30px;max-width:560px}
+  .promise{font-size:clamp(20px,3vw,30px);margin:0 auto;max-width:640px}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted-2);font-size:13.5px}
+  .foot-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  .foot-links{display:flex;gap:24px}
+  .foot-links a:hover{color:var(--text)}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes pulse{0%,100%{opacity:.55}50%{opacity:.85}}
+  .aurora{animation:pulse 8s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="logo"><span class="mark"></span>RevOS</div>
+    <nav class="nav-links">
+      <a href="#problem">The Problem</a>
+      <a href="#capabilities">Platform</a>
+      <a href="#day">A Day With Sarah</a>
+      <a href="#outcome">Outcome</a>
+    </nav>
+    <a href="#cta" class="btn btn-primary" style="padding:11px 20px;font-size:14px">Book a demo</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aurora"><div class="b1"></div><div class="b2"></div><div class="b3"></div></div>
+  <div class="grid-overlay"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow"><span class="dot"></span>The operating system above your revenue stack</span>
+    <h1><span class="grad-text">AI handles the operational work.</span><br/>Humans handle the decisions.</h1>
+    <p class="sub">RevOS sits above HubSpot, Outreach, your dialer, LinkedIn data and reporting tools — understanding what's happening, taking action where appropriate, and surfacing only the decisions that need human judgment.</p>
+    <div class="cta">
+      <a href="#cta" class="btn btn-primary">Book a demo →</a>
+      <a href="#day" class="btn btn-ghost">See a day with Sarah</a>
+    </div>
+    <div class="trusted">Unifies the tools your team already runs on</div>
+    <div class="logos">
+      <span>HubSpot</span><span>Outreach</span><span>LinkedIn Data</span><span>Dialpad</span><span>Looker</span>
+    </div>
+  </div>
+
+  <!-- MORNING BRIEFING MOCK -->
+  <div class="wrap"><div class="brief reveal" style="animation:float 9s ease-in-out infinite">
+    <div class="brief-top">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <span class="url">app.revos.ai / morning-briefing</span>
+      <span class="clock">● 8:00 AM</span>
+    </div>
+    <div class="brief-body">
+      <div class="brief-head">
+        <div>
+          <h3>Good morning, Sarah</h3>
+          <div class="greet">3 decisions need you. Everything else is already handled.</div>
+        </div>
+        <span class="pill">Pipeline reviewed overnight ✓</span>
+      </div>
+      <div class="dcards">
+        <div class="dcard">
+          <span class="signal s-mint"></span>
+          <div class="tag">Decision 01 · Buying signals</div>
+          <h4>7 high-value accounts are showing intent</h4>
+          <p>Prioritize for outreach today. Workflows are staged and ready.</p>
+          <div class="bar"><i style="width:82%;background:linear-gradient(90deg,var(--mint),var(--brand))"></i></div>
+          <div class="act approve" style="margin-top:14px">✓ Approve &nbsp;·&nbsp; Launch outreach</div>
+        </div>
+        <div class="dcard">
+          <span class="signal s-amber"></span>
+          <div class="tag">Decision 02 · Stalled deals</div>
+          <h4>12 opportunities inactive for 14 days</h4>
+          <p>Likely cause identified. Recovery campaign drafted and waiting.</p>
+          <div class="bar"><i style="width:58%;background:linear-gradient(90deg,var(--amber),var(--rose))"></i></div>
+          <div class="act approve" style="margin-top:14px">✓ Approve &nbsp;·&nbsp; Launch recovery</div>
+        </div>
+        <div class="dcard">
+          <span class="signal s-rose"></span>
+          <div class="tag">Decision 03 · Forecast risk</div>
+          <h4>Q3 coverage shortfall projected</h4>
+          <p>Contributing factors explained. Suggested actions to close the gap.</p>
+          <div class="bar"><i style="width:41%;background:linear-gradient(90deg,var(--rose),var(--brand-2))"></i></div>
+          <div class="act" style="margin-top:14px;color:var(--brand)">→ Share with sales leadership</div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>The morning tax</span>
+      <h2 style="margin-top:18px">Most of the day is spent <span class="serif grad-text">gathering</span>, not deciding</h2>
+      <p>Sarah leads Revenue Operations at a growing B2B software company. Every morning began the same way — opening dashboard after dashboard just to understand what happened overnight.</p>
+    </div>
+    <div class="ba">
+      <div class="ba-col before reveal">
+        <span class="label">◷ Before the platform</span>
+        <h3>An hour gone before the first decision</h3>
+        <div class="time">~55 minutes · 5 disconnected systems</div>
+        <ol class="steps">
+          <li>Open the CRM</li>
+          <li>Check pipeline movement</li>
+          <li>Review sales activity</li>
+          <li>Look at email engagement</li>
+          <li>Review call outcomes</li>
+          <li>Compare reports across systems</li>
+          <li>Create action items for the team</li>
+        </ol>
+        <div class="verdict">Most of her time is spent gathering information rather than acting on it.</div>
+      </div>
+      <div class="ba-col after reveal">
+        <span class="label">✦ After the platform</span>
+        <h3>Log in at 8:00 AM to a briefing, not a dashboard</h3>
+        <div class="time">~10 minutes · one surface above everything</div>
+        <ol class="steps">
+          <li>Read the morning briefing</li>
+          <li>Approve buying-signal outreach</li>
+          <li>Approve stalled-deal recovery</li>
+          <li>Share the forecast recommendation</li>
+        </ol>
+        <div class="verdict">The discovery, coordination and prep are already done. Sarah just decides.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" style="background:linear-gradient(180deg,var(--bg),var(--bg-2))">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>What runs while she leads</span>
+      <h2 style="margin-top:18px">Five engines working <span class="serif grad-text">in the background</span></h2>
+      <p>While Sarah focuses on strategy, the platform handles discovery, coordination, execution and tracking — no manual moving of data between systems.</p>
+    </div>
+    <div class="caps">
+      <div class="cap reveal">
+        <div class="ico">🔎</div>
+        <h3>Data Studio</h3>
+        <p>Ask questions in plain English and get answers instantly — no report-building required.</p>
+        <div class="demo">
+          <div class="q">"Healthcare companies with recent buying signals and no activity in 30 days"</div>
+          <div class="a">→ 18 accounts returned instantly, ranked by intent.</div>
+        </div>
+      </div>
+      <div class="cap reveal">
+        <div class="ico">⚡</div>
+        <h3>Workflows</h3>
+        <p>When new signals are detected, the platform coordinates the response automatically.</p>
+        <div class="chiprow" style="margin-top:12px">
+          <span class="chip">Route to team</span><span class="chip">Create tasks</span>
+          <span class="chip">Update CRM</span><span class="chip">Trigger follow-up</span>
+        </div>
+        <div class="demo" style="margin-top:14px"><div class="a">No manual coordination required.</div></div>
+      </div>
+      <div class="cap reveal">
+        <div class="ico">🤖</div>
+        <h3>AI Agents</h3>
+        <p>An agent researches the target account before the AE's first meeting.</p>
+        <div class="demo">
+          <div class="a">Gathers information → summarizes findings → prepares recommendations, ready before the call.</div>
+        </div>
+      </div>
+      <div class="cap reveal">
+        <div class="ico">🎙️</div>
+        <h3>Voice</h3>
+        <p>A voice agent calls leads that requested information overnight.</p>
+        <div class="demo">
+          <div class="a">Conversations recorded → summarized → linked to company records → action items created automatically.</div>
+        </div>
+      </div>
+      <div class="cap reveal">
+        <div class="ico">📊</div>
+        <h3>Analytics</h3>
+        <p>Leadership asks why a marketing channel is underperforming.</p>
+        <div class="demo">
+          <div class="a">Drill into the recommendation and see the evidence supporting the conclusion — not five separate reports.</div>
+        </div>
+      </div>
+      <div class="cap reveal" style="background:linear-gradient(160deg,rgba(109,139,255,.14),rgba(168,121,255,.1));border-color:rgba(109,139,255,.3)">
+        <div class="ico" style="background:linear-gradient(100deg,var(--brand),var(--brand-2));border:0">🧠</div>
+        <h3>The layer above it all</h3>
+        <p>Every engine feeds one intelligence that understands what's happening across your entire revenue stack.</p>
+        <div class="demo" style="border-color:rgba(255,255,255,.2)"><div class="a" style="color:var(--text)">It brings you the decisions — and handles the rest.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- A DAY WITH SARAH -->
+<section id="day">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>A day in the life</span>
+      <h2 style="margin-top:18px">8:00 AM to end of day, <span class="serif grad-text">reimagined</span></h2>
+      <p>The same day Sarah used to spend moving data between systems — now spent making decisions and helping the business grow.</p>
+    </div>
+    <div class="day">
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">8:00 AM</div><h3>The morning briefing</h3>
+        <p>No dashboard to decode. Three important decisions, surfaced with context, waiting for her judgment.</p>
+      </div>
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">8:05 AM · Decision 1</div><h3>Buying signals → approved</h3>
+        <p>High-value accounts show intent. Sarah approves the prioritization and workflows immediately begin preparing outreach.</p>
+      </div>
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">8:08 AM · Decision 2</div><h3>Stalled deals → recovery launched</h3>
+        <p>Opportunities inactive for two weeks. The platform identifies the likely reason and launches the recovery campaign on approval.</p>
+      </div>
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">8:12 AM · Decision 3</div><h3>Forecast risk → shared with leadership</h3>
+        <p>A potential shortfall next quarter, explained with contributing factors and suggested actions to improve coverage.</p>
+      </div>
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">Midday · In the background</div><h3>Studio, Workflows, Agents & Voice keep running</h3>
+        <p>A manager gets a plain-English answer instantly. New signals route themselves. An agent preps account research. A voice agent works overnight leads.</p>
+      </div>
+      <div class="tl reveal"><div class="node"><i></i></div>
+        <div class="t">End of day</div><h3>A day spent deciding, not coordinating</h3>
+        <p>No data moved by hand. No reports built manually. No stitching tools together. Just decisions that moved the business forward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:linear-gradient(180deg,var(--bg-2),var(--bg))">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat reveal"><div class="n grad-text">~50 min</div><div class="l">Saved every morning</div></div>
+      <div class="stat reveal"><div class="n grad-text">3</div><div class="l">Decisions, not 7 dashboards</div></div>
+      <div class="stat reveal"><div class="n grad-text">5+</div><div class="l">Tools unified into one layer</div></div>
+      <div class="stat reveal"><div class="n grad-text">0</div><div class="l">Reports built by hand</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOME + LAYER DIAGRAM -->
+<section id="outcome">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>The outcome</span>
+      <h2 style="margin-top:18px">Not another sales tool.<br/><span class="serif grad-text">The operating system above them all.</span></h2>
+      <p>It understands what is happening, takes action where appropriate, and brings only the decisions that require human judgment.</p>
+    </div>
+    <div class="layer reveal">
+      <div class="os">
+        <b>RevOS · Revenue Operating System</b>
+        <p>Understands · Coordinates · Executes · Tracks</p>
+      </div>
+      <div class="connect"></div>
+      <div class="tools">
+        <div class="tool">HubSpot</div>
+        <div class="tool">Outreach</div>
+        <div class="tool">LinkedIn Data</div>
+        <div class="tool">Calling</div>
+        <div class="tool">Reporting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="final">
+  <div class="aurora" style="opacity:.35"><div class="b1"></div><div class="b2"></div></div>
+  <div class="wrap">
+    <div class="card reveal">
+      <span class="eyebrow"><span class="dot"></span>The promise of the product</span>
+      <h2 style="margin-top:20px" class="promise serif grad-text">AI handles the operational work. Humans handle the decisions.</h2>
+      <p style="margin-top:26px">Give your revenue leaders their mornings back. See how RevOS sits above your stack and surfaces only what needs you.</p>
+      <div class="cta" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="mailto:growstack01@gmail.com?subject=RevOS%20Demo" class="btn btn-primary">Book a demo →</a>
+        <a href="#day" class="btn btn-ghost">Watch a day with Sarah</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="logo" style="font-size:16px"><span class="mark"></span>RevOS</div>
+    <div class="foot-links">
+      <a href="#problem">Problem</a>
+      <a href="#capabilities">Platform</a>
+      <a href="#day">Day with Sarah</a>
+      <a href="#cta">Demo</a>
+    </div>
+    <div>© 2026 RevOS — The operating system above your revenue stack.</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{
+    el.style.transitionDelay=(Math.min(i%3,3)*0.08)+'s';
+    io.observe(el);
+  });
+
+  // Subtle parallax on aurora
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    document.querySelectorAll('.aurora').forEach(a=>{ a.style.transform='translateY('+(y*0.06)+'px)'; });
+  },{passive:true});
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+/* ============================================================
+   NOCTURNE MOTION SYSTEM — vanilla, dependency-free.
+   Everything prints, nothing floats. Scroll is time, motion is
+   evidence, ink beats float. Tokens alias the existing design
+   system (brand/tokens.css) so both themes work for free.
+   All behaviour hangs off [data-anim] so one media query kills it.
+   ============================================================ */
+
+:root {
+  --ease-print: var(--ease-out);    /* ink settling: fast in, long soft landing */
+  --ease-stamp: var(--ease-spring); /* one restrained overshoot, stamps only */
+  --dur-micro: 180ms;               /* hovers, arrows, toggles */
+  --dur-print: 420ms;               /* a ledger line printing */
+  --dur-reveal: 560ms;              /* section entrances */
+  --dur-stamp: 260ms;
+  --nocturne-stagger: 60ms;         /* typewriter offset between siblings */
+}
+
+/* ------------------------------------------------------------
+   THE PRINT WIPE — the only entrance.
+   clip-path inset(0 100% 0 0) -> inset(0), translateY(6px) -> 0,
+   opacity 0 -> 1. Gated on html.js so that with JS disabled the
+   content renders fully (progressive enhancement). Fires once
+   when the shared IntersectionObserver adds .in; never replays.
+   ------------------------------------------------------------ */
+.js [data-anim="print"] {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  transform: translateY(6px);
+}
+.js [data-anim="print"]:not(.in) {
+  will-change: clip-path, transform, opacity;
+}
+[data-anim="print"].in {
+  clip-path: inset(0 0 0 0);
+  opacity: 1;
+  transform: none;
+  transition:
+    clip-path var(--dur-print) var(--ease-print),
+    transform var(--dur-print) var(--ease-print),
+    opacity var(--dur-print) var(--ease-print);
+  /* typewriter stagger — the controller caps --i at 5 (6 items) */
+  transition-delay: calc(var(--i, 0) * var(--nocturne-stagger));
+}
+
+/* Section entrances get the longer reveal duration. */
+.js [data-anim="print"][data-reveal] {
+  --dur-print: var(--dur-reveal);
+}
+
+/* ------------------------------------------------------------
+   THE STAMP — a rubber stamp landing on paper.
+   ------------------------------------------------------------ */
+@keyframes nocturne-stamp {
+  from { transform: rotate(-4deg) scale(1.06); }
+  to   { transform: rotate(-2deg) scale(1); }
+}
+@keyframes nocturne-ink-ring {
+  from { transform: scale(1);    opacity: .9; }
+  to   { transform: scale(1.15); opacity: 0; }
+}
+.js .nocturne-stamp {
+  opacity: 0;
+}
+.js .nocturne-stamp.in {
+  opacity: 1;
+  animation: nocturne-stamp var(--dur-stamp) var(--ease-stamp) forwards;
+}
+.nocturne-stamp .ink-ring {
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+}
+.js .nocturne-stamp.in .ink-ring {
+  animation: nocturne-ink-ring var(--dur-reveal) var(--ease-print) forwards;
+}
+
+/* Press feedback shared by StampButton. */
+.nocturne-press { transition: transform var(--dur-micro) var(--ease-print); }
+.nocturne-press:active { transform: scale(.97); }
+
+/* ------------------------------------------------------------
+   PERFORATION TEAR — the hand-off below the ledger.
+   ------------------------------------------------------------ */
+@keyframes nocturne-tear {
+  from { transform: translateY(0); }
+  to   { transform: translateY(4px); }
+}
+.js .nocturne-perf.in .tear {
+  animation: nocturne-tear var(--dur-print) var(--ease-print) forwards;
+}
+
+/* ------------------------------------------------------------
+   INK-FILL — a left-to-right wipe for hover microstates.
+   ------------------------------------------------------------ */
+@keyframes nocturne-ink-fill {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+/* ------------------------------------------------------------
+   SCENT TRAIL — the page-spine ink path.
+   Drawn via stroke-dashoffset from the shared scroll engine.
+   ------------------------------------------------------------ */
+.scent-trail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+.scent-trail path { fill: none; stroke: var(--color-accent); }
+.scent-trail .trail-base { opacity: .32; }
+.scent-trail .trail-head { opacity: 1; }
+.scent-trail .trail-tick {
+  fill: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--dur-print) var(--ease-print);
+}
+.scent-trail .trail-tick.on { opacity: 1; }
+
+/* Below 1200px the gutter path is replaced by a top progress hairline. */
+.scent-hairline {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  will-change: transform;
+  pointer-events: none;
+  z-index: var(--z-sticky);
+}
+/* The gutter path replaces the hairline at wide widths. */
+@media (min-width: 1200px) {
+  .scent-hairline { display: none; }
+}
+@media (max-width: 1199px) {
+  .scent-trail { display: none; }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION — one query switches the whole system off.
+   Every [data-anim] resolves to its end-state. Trail hidden.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  [data-anim] {
+    clip-path: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  .nocturne-stamp,
+  .nocturne-stamp .ink-ring { opacity: 1 !important; animation: none !important; }
+  .nocturne-stamp .ink-ring { display: none; }
+  .scent-trail, .scent-hairline { display: none !important; }
+}

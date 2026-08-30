@@ -1,0 +1,250 @@
+/* ============================================================
+   RED MARTEN DESIGN TOKENS — v1.0
+   Source of truth: tokens.json. Do not edit by hand.
+   Components read ROLE tokens only, never ramp steps.
+   ============================================================ */
+
+:root {
+  /* -- Brand surfaces: theme-invariant ----------------------- */
+  /* The logo plate must not shift between light and dark.      */
+  --brand-red:   #8A0E0D;
+  --brand-cream: #EFE6DF;
+
+  /* -- Ramp: Marten Red -------------------------------------- */
+  --color-red-950: #4A0908;
+  --color-red-900: #5F0C0A;
+  --color-red-800: #74100E;
+  --color-red-700: #8A0E0D;  /* core — sampled from the logo plate */
+  --color-red-600: #A31C18;
+  --color-red-500: #BC3630;
+  --color-red-400: #CF5F52;  /* dark-theme accent */
+  --color-red-200: #EFC4BE;
+  --color-red-100: #F8E7E3;
+
+  /* -- Ramp: Bone (warm neutral, biased toward the red) ------- */
+  --color-bone-0:   #FFFFFF;
+  --color-bone-50:  #FCF8F5;
+  --color-bone-100: #F5EDE8;
+  --color-bone-150: #EFE6DF;  /* the logo cream — fixed by the identity */
+  --color-bone-200: #E5D9D2;
+  --color-bone-300: #CFC1B9;
+  --color-bone-400: #9E908A;
+  --color-bone-600: #6C625D;
+  --color-bone-800: #3A3330;
+  --color-bone-900: #1A1614;
+  --color-bone-950: #0D0A09;
+
+  /* -- Secondary accent: charts only ------------------------- */
+  --color-patina: #5F6B5E;
+
+  /* -- Roles: surface ---------------------------------------- */
+  --color-bg:            var(--color-bone-50);
+  --color-bg-alt:        var(--color-bone-100);
+  --color-surface:       var(--color-bone-0);
+  --color-surface-2:     var(--color-bone-100);
+  --color-surface-sunk:  var(--color-bone-150);
+  --color-border:        var(--color-bone-200);
+  --color-border-strong: var(--color-bone-300);
+  --color-hairline:      rgb(26 22 20 / .08);
+  --color-glass:         rgb(252 248 245 / .72);
+
+  /* -- Roles: content ---------------------------------------- */
+  --color-fg:          var(--color-bone-900);
+  --color-fg-2:        var(--color-bone-600);
+  --color-fg-3:        var(--color-bone-400);
+  --color-fg-inverse:  var(--color-bone-50);
+  --color-accent:      var(--color-red-700);
+  --color-accent-soft: rgb(138 14 13 / .08);
+
+  /* -- Roles: semantic --------------------------------------- */
+  /* Error shares a hue family with the brand, so the two are    */
+  /* separated by ROLE: brand red is a surface, error is text.   */
+  --color-success: #4E7A5B;
+  --color-warning: #8F6D2E;
+  --color-danger:  #B23A2C;
+  --color-info:    #4E6373;
+  --color-success-soft: rgb(78 122 91 / .12);
+  --color-warning-soft: rgb(143 109 46 / .13);
+  --color-danger-soft:  rgb(178 58 44 / .11);
+  --color-info-soft:    rgb(78 99 115 / .12);
+
+  /* -- Chart series: fixed positional order ------------------- */
+  --chart-1: #8A0E0D;
+  --chart-2: #5F6B5E;
+  --chart-3: #CFC1B9;
+  --chart-4: #6C625D;
+  --chart-5: #9E908A;
+  --chart-6: #3A3330;
+  --chart-other: #E5D9D2;
+
+  /* -- Typography -------------------------------------------- */
+  --font-display: "Familjen Grotesk", "Neue Montreal", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans:    "Geist", "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    "Geist Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-display-size: 60px;  --text-display-lh: 61px;  --text-display-ls: -0.035em; --text-display-weight: 600;
+  --text-h1-size:      40px;  --text-h1-lh:      44px;  --text-h1-ls:      -0.030em; --text-h1-weight:      600;
+  --text-h2-size:      30px;  --text-h2-lh:      35px;  --text-h2-ls:      -0.025em; --text-h2-weight:      600;
+  --text-title-size:   20px;  --text-title-lh:   26px;  --text-title-ls:   -0.015em; --text-title-weight:   600;
+  --text-sub-size:     17px;  --text-sub-lh:     25px;  --text-sub-ls:      0;       --text-sub-weight:     400;
+  --text-body-size:    15px;  --text-body-lh:    24px;  --text-body-ls:     0;       --text-body-weight:    400;
+  --text-small-size:   13px;  --text-small-lh:   20px;  --text-small-ls:    0;       --text-small-weight:   400;
+  --text-caption-size: 12px;  --text-caption-lh: 17px;  --text-caption-ls:  0;       --text-caption-weight: 400;
+  --text-label-size:   11px;  --text-label-lh:   14px;  --text-label-ls:    0.120em; --text-label-weight:   500;
+  --text-button-size:  14px;  --text-button-lh:  14px;  --text-button-ls:  -0.005em; --text-button-weight:  500;
+  --text-numeric-size: 26px;  --text-numeric-lh: 30px;  --text-numeric-ls: -0.020em; --text-numeric-weight: 500;
+
+  /* -- Space (8px base, 4px half-step) ------------------------ */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;  --space-5: 24px;
+  --space-6: 32px;  --space-7: 48px;  --space-8: 64px;  --space-9: 96px;  --space-10: 128px;
+
+  /* -- Radius ------------------------------------------------- */
+  --radius-xs: 4px; --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px;
+  --radius-xl: 20px; --radius-2xl: 28px; --radius-full: 999px;
+
+  /* -- Elevation (warm-tinted) -------------------------------- */
+  --shadow-1: 0 1px 2px rgb(26 22 20 / .05);
+  --shadow-2: 0 2px 6px -1px rgb(26 22 20 / .07), 0 1px 2px rgb(26 22 20 / .05);
+  --shadow-3: 0 12px 28px -8px rgb(26 22 20 / .14), 0 2px 6px rgb(26 22 20 / .05);
+  --shadow-4: 0 32px 64px -20px rgb(26 22 20 / .22), 0 4px 12px rgb(26 22 20 / .06);
+  --shadow-focus: 0 0 0 3px var(--color-accent-soft);
+
+  /* -- Motion ------------------------------------------------- */
+  --ease-out:    cubic-bezier(.22, 1, .36, 1);
+  --ease-inout:  cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --duration-fast: 140ms; --duration-base: 240ms; --duration-slow: 420ms; --duration-cine: 860ms;
+
+  /* Mark behaviours */
+  --mark-leap-duration:   860ms;  --mark-leap-wipe: 640ms;  --mark-leap-body-delay: 200ms;
+  --mark-trail-duration: 1200ms;
+  --mark-scent-duration: 1800ms;
+  --mark-sprint-duration:1600ms;
+
+  /* -- Layout ------------------------------------------------- */
+  --layout-max: 1440px;
+  --layout-gutter: 32px;
+  --sidebar-width: 264px;
+  --sidebar-collapsed: 64px;
+  --topbar-height: 56px;
+  --node-width: 224px;
+  --canvas-dot: 18px;
+  --measure: 68ch;
+
+  /* -- Z-index ------------------------------------------------ */
+  --z-canvas: 0; --z-sticky: 100; --z-dropdown: 200; --z-drawer: 300;
+  --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+}
+
+/* -- Dark theme: system preference (unless explicitly light) -- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:            #111010;
+    --color-bg-alt:        #171514;
+    --color-surface:       #1C1A18;
+    --color-surface-2:     #232120;
+    --color-surface-sunk:  #0C0A09;
+    --color-border:        #2E2A27;
+    --color-border-strong: #3D3835;
+    --color-hairline:      rgb(242 233 227 / .09);
+    --color-glass:         rgb(23 21 20 / .72);
+
+    --color-fg:          #F2E9E3;
+    --color-fg-2:        #B3A8A2;
+    --color-fg-3:        #857A75;
+    --color-fg-inverse:  #150F0E;
+    --color-accent:      var(--color-red-400);   /* #8A0E0D is 1.9:1 here — unusable */
+    --color-accent-soft: rgb(207 95 82 / .13);
+
+    --color-success: #7C9E86; --color-warning: #C7A257;
+    --color-danger:  #D8776A; --color-info:    #8298A8;
+    --color-success-soft: rgb(124 158 134 / .14);
+    --color-warning-soft: rgb(199 162 87 / .14);
+    --color-danger-soft:  rgb(216 119 106 / .14);
+    --color-info-soft:    rgb(130 152 168 / .14);
+
+    --chart-1: #CF5F52; --chart-2: #8FA08D; --chart-3: #E5D9D2;
+    --chart-4: #B3A8A2; --chart-5: #857A75; --chart-6: #5B534E;
+    --chart-other: #3D3835;
+
+    --shadow-1: 0 1px 2px rgb(0 0 0 / .40);
+    --shadow-2: 0 2px 6px -1px rgb(0 0 0 / .45), 0 1px 2px rgb(0 0 0 / .30);
+    --shadow-3: 0 12px 28px -8px rgb(0 0 0 / .60), 0 2px 6px rgb(0 0 0 / .35);
+    --shadow-4: 0 32px 64px -20px rgb(0 0 0 / .75), 0 4px 12px rgb(0 0 0 / .40);
+  }
+}
+
+/* -- Dark theme: explicit toggle ------------------------------ */
+:root[data-theme="dark"] {
+  --color-bg: #111010; --color-bg-alt: #171514;
+  --color-surface: #1C1A18; --color-surface-2: #232120; --color-surface-sunk: #0C0A09;
+  --color-border: #2E2A27; --color-border-strong: #3D3835;
+  --color-hairline: rgb(242 233 227 / .09); --color-glass: rgb(23 21 20 / .72);
+  --color-fg: #F2E9E3; --color-fg-2: #B3A8A2; --color-fg-3: #857A75; --color-fg-inverse: #150F0E;
+  --color-accent: var(--color-red-400); --color-accent-soft: rgb(207 95 82 / .13);
+  --color-success: #7C9E86; --color-warning: #C7A257;
+  --color-danger: #D8776A; --color-info: #8298A8;
+  --color-success-soft: rgb(124 158 134 / .14); --color-warning-soft: rgb(199 162 87 / .14);
+  --color-danger-soft: rgb(216 119 106 / .14);  --color-info-soft: rgb(130 152 168 / .14);
+  --chart-1: #CF5F52; --chart-2: #8FA08D; --chart-3: #E5D9D2;
+  --chart-4: #B3A8A2; --chart-5: #857A75; --chart-6: #5B534E; --chart-other: #3D3835;
+  --shadow-1: 0 1px 2px rgb(0 0 0 / .40);
+  --shadow-2: 0 2px 6px -1px rgb(0 0 0 / .45), 0 1px 2px rgb(0 0 0 / .30);
+  --shadow-3: 0 12px 28px -8px rgb(0 0 0 / .60), 0 2px 6px rgb(0 0 0 / .35);
+  --shadow-4: 0 32px 64px -20px rgb(0 0 0 / .75), 0 4px 12px rgb(0 0 0 / .40);
+}
+
+/* ============================================================
+   MARK BEHAVIOUR KEYFRAMES
+   Attach to an <svg class="rm-mark" data-motion="..."> whose
+   children are .body and .tail, with .tail clipped by a rect
+   carrying class .wiper. See brand book §03.
+   ============================================================ */
+
+@keyframes rm-leap-body {
+  from { opacity: 0; transform: translate(-14px, 11px) scale(.90) rotate(-5deg); }
+  to   { opacity: 1; transform: translate(0, 0) scale(1) rotate(0); }
+}
+@keyframes rm-leap-wipe  { from { transform: translateX(0); } to { transform: translateX(124px); } }
+@keyframes rm-trail-wipe {
+  0%   { transform: translateX(0); }
+  55%  { transform: translateX(124px); }
+  100% { transform: translateX(248px); }
+}
+@keyframes rm-scent  { 0%, 100% { opacity: .5; transform: scale(.965); } 45% { opacity: 1; transform: scale(1); } }
+@keyframes rm-shift  { 0%, 100% { transform: translateX(0); } 40% { transform: translateX(4%); } }
+@keyframes rm-fade   { 0%, 100% { opacity: .28; } 35% { opacity: 1; } }
+
+.rm-mark { display: block; }
+.rm-mark path { fill: currentColor; }
+
+/* Leap — splash, hero, auth. Fires once. */
+.rm-mark[data-motion="leap"] .body {
+  opacity: 0;
+  animation: rm-leap-body 720ms var(--ease-spring) var(--mark-leap-body-delay) forwards;
+}
+.rm-mark[data-motion="leap"] .wiper {
+  animation: rm-leap-wipe var(--mark-leap-wipe) var(--ease-out) forwards;
+}
+
+/* Trail — route + data loading */
+.rm-mark[data-motion="trail"] .wiper {
+  animation: rm-trail-wipe var(--mark-trail-duration) var(--ease-inout) infinite;
+}
+
+/* Scent — an agent is reasoning */
+.rm-mark[data-motion="scent"] {
+  transform-origin: center;
+  animation: rm-scent var(--mark-scent-duration) var(--ease-inout) infinite;
+}
+
+/* Sprint — a workflow is executing */
+.rm-mark[data-motion="sprint"] { animation: rm-shift var(--mark-sprint-duration) var(--ease-inout) infinite; }
+.rm-mark[data-motion="sprint"] .tail { animation: rm-fade var(--mark-sprint-duration) var(--ease-inout) infinite; }
+
+/* Reduced motion: every behaviour resolves to the static mark
+   with the trail fully drawn. No fades, no substitutes. */
+@media (prefers-reduced-motion: reduce) {
+  .rm-mark, .rm-mark .body, .rm-mark .tail { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .rm-mark .wiper { animation: none !important; transform: translateX(124px) !important; }
+}

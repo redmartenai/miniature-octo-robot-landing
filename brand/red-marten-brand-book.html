@@ -1,0 +1,1681 @@
+<title>Red Marten Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap">
+
+<style>
+/* ============================================================
+   RED MARTEN BRAND BOOK — v1.0
+   Phase 1: Brand Identity & Design System
+   ============================================================ */
+
+/* ---------- 1. TOKENS: LIGHT (base) ---------- */
+:root{
+  /* Marten Red ramp */
+  --red-950:#4A0908; --red-900:#5F0C0A; --red-800:#74100E; --red-700:#8A0E0D;
+  --red-600:#A31C18; --red-500:#BC3630; --red-400:#CF5F52; --red-200:#EFC4BE; --red-100:#F8E7E3;
+
+  /* Bone ramp — warm neutral, biased toward the red */
+  --bone-0:#FFFFFF; --bone-50:#FCF8F5; --bone-100:#F5EDE8; --bone-150:#EFE6DF;
+  --bone-200:#E5D9D2; --bone-300:#CFC1B9; --bone-400:#9E908A;
+  --bone-600:#6C625D; --bone-800:#3A3330; --bone-900:#1A1614; --bone-950:#0D0A09;
+
+  /* Secondary accent — charts only */
+  --patina:#5F6B5E;
+
+  /* Semantic */
+  --success:#4E7A5B; --warning:#8F6D2E; --danger:#B23A2C; --info:#4E6373;
+
+  /* Surfaces */
+  --bg:var(--bone-50);
+  --bg-alt:var(--bone-100);
+  --surface:var(--bone-0);
+  --surface-2:var(--bone-100);
+  --surface-sunk:#EFE6DF;
+  --border:var(--bone-200);
+  --border-strong:var(--bone-300);
+  --hairline:rgba(26,22,20,.08);
+
+  /* Text */
+  --fg:var(--bone-900);
+  --fg-2:var(--bone-600);
+  --fg-3:var(--bone-400);
+  --fg-inv:var(--bone-50);
+  --accent:var(--red-700);
+  --accent-soft:rgba(138,14,13,.08);
+
+  /* Elevation */
+  --sh-1:0 1px 2px rgba(26,22,20,.05);
+  --sh-2:0 2px 6px -1px rgba(26,22,20,.07), 0 1px 2px rgba(26,22,20,.05);
+  --sh-3:0 12px 28px -8px rgba(26,22,20,.14), 0 2px 6px rgba(26,22,20,.05);
+  --sh-4:0 32px 64px -20px rgba(26,22,20,.22), 0 4px 12px rgba(26,22,20,.06);
+  --glass:rgba(252,248,245,.72);
+
+  /* Radius */
+  --r-xs:4px; --r-sm:6px; --r-md:10px; --r-lg:14px; --r-xl:20px; --r-2xl:28px; --r-full:999px;
+
+  /* Space */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px;
+  --s-7:48px; --s-8:64px; --s-9:96px; --s-10:128px;
+
+  /* Type */
+  --f-display:"Familjen Grotesk","Neue Montreal",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --f-sans:"Geist","Satoshi",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"Geist Mono","JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+
+  /* Motion */
+  --e-out:cubic-bezier(.22,1,.36,1);
+  --e-inout:cubic-bezier(.65,0,.35,1);
+  --e-spring:cubic-bezier(.34,1.56,.64,1);
+  --d-fast:140ms; --d-base:240ms; --d-slow:420ms; --d-cine:900ms;
+
+  --rail:264px;
+  --measure:74ch;
+}
+
+/* ---------- 2. TOKENS: DARK ---------- */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111010; --bg-alt:#171514;
+    --surface:#1C1A18; --surface-2:#232120; --surface-sunk:#0C0A09;
+    --border:#2E2A27; --border-strong:#3D3835;
+    --hairline:rgba(242,233,227,.09);
+    --fg:#F2E9E3; --fg-2:#B3A8A2; --fg-3:#857A75; --fg-inv:#150F0E;
+    --accent:#CF5F52; --accent-soft:rgba(207,95,82,.13);
+    --success:#7C9E86; --warning:#C7A257; --danger:#D8776A; --info:#8298A8;
+    --sh-1:0 1px 2px rgba(0,0,0,.4);
+    --sh-2:0 2px 6px -1px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);
+    --sh-3:0 12px 28px -8px rgba(0,0,0,.6), 0 2px 6px rgba(0,0,0,.35);
+    --sh-4:0 32px 64px -20px rgba(0,0,0,.75), 0 4px 12px rgba(0,0,0,.4);
+    --glass:rgba(23,21,20,.72);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111010; --bg-alt:#171514;
+  --surface:#1C1A18; --surface-2:#232120; --surface-sunk:#0C0A09;
+  --border:#2E2A27; --border-strong:#3D3835;
+  --hairline:rgba(242,233,227,.09);
+  --fg:#F2E9E3; --fg-2:#B3A8A2; --fg-3:#857A75; --fg-inv:#150F0E;
+  --accent:#CF5F52; --accent-soft:rgba(207,95,82,.13);
+  --success:#7C9E86; --warning:#C7A257; --danger:#D8776A; --info:#8298A8;
+  --sh-1:0 1px 2px rgba(0,0,0,.4);
+  --sh-2:0 2px 6px -1px rgba(0,0,0,.45), 0 1px 2px rgba(0,0,0,.3);
+  --sh-3:0 12px 28px -8px rgba(0,0,0,.6), 0 2px 6px rgba(0,0,0,.35);
+  --sh-4:0 32px 64px -20px rgba(0,0,0,.75), 0 4px 12px rgba(0,0,0,.4);
+  --glass:rgba(23,21,20,.72);
+}
+
+/* ---------- 3. BASE ---------- */
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--f-sans); font-size:16px; line-height:1.6; font-weight:400;
+  -webkit-font-smoothing:antialiased; font-feature-settings:"cv11","ss01";
+}
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:600; text-wrap:balance; margin:0; letter-spacing:-.02em;}
+p{margin:0;}
+a{color:inherit;}
+code,kbd{font-family:var(--f-mono); font-size:.85em;}
+::selection{background:var(--accent-soft); color:var(--fg);}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:var(--r-xs);}
+
+/* ---------- 4. SHELL ---------- */
+.shell{display:grid; grid-template-columns:var(--rail) minmax(0,1fr); min-height:100vh;}
+.rail{
+  position:sticky; top:0; align-self:start; height:100vh;
+  border-right:1px solid var(--border); background:var(--bg-alt);
+  display:flex; flex-direction:column; padding:var(--s-5) 0;
+}
+.rail-head{padding:0 var(--s-5) var(--s-5); display:flex; align-items:center; gap:10px;}
+.rail-head .wm{font-family:var(--f-display); font-weight:700; letter-spacing:-.03em; font-size:17px;}
+.rail-head .ver{
+  margin-left:auto; font-family:var(--f-mono); font-size:10px; letter-spacing:.06em;
+  color:var(--fg-3); border:1px solid var(--border); padding:2px 6px; border-radius:var(--r-full);
+}
+.rail-scroll{overflow-y:auto; flex:1; padding:0 var(--s-3);}
+.rail a{
+  display:flex; gap:12px; align-items:baseline; text-decoration:none;
+  padding:7px 12px; border-radius:var(--r-sm); color:var(--fg-2);
+  font-size:13.5px; transition:background var(--d-fast), color var(--d-fast);
+}
+.rail a:hover{background:var(--accent-soft); color:var(--fg);}
+.rail a .n{font-family:var(--f-mono); font-size:11px; color:var(--fg-3); min-width:20px;}
+.rail-foot{padding:var(--s-4) var(--s-5) 0; border-top:1px solid var(--border); margin-top:var(--s-4);}
+.themebtn{
+  width:100%; display:flex; align-items:center; justify-content:space-between;
+  background:var(--surface); border:1px solid var(--border); color:var(--fg-2);
+  border-radius:var(--r-md); padding:8px 12px; font:inherit; font-size:12.5px;
+  cursor:pointer; transition:border-color var(--d-fast), color var(--d-fast);
+}
+.themebtn:hover{border-color:var(--border-strong); color:var(--fg);}
+.main{min-width:0;}
+.wrap{max-width:1120px; padding:0 var(--s-8); margin:0 auto;}
+
+/* ---------- 5. SECTIONS ---------- */
+section{padding:var(--s-9) 0; border-bottom:1px solid var(--border);}
+section:last-of-type{border-bottom:0;}
+.sec-head{display:flex; align-items:baseline; gap:var(--s-4); margin-bottom:var(--s-6);}
+.sec-num{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; color:var(--accent);
+  border:1px solid var(--accent); border-radius:var(--r-full); padding:3px 9px; flex:none;
+}
+.sec-head h2{font-size:clamp(28px,3.2vw,38px); line-height:1.1;}
+.sec-head .sub{margin-left:auto; text-align:right; font-size:13px; color:var(--fg-3); max-width:34ch;}
+.lede{font-size:18px; line-height:1.62; color:var(--fg-2); max-width:var(--measure); margin-bottom:var(--s-6);}
+.lede strong{color:var(--fg); font-weight:500;}
+h3.blk{
+  font-family:var(--f-mono); font-weight:500; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--fg-3); margin:var(--s-7) 0 var(--s-4);
+  padding-bottom:var(--s-2); border-bottom:1px solid var(--border);
+}
+h3.blk:first-of-type{margin-top:0;}
+
+/* ---------- 6. HELPERS ---------- */
+.grid{display:grid; gap:var(--s-4);}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr));}
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:var(--s-5);}
+.card-flush{padding:0; overflow:hidden;}
+.note{
+  border-left:2px solid var(--accent); background:var(--accent-soft);
+  padding:var(--s-4) var(--s-5); border-radius:0 var(--r-md) var(--r-md) 0;
+  font-size:14px; color:var(--fg-2); max-width:var(--measure);
+}
+.note b{color:var(--fg); font-weight:600;}
+.cap{font-size:12.5px; color:var(--fg-3); line-height:1.5;}
+.mono{font-family:var(--f-mono);}
+
+/* ---------- 7. HERO ---------- */
+.hero{padding:var(--s-10) 0 var(--s-9); border-bottom:1px solid var(--border); position:relative; overflow:hidden;}
+.hero-grid{
+  position:absolute; inset:0; pointer-events:none; opacity:.55;
+  background-image:linear-gradient(var(--hairline) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--hairline) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:radial-gradient(ellipse 80% 60% at 62% 32%,#000,transparent 75%);
+}
+.hero-inner{position:relative; display:grid; grid-template-columns:1fr 300px; gap:var(--s-8); align-items:center;}
+.eyebrow{font-family:var(--f-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--fg-3); margin-bottom:var(--s-5);}
+.hero h1{font-size:clamp(44px,6vw,72px); line-height:.98; letter-spacing:-.035em; font-weight:600;}
+.hero h1 em{font-style:italic; font-weight:400; color:var(--accent);}
+.hero p{margin-top:var(--s-5); font-size:19px; color:var(--fg-2); max-width:52ch; line-height:1.55;}
+.hero-meta{display:flex; gap:var(--s-6); margin-top:var(--s-7); flex-wrap:wrap;}
+.hero-meta div{border-left:1px solid var(--border-strong); padding-left:var(--s-4);}
+.hero-meta .k{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3);}
+.hero-meta .v{font-size:15px; margin-top:2px;}
+
+/* ---------- 8. MARK ---------- */
+.mk{display:block;}
+.mk path{fill:currentColor;}
+.stage{
+  display:grid; place-items:center; min-height:220px;
+  background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); position:relative;
+}
+.stage.red{background:var(--red-700); color:var(--bone-150); border-color:transparent;}
+.stage.ink{background:var(--bone-950); color:var(--bone-150); border-color:#2E2A27;}
+.stage.cream{background:var(--bone-150); color:var(--red-700);}
+.stage .tag{
+  position:absolute; top:10px; left:12px; font-family:var(--f-mono);
+  font-size:10px; letter-spacing:.1em; text-transform:uppercase; opacity:.55;
+}
+.lockup{display:flex; align-items:center; gap:14px;}
+.lockup .name{font-family:var(--f-display); font-weight:700; letter-spacing:-.04em; font-size:32px; line-height:1;}
+.lockup.stack{flex-direction:column; gap:16px;}
+
+/* construction */
+.constr{width:100%; max-width:340px;}
+.constr .d{stroke:var(--accent); stroke-width:.6; stroke-dasharray:3 3; opacity:.75; fill:none;}
+.constr .m{fill:var(--fg); opacity:.15;}
+.constr .o{fill:none; stroke:var(--accent); stroke-width:.7; opacity:.6;}
+.constr text{font-family:var(--f-mono); font-size:5px; fill:var(--accent);}
+.clearsp{width:100%; max-width:300px;}
+.clearsp .zone{fill:var(--accent); opacity:.08;}
+.clearsp .ln{stroke:var(--accent); stroke-width:.5; stroke-dasharray:2 2;}
+.clearsp text{font-family:var(--f-mono); font-size:5.5px; fill:var(--accent);}
+
+/* misuse */
+.misuse{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s-3);}
+.misuse figure{margin:0;}
+.misuse .box{aspect-ratio:1; display:grid; place-items:center; border-radius:var(--r-md); border:1px solid var(--border); background:var(--surface-2); position:relative; overflow:hidden;}
+.misuse .box::after{content:"✕"; position:absolute; top:6px; right:8px; color:var(--danger); font-size:13px; font-weight:700;}
+.misuse figcaption{font-size:11.5px; color:var(--fg-3); margin-top:8px; line-height:1.4;}
+.m-flip{transform:scaleX(-1);}
+.m-stretch{transform:scaleY(1.5);}
+.m-outline{color:transparent; -webkit-text-stroke:0;}
+.m-outline path{fill:none; stroke:currentColor; stroke-width:2.4; color:var(--fg);}
+.m-two path:first-child{fill:var(--red-700);} .m-two path:last-child{fill:var(--patina);}
+
+/* ---------- 9. MARK MOTION ---------- */
+.motion-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s-4);}
+.mo{
+  background:var(--red-700); border:1px solid transparent; border-radius:var(--r-lg);
+  aspect-ratio:1; display:grid; place-items:center; color:var(--bone-150); position:relative; overflow:hidden;
+}
+.mo .lbl{
+  position:absolute; bottom:0; left:0; right:0; padding:10px 12px;
+  font-family:var(--f-mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase;
+  color:rgba(239,230,223,.62); border-top:1px solid rgba(239,230,223,.14);
+  display:flex; justify-content:space-between;
+}
+
+@keyframes leap-body{
+  0%{opacity:0; transform:translate(-14px,11px) scale(.9) rotate(-5deg);}
+  100%{opacity:1; transform:translate(0,0) scale(1) rotate(0);}
+}
+@keyframes leap-wipe{from{transform:translateX(0);} to{transform:translateX(124px);}}
+@keyframes trail-wipe{
+  0%{transform:translateX(0);}
+  55%{transform:translateX(124px);}
+  100%{transform:translateX(248px);}
+}
+@keyframes scent{
+  0%,100%{opacity:.5; transform:scale(.965);}
+  45%{opacity:1; transform:scale(1);}
+}
+@keyframes sprint-shift{
+  0%,100%{transform:translateX(0);}
+  40%{transform:translateX(4%);}
+}
+@keyframes sprint-tail{0%,100%{opacity:.28;} 35%{opacity:1;}}
+
+/* Leap — once */
+.mk[data-motion="leap"] .body{opacity:0; animation:leap-body 720ms var(--e-spring) 200ms forwards;}
+.mk[data-motion="leap"] .wiper{animation:leap-wipe 640ms var(--e-out) forwards;}
+/* Trail — loop */
+.mk[data-motion="trail"] .wiper{animation:trail-wipe 1200ms var(--e-inout) infinite;}
+/* Scent — loop */
+.mk[data-motion="scent"]{animation:scent 1800ms var(--e-inout) infinite; transform-origin:center;}
+/* Sprint — loop */
+.mk[data-motion="sprint"]{animation:sprint-shift 1600ms var(--e-inout) infinite;}
+.mk[data-motion="sprint"] .tail{animation:sprint-tail 1600ms var(--e-inout) infinite;}
+
+.replay{
+  position:absolute; top:8px; right:8px; z-index:2;
+  background:rgba(239,230,223,.12); border:1px solid rgba(239,230,223,.24);
+  color:rgba(239,230,223,.9); border-radius:var(--r-full);
+  font:500 10.5px/1 var(--f-mono); letter-spacing:.06em; text-transform:uppercase;
+  padding:6px 10px; cursor:pointer; transition:background var(--d-fast);
+}
+.replay:hover{background:rgba(239,230,223,.24);}
+
+/* timeline */
+.tl{width:100%; overflow-x:auto;}
+.tl table{border-collapse:collapse; width:100%; min-width:560px;}
+.tl td,.tl th{padding:9px 12px; text-align:left; font-size:13px; border-bottom:1px solid var(--border);}
+.tl th{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-3);}
+.tl .bar-cell{width:44%;}
+.tlbar{height:8px; border-radius:var(--r-full); background:var(--accent); opacity:.85;}
+
+/* ---------- 10. COLOR ---------- */
+.ramp{display:grid; grid-template-columns:repeat(9,1fr); border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--border);}
+.ramp .sw{aspect-ratio:.72; display:flex; flex-direction:column; justify-content:flex-end; padding:10px; gap:1px;}
+.ramp .sw .nm{font-size:11.5px; font-weight:500;}
+.ramp .sw .hx{font-family:var(--f-mono); font-size:10px; opacity:.62;}
+.sw-light{color:var(--bone-900);} .sw-dark{color:var(--bone-50);}
+.palette{display:grid; grid-template-columns:repeat(4,1fr); gap:var(--s-4);}
+.pchip{border:1px solid var(--border); border-radius:var(--r-md); overflow:hidden; background:var(--surface);}
+.pchip .fill{height:76px;}
+.pchip .meta{padding:10px 12px;}
+.pchip .nm{font-size:13.5px; font-weight:500;}
+.pchip .hx{font-family:var(--f-mono); font-size:11px; color:var(--fg-3); margin-top:2px;}
+.pchip .use{font-size:11.5px; color:var(--fg-3); margin-top:6px; line-height:1.45;}
+.semrow{display:flex; align-items:center; gap:var(--s-4); padding:12px 0; border-bottom:1px solid var(--border);}
+.semrow:last-child{border-bottom:0;}
+.dot{width:26px; height:26px; border-radius:var(--r-sm); flex:none;}
+.semrow .t{font-size:14px; font-weight:500; min-width:88px;}
+.semrow .h{font-family:var(--f-mono); font-size:11.5px; color:var(--fg-3); min-width:78px;}
+.semrow .d{font-size:13px; color:var(--fg-2);}
+
+/* ---------- 11. TYPE ---------- */
+.spec{border-top:1px solid var(--border); padding:var(--s-5) 0; display:grid; grid-template-columns:132px 1fr; gap:var(--s-5); align-items:baseline;}
+.spec .meta{font-family:var(--f-mono); font-size:11px; color:var(--fg-3); line-height:1.7;}
+.spec .meta b{display:block; color:var(--fg); font-size:12px; letter-spacing:.06em; text-transform:uppercase; font-weight:500; margin-bottom:4px;}
+.t-display{font-family:var(--f-display); font-size:60px; line-height:1.02; letter-spacing:-.035em; font-weight:600;}
+.t-h1{font-family:var(--f-display); font-size:40px; line-height:1.1; letter-spacing:-.03em; font-weight:600;}
+.t-h2{font-family:var(--f-display); font-size:30px; line-height:1.18; letter-spacing:-.025em; font-weight:600;}
+.t-title{font-family:var(--f-sans); font-size:20px; line-height:1.3; letter-spacing:-.015em; font-weight:600;}
+.t-sub{font-family:var(--f-sans); font-size:17px; line-height:1.45; font-weight:400; color:var(--fg-2);}
+.t-body{font-family:var(--f-sans); font-size:15px; line-height:1.62;}
+.t-small{font-family:var(--f-sans); font-size:13px; line-height:1.55; color:var(--fg-2);}
+.t-cap{font-family:var(--f-sans); font-size:12px; line-height:1.45; color:var(--fg-3);}
+.t-label{font-family:var(--f-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3);}
+.t-btn{font-family:var(--f-sans); font-size:14px; font-weight:500; letter-spacing:-.005em;}
+.t-num{font-family:var(--f-mono); font-size:26px; letter-spacing:-.02em; font-variant-numeric:tabular-nums;}
+.fontcard{display:grid; grid-template-columns:1fr; gap:var(--s-3);}
+.fontcard .glyphs{font-size:26px; letter-spacing:-.01em; line-height:1.35; word-break:break-word;}
+
+/* ---------- 12. SPACE / RADIUS ---------- */
+.scalebars{display:flex; flex-direction:column; gap:10px;}
+.scalerow{display:grid; grid-template-columns:64px 52px 1fr; gap:var(--s-4); align-items:center; font-size:12.5px;}
+.scalerow .tk{font-family:var(--f-mono); color:var(--fg-2);}
+.scalerow .px{font-family:var(--f-mono); color:var(--fg-3); text-align:right;}
+.scalerow .vis{height:14px; background:var(--accent); opacity:.75; border-radius:2px;}
+.radgrid{display:grid; grid-template-columns:repeat(7,1fr); gap:var(--s-3);}
+.radgrid .rr{aspect-ratio:1; background:var(--accent-soft); border:1px solid var(--accent); display:grid; place-items:end center; padding-bottom:8px;}
+.radgrid .rr span{font-family:var(--f-mono); font-size:10px; color:var(--accent);}
+
+/* ---------- 13. ELEVATION ---------- */
+.elev{display:grid; grid-template-columns:repeat(5,1fr); gap:var(--s-5);}
+.elev .e{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); aspect-ratio:1.3; display:grid; place-items:center;}
+.elev .lb{text-align:center; margin-top:10px; font-family:var(--f-mono); font-size:11px; color:var(--fg-3);}
+.e0{box-shadow:none;} .e1{box-shadow:var(--sh-1);} .e2{box-shadow:var(--sh-2);}
+.e3{box-shadow:var(--sh-3);} .e4{box-shadow:var(--sh-4);}
+
+/* ---------- 14. COMPONENTS ---------- */
+.btn{
+  display:inline-flex; align-items:center; gap:8px; border-radius:var(--r-md);
+  padding:10px 18px; font:500 14px/1 var(--f-sans); cursor:pointer; border:1px solid transparent;
+  transition:transform var(--d-fast) var(--e-out), background var(--d-fast), border-color var(--d-fast), box-shadow var(--d-fast);
+}
+.btn:active{transform:translateY(1px) scale(.99);}
+.btn-primary{background:var(--red-700); color:var(--bone-50); box-shadow:var(--sh-2);}
+.btn-primary:hover{background:var(--red-800); box-shadow:var(--sh-3);}
+:root[data-theme="dark"] .btn-primary{background:var(--red-600); color:#FFF;}
+:root[data-theme="dark"] .btn-primary:hover{background:var(--red-500);}
+.btn-secondary{background:var(--surface); color:var(--fg); border-color:var(--border-strong); box-shadow:var(--sh-1);}
+.btn-secondary:hover{border-color:var(--fg-3); background:var(--surface-2);}
+.btn-ink{background:var(--fg); color:var(--fg-inv); box-shadow:var(--sh-2);}
+.btn-ink:hover{background:var(--bone-800);}
+:root[data-theme="dark"] .btn-ink:hover{background:#FFF;}
+.btn-ghost{background:transparent; color:var(--fg-2);}
+.btn-ghost:hover{background:var(--accent-soft); color:var(--fg);}
+.btn-danger{background:transparent; color:var(--danger); border-color:var(--danger);}
+.btn-sm{padding:7px 13px; font-size:13px; border-radius:var(--r-sm);}
+.btn-lg{padding:14px 26px; font-size:15px; border-radius:var(--r-lg);}
+
+.field{display:flex; flex-direction:column; gap:6px;}
+.field label{font-size:12.5px; font-weight:500; color:var(--fg-2);}
+.input{
+  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r-md);
+  padding:10px 13px; font:400 14px/1.4 var(--f-sans); color:var(--fg); width:100%;
+  transition:border-color var(--d-fast), box-shadow var(--d-fast);
+}
+.input::placeholder{color:var(--fg-3);}
+.input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);}
+.input.err{border-color:var(--danger); box-shadow:0 0 0 3px rgba(178,58,44,.12);}
+.errmsg{font-size:12px; color:var(--danger); display:flex; gap:5px; align-items:center;}
+
+.badge{display:inline-flex; align-items:center; gap:6px; border-radius:var(--r-full); padding:3px 10px; font:500 11.5px/1.5 var(--f-sans); border:1px solid transparent;}
+.b-neutral{background:var(--surface-sunk); color:var(--fg-2); border-color:var(--border);}
+.b-success{background:rgba(78,122,91,.12); color:var(--success); border-color:rgba(78,122,91,.3);}
+.b-warning{background:rgba(143,109,46,.13); color:var(--warning); border-color:rgba(143,109,46,.32);}
+.b-danger{background:rgba(178,58,44,.11); color:var(--danger); border-color:rgba(178,58,44,.3);}
+.b-info{background:rgba(78,99,115,.12); color:var(--info); border-color:rgba(78,99,115,.3);}
+.b-accent{background:var(--accent-soft); color:var(--accent); border-color:var(--accent);}
+.pulse{width:6px; height:6px; border-radius:50%; background:currentColor; animation:pulsedot 1.6s var(--e-inout) infinite;}
+@keyframes pulsedot{0%,100%{opacity:1;} 50%{opacity:.3;}}
+
+.kpi{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:var(--s-5); display:flex; flex-direction:column; gap:6px;}
+.kpi .k{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3);}
+.kpi .v{font-family:var(--f-display); font-size:32px; font-weight:600; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:1.1;}
+.kpi .delta{font-size:12.5px; display:flex; align-items:center; gap:5px;}
+.up{color:var(--success);} .down{color:var(--danger);}
+.spark{margin-top:6px;}
+
+.node{background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r-lg); box-shadow:var(--sh-2); padding:12px 14px; display:flex; gap:11px; align-items:center; min-width:210px; position:relative;}
+.node .ic{width:32px; height:32px; border-radius:var(--r-sm); background:var(--accent-soft); color:var(--accent); display:grid; place-items:center; flex:none;}
+.node .nm{font-size:13.5px; font-weight:500; letter-spacing:-.01em;}
+.node .ty{font-family:var(--f-mono); font-size:10.5px; color:var(--fg-3);}
+.node .port{position:absolute; width:9px; height:9px; border-radius:50%; background:var(--surface); border:1.5px solid var(--border-strong); top:50%; margin-top:-4.5px;}
+.node .port.in{left:-5px;} .node .port.out{right:-5px;}
+.node.running{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft), var(--sh-2);}
+.node.ok{border-color:rgba(78,122,91,.5);}
+.node.fail{border-color:rgba(178,58,44,.5);}
+.node .st{position:absolute; top:-8px; right:10px;}
+
+.chartbox{background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:var(--s-5);}
+.chartbox h4{font-size:14px; font-weight:600; font-family:var(--f-sans); letter-spacing:-.01em;}
+
+.tbl{width:100%; overflow-x:auto;}
+.tbl table{width:100%; border-collapse:collapse; min-width:520px;}
+.tbl th{font-family:var(--f-mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-3); text-align:left; padding:10px 14px; border-bottom:1px solid var(--border-strong); font-weight:500;}
+.tbl td{padding:12px 14px; font-size:13.5px; border-bottom:1px solid var(--border); vertical-align:middle;}
+.tbl tr:last-child td{border-bottom:0;}
+.tbl tbody tr{transition:background var(--d-fast);}
+.tbl tbody tr:hover{background:var(--surface-2);}
+.num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; text-align:right;}
+
+pre{background:var(--surface-sunk); border:1px solid var(--border); border-radius:var(--r-lg); padding:var(--s-5); overflow-x:auto; margin:0; font:400 12.5px/1.75 var(--f-mono); color:var(--fg-2);}
+pre .c{color:var(--fg-3);} pre .t{color:var(--accent);} pre .v{color:var(--fg);}
+
+.appicons{display:flex; gap:var(--s-5); flex-wrap:wrap; align-items:flex-end;}
+.appicon{display:flex; flex-direction:column; align-items:center; gap:9px;}
+.appicon .sq{display:grid; place-items:center; box-shadow:var(--sh-2); overflow:hidden;}
+.ai-16{width:16px; height:16px; border-radius:3px;}
+.ai-32{width:32px; height:32px; border-radius:7px;}
+.ai-64{width:64px; height:64px; border-radius:14px;}
+.ai-128{width:128px; height:128px; border-radius:28px;}
+.appicon .lb{font-family:var(--f-mono); font-size:10px; color:var(--fg-3);}
+
+.vt{display:grid; grid-template-columns:1fr 1fr; gap:var(--s-4);}
+.vt .yes,.vt .no{border-radius:var(--r-md); padding:var(--s-4) var(--s-5); font-size:14px; line-height:1.55;}
+.vt .yes{background:rgba(78,122,91,.09); border:1px solid rgba(78,122,91,.3);}
+.vt .no{background:rgba(178,58,44,.07); border:1px solid rgba(178,58,44,.26);}
+.vt .tag{font-family:var(--f-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; display:block; margin-bottom:7px;}
+.vt .yes .tag{color:var(--success);} .vt .no .tag{color:var(--danger);}
+
+.pillar{border-top:2px solid var(--accent); padding-top:var(--s-4);}
+.pillar .n{font-family:var(--f-mono); font-size:11px; color:var(--accent); letter-spacing:.1em;}
+.pillar h4{font-size:17px; margin:8px 0 7px; font-family:var(--f-display); font-weight:600;}
+.pillar p{font-size:13.5px; color:var(--fg-2); line-height:1.55;}
+
+.crow{display:grid; grid-template-columns:1fr 90px 74px 60px; gap:var(--s-3); align-items:center; padding:11px 14px; border-radius:var(--r-sm); font-size:13.5px;}
+.crow .rat{font-family:var(--f-mono); font-size:12.5px; text-align:right;}
+
+@media (max-width:1080px){
+  .g4,.misuse,.palette{grid-template-columns:repeat(2,1fr);}
+  .motion-grid{grid-template-columns:repeat(2,1fr);}
+  .elev{grid-template-columns:repeat(3,1fr);}
+  .radgrid{grid-template-columns:repeat(4,1fr);}
+  .ramp{grid-template-columns:repeat(5,1fr);}
+}
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr;}
+  .rail{position:static; height:auto; border-right:0; border-bottom:1px solid var(--border);}
+  .rail-scroll{max-height:none; display:grid; grid-template-columns:repeat(2,1fr);}
+  .wrap{padding:0 var(--s-5);}
+  .hero-inner{grid-template-columns:1fr;}
+  .g2,.g3,.vt{grid-template-columns:1fr;}
+  .spec{grid-template-columns:1fr; gap:var(--s-3);}
+  .sec-head{flex-wrap:wrap;}
+  .sec-head .sub{margin-left:0; text-align:left; width:100%;}
+  .t-display{font-size:42px;} .t-h1{font-size:31px;} .t-h2{font-size:25px;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important;}
+  .mk .body{opacity:1 !important; transform:none !important;}
+  .mk .wiper{transform:translateX(124px) !important;}
+}
+</style>
+
+<!-- master mark, instantiated by JS wherever [data-marten] appears -->
+<template id="marten-tpl">
+  <svg class="mk" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath class="cp"><rect class="wiper" x="-124" y="0" width="124" height="120"/></clipPath></defs>
+    <path class="body" fill-rule="evenodd" d="M115.81 39C115.14 41.12 111.85 43.19 109.75 43.9C103.11 43.67 96.45 37.8 89.67 41.98C85.44 44.6 84.64 50 82.46 54.12C79.03 60.6 73.39 67.15 66.49 70.02C64.03 71.04 59.09 73.2 56.7 71.71C57.24 70.15 58.89 69.57 60.14 68.48C62.4 66.52 64.25 63.92 64.6 60.89C65.38 54.24 58.2 52.73 53.56 51.6C49.59 50.64 46.64 51.38 42.73 51.73C37.37 52.21 31.14 53.52 26.27 56.07C22.7 57.93 18.46 61.54 14.65 62.44C14.43 61.19 15.51 60.19 16.27 59.09C18.16 56.34 20.49 53.92 22.75 51.48C29.28 44.46 38.15 38.52 47.34 35.73C51.95 34.34 57.56 33.27 62.38 34.51C67.2 35.75 72.44 38.77 75.02 43.17C76.15 45.08 76.28 48.56 77.79 49.86C78.97 48 78.48 44.51 77.8 42.44C75.91 36.72 71.21 32.23 65.06 31.23C62.81 30.87 57.13 31.18 55.76 29.75C56.84 28.07 59.16 27.1 60.89 26.07C65.92 23.05 71.2 20.96 76.84 19.49C79.25 18.87 81.89 19.27 84.13 18.13C85.65 15.03 83.94 11.76 84.84 8.66C90.2 8.32 93.59 15.86 96 19.5C97.29 21.43 100.76 22.77 102.55 24.39C105.06 26.65 105.78 30.09 107.96 32.5C110.23 35.02 113.78 36.37 115.81 39ZM100.83 31.1C99.96 31.42 97.11 30.38 97.32 29.18C97.99 28.69 100.93 30.18 100.83 31.1Z"/>
+    <path class="tail" d="M54.73 56.1C54.62 57.25 53.44 57.58 52.45 58.13C50.55 59.18 48.68 60.54 46.85 61.72C39.88 66.25 33.21 72.04 27.39 77.96C20.96 84.52 15.31 92.04 10.68 99.96C9.11 102.65 8.13 105.58 6.76 108.36C6.17 109.54 6.42 110.69 5.32 111.57C4.12 110.79 4.18 107.84 4.04 106.41C3.52 101.14 4.7 95.25 6.25 90.27C11.22 74.22 22.86 61.45 39.36 57.09C43.04 56.12 46.64 55.59 50.48 55.59C51.88 55.59 53.59 55.28 54.73 56.1Z"/>
+  </svg>
+</template>
+
+<div class="shell">
+
+<!-- ══════════ RAIL ══════════ -->
+<nav class="rail">
+  <div class="rail-head">
+    <span data-marten style="width:26px; height:26px; display:block; color:var(--accent);"></span>
+    <span class="wm">Red Marten</span>
+    <span class="ver">v1.0</span>
+  </div>
+  <div class="rail-scroll">
+    <a href="#s00"><span class="n">00</span> Brand Platform</a>
+    <a href="#s01"><span class="n">01</span> Voice &amp; Tone</a>
+    <a href="#s02"><span class="n">02</span> The Mark</a>
+    <a href="#s03"><span class="n">03</span> Mark Motion</a>
+    <a href="#s04"><span class="n">04</span> Color</a>
+    <a href="#s05"><span class="n">05</span> Typography</a>
+    <a href="#s06"><span class="n">06</span> Space &amp; Grid</a>
+    <a href="#s07"><span class="n">07</span> Elevation &amp; Glass</a>
+    <a href="#s08"><span class="n">08</span> Iconography</a>
+    <a href="#s09"><span class="n">09</span> Motion System</a>
+    <a href="#s10"><span class="n">10</span> Primitives</a>
+    <a href="#s11"><span class="n">11</span> Data Language</a>
+    <a href="#s12"><span class="n">12</span> Applications</a>
+    <a href="#s13"><span class="n">13</span> Design Tokens</a>
+    <a href="#s14"><span class="n">14</span> Accessibility</a>
+  </div>
+  <div class="rail-foot">
+    <button class="themebtn" id="themeToggle" type="button">
+      <span id="themeLabel">Theme · System</span><span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</nav>
+
+<main class="main">
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Red Marten · Brand Book · Phase 01 of 12</div>
+      <h1>Built to reach the signal <em>first</em>.</h1>
+      <p>Red Marten is an AI marketing automation and revenue intelligence platform. This book defines the mark, the motion, the palette, the type and the tokens that every one of the eleven product phases is built from.</p>
+      <div class="hero-meta">
+        <div><div class="k">Positioning</div><div class="v">Autonomous GTM platform</div></div>
+        <div><div class="k">Character</div><div class="v">Fast · Precise · Unflinching</div></div>
+        <div><div class="k">Type</div><div class="v">Familjen Grotesk · Geist</div></div>
+        <div><div class="k">Core</div><div class="v">Marten Red #8A0E0D</div></div>
+      </div>
+    </div>
+    <div class="mo" style="aspect-ratio:1;">
+      <button class="replay" data-target="heroMark" type="button">Replay</button>
+      <span data-marten data-motion="leap" id="heroMark" style="width:66%; display:block;"></span>
+      <div class="lbl"><span>Leap</span><span>860 ms</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══════════ 00 ══════════ -->
+<section id="s00">
+  <div class="sec-head">
+    <span class="sec-num">00</span>
+    <h2>Brand platform</h2>
+    <div class="sub">What Red Marten is, who it serves, and the four ideas every design decision answers to.</div>
+  </div>
+
+  <p class="lede">Red Marten replaces the stack a revenue team stitches together — data provider, sequencer, dialer, analytics, CRM glue — with <strong>one platform where AI agents do the work</strong>. The brand has to feel like an instrument, not a dashboard: something a Head of Growth trusts with pipeline, and a RevOps lead trusts with data.</p>
+
+  <div class="grid g2" style="gap:var(--s-6);">
+    <div class="card">
+      <h3 class="blk" style="margin-top:0;">Positioning statement</h3>
+      <p style="font-family:var(--f-display); font-size:22px; line-height:1.35; letter-spacing:-.02em;">For revenue teams drowning in tools, Red Marten is the autonomous GTM platform that finds demand, works it across every channel, and reports on it — run by AI agents you configure once.</p>
+    </div>
+    <div class="card">
+      <h3 class="blk" style="margin-top:0;">Approved expressions</h3>
+      <div class="scalebars" style="gap:14px;">
+        <div><div class="t-label">Primary tagline</div><div style="font-size:19px; font-family:var(--f-display); font-weight:600; letter-spacing:-.02em;">First to the signal.</div></div>
+        <div><div class="t-label">Descriptor — always paired with the logo in legal &amp; partner use</div><div style="font-size:15px;">AI Marketing Automation &amp; Revenue Intelligence</div></div>
+        <div><div class="t-label">Category line</div><div style="font-size:15px;">The autonomous GTM platform</div></div>
+        <div><div class="t-label">Social proof line</div><div style="font-size:15px;">Trusted by 2,400+ revenue teams</div></div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">The four pillars</h3>
+  <div class="grid g4">
+    <div class="pillar">
+      <div class="n">P—01</div><h4>Speed is the product</h4>
+      <p>A buying signal decays in hours. Every screen answers "what changed, and what did we already do about it" before it answers anything else.</p>
+    </div>
+    <div class="pillar">
+      <div class="n">P—02</div><h4>Autonomy over assistance</h4>
+      <p>Agents complete work; they don't suggest it. Copy says "Alice booked 14 meetings", never "Alice can help you book meetings".</p>
+    </div>
+    <div class="pillar">
+      <div class="n">P—03</div><h4>Evidence on every claim</h4>
+      <p>No number appears without its source, its window and its delta. Intelligence you can't audit isn't intelligence.</p>
+    </div>
+    <div class="pillar">
+      <div class="n">P—04</div><h4>Quiet ground, one red</h4>
+      <p>Warm bone surfaces, a single red spent only where it means something. The data, charts and canvas are the only things that raise their voice.</p>
+    </div>
+  </div>
+
+  <h3 class="blk">Why a marten</h3>
+  <div class="grid g3">
+    <div class="card"><div class="t-label">The animal</div><p style="font-size:14px; margin-top:8px;">A marten is small, fast and relentless — it out-manoeuvres animals many times its size. That is the promise: a lean team out-executing an enterprise sales org.</p></div>
+    <div class="card"><div class="t-label">The posture</div><p style="font-size:14px; margin-top:8px;">The mark is caught mid-leap, not standing. It is committed to a direction. Every layout inherits that: forward, rightward, no idling.</p></div>
+    <div class="card"><div class="t-label">The trail</div><p style="font-size:14px; margin-top:8px;">The sweep beneath the body is the path already covered — work the agents finished. It is the only part of the mark that ever animates on its own.</p></div>
+  </div>
+
+  <h3 class="blk">Audience</h3>
+  <div class="grid g3">
+    <div class="card"><div class="t-label">Primary buyer</div><p style="font-size:15px; margin-top:8px;"><b>VP Revenue / Head of Growth</b> at a 50–1,000 person B2B company. Judged on pipeline and CAC. Buys outcomes, not features.</p></div>
+    <div class="card"><div class="t-label">Daily operator</div><p style="font-size:15px; margin-top:8px;"><b>Growth / RevOps / SDR lead.</b> Lives in the workflow canvas and Data Studio. Wants speed, keyboard control, and no surprises in credits.</p></div>
+    <div class="card"><div class="t-label">Verticals</div><p style="font-size:15px; margin-top:8px;">B2B SaaS · Marketing agencies · Recruitment · Consulting · Enterprise sales orgs · Funded startups scaling outbound.</p></div>
+  </div>
+</section>
+
+<!-- ══════════ 01 ══════════ -->
+<section id="s01">
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <h2>Voice &amp; tone</h2>
+    <div class="sub">Words are design material. Same rules for a landing headline and an error toast.</div>
+  </div>
+
+  <p class="lede">Red Marten speaks like a <strong>senior operator briefing you</strong> — short sentences, real numbers, no hype, no apology. It never uses the word "revolutionary", never opens an error with "Oops", and never calls an agent "magical". It also never leans on the animal: no "hunt", no "prey", no "pounce" in product copy.</p>
+
+  <div class="grid g4" style="margin-bottom:var(--s-6);">
+    <div class="card"><div class="t-label">Attribute</div><div style="font-size:17px; font-weight:500; margin-top:6px;">Direct</div><p class="cap" style="margin-top:6px;">Lead with the outcome. Verb first.</p></div>
+    <div class="card"><div class="t-label">Attribute</div><div style="font-size:17px; font-weight:500; margin-top:6px;">Specific</div><p class="cap" style="margin-top:6px;">"318 accounts", not "lots of accounts".</p></div>
+    <div class="card"><div class="t-label">Attribute</div><div style="font-size:17px; font-weight:500; margin-top:6px;">Composed</div><p class="cap" style="margin-top:6px;">Calm under failure. State cause and fix.</p></div>
+    <div class="card"><div class="t-label">Attribute</div><div style="font-size:17px; font-weight:500; margin-top:6px;">Human</div><p class="cap" style="margin-top:6px;">Names things people recognise, not schema fields.</p></div>
+  </div>
+
+  <h3 class="blk">Write this, not that</h3>
+  <div class="vt" style="margin-bottom:var(--s-4);">
+    <div class="yes"><span class="tag">Write</span>Alice qualified 318 accounts overnight and booked 14 meetings.</div>
+    <div class="no"><span class="tag">Not</span>Our revolutionary AI helps supercharge your prospecting workflow!</div>
+  </div>
+  <div class="vt" style="margin-bottom:var(--s-4);">
+    <div class="yes"><span class="tag">Write</span>Publish blocked — the "Send Email" node has no sender address. Add one to continue.</div>
+    <div class="no"><span class="tag">Not</span>Oops! Something went wrong. Please check your configuration and try again.</div>
+  </div>
+  <div class="vt">
+    <div class="yes"><span class="tag">Write</span>2,140 credits left — about 9 days at your current pace.</div>
+    <div class="no"><span class="tag">Not</span>Time to hunt down more credits! Upgrade now before your agents go hungry.</div>
+  </div>
+
+  <h3 class="blk">Naming conventions</h3>
+  <div class="tbl card card-flush">
+    <table>
+      <thead><tr><th>Concept</th><th>Red Marten name</th><th>Never call it</th></tr></thead>
+      <tbody>
+        <tr><td>Automation graph</td><td><b>Workflow</b></td><td>Flow, pipeline, sequence, zap</td></tr>
+        <tr><td>Single step in a workflow</td><td><b>Node</b></td><td>Block, step, action, task</td></tr>
+        <tr><td>Named AI worker</td><td><b>Agent</b> (given a human first name)</td><td>Bot, assistant, copilot, marten</td></tr>
+        <tr><td>Company + contact research surface</td><td><b>Data Studio</b></td><td>Database, search, prospector</td></tr>
+        <tr><td>Company research report</td><td><b>Brand Intelligence</b></td><td>Insights, company profile</td></tr>
+        <tr><td>Metered usage unit</td><td><b>Credit</b></td><td>Token, point, unit</td></tr>
+        <tr><td>Outbound program</td><td><b>Campaign</b></td><td>Blast, drip, cadence, hunt</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 02 ══════════ -->
+<section id="s02">
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <h2>The mark</h2>
+    <div class="sub">A marten mid-leap over the trail it already covered. Two shapes, one silhouette.</div>
+  </div>
+
+  <p class="lede">The mark is <strong>two closed shapes and one counter</strong> — the body caught at the top of a leap, the sweeping trail beneath it, and the eye cut out of the head. Nothing else. It carries at 16 px because the silhouette does all the work: the ear notch, the muzzle taper and the gap between body and trail are the three details that must survive every reproduction.</p>
+
+  <div class="note" style="margin-bottom:var(--s-6);">
+    <b>Asset status.</b> Vectored from the supplied <code>test.png</code> (199 × 192 px) — cream/red field separated, contour traced at 6× with sub-pixel smoothing, then fitted to <b>39 cubic Béziers</b> across the two shapes. Matches the source at <b>96.06 % pixel overlap</b>, and is materially smoother than the original, which was pixel-stepped at that size. Supply the master vector when you have it and the curves become authored rather than derived.
+  </div>
+
+  <h3 class="blk">Primary lockups</h3>
+  <div class="grid g3" style="margin-bottom:var(--s-4);">
+    <div class="stage red">
+      <span class="tag">Primary · red plate</span>
+      <div class="lockup">
+        <span data-marten style="width:52px; height:52px; display:block;"></span>
+        <span class="name">Red Marten</span>
+      </div>
+    </div>
+    <div class="stage">
+      <span class="tag">On bone</span>
+      <div class="lockup" style="color:var(--red-700);">
+        <span data-marten style="width:52px; height:52px; display:block;"></span>
+        <span class="name" style="color:var(--fg);">Red Marten</span>
+      </div>
+    </div>
+    <div class="stage ink">
+      <span class="tag">Reversed · ink</span>
+      <div class="lockup">
+        <span data-marten style="width:52px; height:52px; display:block;"></span>
+        <span class="name">Red Marten</span>
+      </div>
+    </div>
+  </div>
+  <div class="grid g3">
+    <div class="stage red" style="min-height:170px;">
+      <span class="tag">Stacked</span>
+      <div class="lockup stack">
+        <span data-marten style="width:58px; height:58px; display:block;"></span>
+        <div style="text-align:center;">
+          <div class="name" style="font-size:24px;">Red Marten</div>
+          <div style="font-family:var(--f-mono); font-size:8px; letter-spacing:.32em; text-transform:uppercase; margin-top:7px; opacity:.72;">Autonomous GTM</div>
+        </div>
+      </div>
+    </div>
+    <div class="stage" style="min-height:170px;">
+      <span class="tag">Icon only · app + favicon</span>
+      <span data-marten style="width:74px; height:74px; display:block; color:var(--red-700);"></span>
+    </div>
+    <div class="stage cream" style="min-height:170px;">
+      <span class="tag">Red on cream</span>
+      <span data-marten style="width:74px; height:74px; display:block;"></span>
+    </div>
+  </div>
+
+  <h3 class="blk">Construction &amp; clear space</h3>
+  <div class="grid g2" style="align-items:center;">
+    <div class="card" style="display:grid; place-items:center;">
+      <svg viewBox="0 0 120 120" class="constr" aria-label="Mark construction grid">
+        <rect x="4" y="8.3" width="112" height="103.4" class="d"/>
+        <line x1="60" y1="0" x2="60" y2="120" class="d"/>
+        <line x1="0" y1="60" x2="120" y2="60" class="d"/>
+        <line x1="4" y1="112" x2="116" y2="8" class="d"/>
+        <g class="m" data-marten-static></g>
+        <circle cx="98.9" cy="30.1" r="9" class="o"/>
+        <text x="98.9" y="16" text-anchor="middle">eye</text>
+        <text x="4" y="6">112 × 103.4 u</text>
+        <text x="24" y="103">leap axis 43°</text>
+      </svg>
+    </div>
+    <div>
+      <div class="tl" style="margin-bottom:var(--s-4);">
+        <table>
+          <tbody>
+            <tr><th>Grid</th><td class="mono">120 × 120 u · mark 112 w × 103.4 h · centred 60,60</td></tr>
+            <tr><th>Shapes</th><td class="mono">2 closed paths + 1 counter (the eye)</td></tr>
+            <tr><th>Curve count</th><td class="mono">28 body · 11 trail · 2 eye = 41 cubics</td></tr>
+            <tr><th>Leap axis</th><td class="mono">43° from lower-left to upper-right</td></tr>
+            <tr><th>Body : trail</th><td class="mono">75 : 25 by area — never re-weight</td></tr>
+            <tr><th>Body–trail gap</th><td class="mono">1.9 u at its narrowest, below the haunch</td></tr>
+            <tr><th>Eye</th><td class="mono">3.7 × 2.0 u lens at (98.9, 30.1)</td></tr>
+            <tr><th>Fill rule</th><td class="mono">evenodd — the eye is a counter, not a shape</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card" style="display:grid; place-items:center; padding:var(--s-6);">
+        <svg viewBox="0 0 170 160" class="clearsp" aria-label="Clear space diagram">
+          <rect x="4" y="4" width="162" height="152" class="zone"/>
+          <rect x="4" y="4" width="162" height="152" class="ln" fill="none"/>
+          <rect x="33" y="34" width="104" height="96" class="ln" fill="none"/>
+          <g transform="translate(29.3,26.3) scale(0.9286)" fill="var(--fg)" data-marten-static></g>
+          <text x="85" y="22" text-anchor="middle">clear space = ¼ × mark width</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">Minimum sizes</h3>
+  <div class="grid g4">
+    <div class="card"><div class="t-label">Icon · digital</div><div class="t-num" style="margin-top:8px;">16 px</div><p class="cap" style="margin-top:6px;">Below 20 px the eye is dropped — it fills in and reads as dirt.</p></div>
+    <div class="card"><div class="t-label">Icon · print</div><div class="t-num" style="margin-top:8px;">8 mm</div><p class="cap" style="margin-top:6px;">Below this the body–trail gap closes on uncoated stock.</p></div>
+    <div class="card"><div class="t-label">Lockup · digital</div><div class="t-num" style="margin-top:8px;">128 px</div><p class="cap" style="margin-top:6px;">Two-word wordmark needs more width than a one-word mark.</p></div>
+    <div class="card"><div class="t-label">Lockup · print</div><div class="t-num" style="margin-top:8px;">32 mm</div><p class="cap" style="margin-top:6px;">Descriptor line is dropped below 40 mm.</p></div>
+  </div>
+
+  <h3 class="blk">Misuse</h3>
+  <div class="misuse">
+    <figure>
+      <div class="box"><span data-marten class="m-flip" style="width:64px; height:64px; display:block; color:var(--fg);"></span></div>
+      <figcaption>Never mirror. The marten always leaps to the right.</figcaption>
+    </figure>
+    <figure>
+      <div class="box"><span data-marten class="m-stretch" style="width:64px; height:64px; display:block; color:var(--fg);"></span></div>
+      <figcaption>Never stretch or condense. Scale proportionally only.</figcaption>
+    </figure>
+    <figure>
+      <div class="box"><span data-marten class="m-outline" style="width:64px; height:64px; display:block;"></span></div>
+      <figcaption>Never outline. The mark is solid fill, always.</figcaption>
+    </figure>
+    <figure>
+      <div class="box"><span data-marten class="m-two" style="width:64px; height:64px; display:block;"></span></div>
+      <figcaption>Never colour body and trail separately. One fill.</figcaption>
+    </figure>
+  </div>
+  <p class="cap" style="margin-top:var(--s-4); max-width:var(--measure);">Also prohibited: rotating the mark off its leap axis, adding a ground shadow or motion streaks, filling the eye, closing the body–trail gap, placing the mark on photography without a solid plate, and setting the wordmark in any face other than Familjen Grotesk 700.</p>
+</section>
+
+<!-- ══════════ 03 ══════════ -->
+<section id="s03">
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <h2>Mark motion</h2>
+    <div class="sub">One animal, four behaviours. Motion is a system state, never decoration.</div>
+  </div>
+
+  <p class="lede">The mark already contains its own animation: the trail is the path travelled, so <strong>every behaviour is built by moving the trail against a held body</strong>. A user learns the vocabulary once on the landing page and then reads it everywhere — splash, auth, dashboard boot, agent thinking, workflow execution.</p>
+
+  <div class="motion-grid" style="margin-bottom:var(--s-5);">
+    <div class="mo">
+      <button class="replay" data-target="m1" type="button">Replay</button>
+      <span data-marten data-motion="leap" id="m1" style="width:66%; display:block;"></span>
+      <div class="lbl"><span>Leap</span><span>860 ms · once</span></div>
+    </div>
+    <div class="mo">
+      <span data-marten data-motion="trail" style="width:66%; display:block;"></span>
+      <div class="lbl"><span>Trail</span><span>1200 ms · loop</span></div>
+    </div>
+    <div class="mo">
+      <span data-marten data-motion="scent" style="width:66%; display:block;"></span>
+      <div class="lbl"><span>Scent</span><span>1800 ms · loop</span></div>
+    </div>
+    <div class="mo">
+      <span data-marten data-motion="sprint" style="width:66%; display:block;"></span>
+      <div class="lbl"><span>Sprint</span><span>1600 ms · loop</span></div>
+    </div>
+  </div>
+
+  <h3 class="blk">Where each behaviour is used</h3>
+  <div class="tbl card card-flush" style="margin-bottom:var(--s-6);">
+    <table>
+      <thead><tr><th>Behaviour</th><th>Meaning</th><th>Surfaces</th><th class="num">Duration</th></tr></thead>
+      <tbody>
+        <tr><td><b>Leap</b></td><td>Red Marten is arriving</td><td>Splash · landing hero · login card · post-signup welcome</td><td class="num">860 ms once</td></tr>
+        <tr><td><b>Trail</b></td><td>The system is fetching</td><td>Dashboard boot · route transitions · Data Studio query · table skeletons</td><td class="num">1200 ms loop</td></tr>
+        <tr><td><b>Scent</b></td><td>An agent is reasoning</td><td>Chat "thinking" state · Brand Intelligence generation · AI summary blocks</td><td class="num">1800 ms loop</td></tr>
+        <tr><td><b>Sprint</b></td><td>A workflow is executing</td><td>Canvas run indicator · campaign dispatch · voice queue processing</td><td class="num">1600 ms loop</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="blk">Leap timing sheet</h3>
+  <div class="tl card" style="padding:var(--s-5);">
+    <table>
+      <thead><tr><th>Track</th><th>Start</th><th>Transform</th><th class="bar-cell">Envelope</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">Trail wipe</td><td class="mono">0 ms</td><td class="mono">clip rect translateX 0 → 124</td><td class="bar-cell"><div class="tlbar" style="width:74%;"></div></td></tr>
+        <tr><td class="mono">Body entry</td><td class="mono">200 ms</td><td class="mono">translate(−14, 11) scale(.90) rot(−5°) → identity</td><td class="bar-cell"><div class="tlbar" style="width:84%; margin-left:16%;"></div></td></tr>
+        <tr><td class="mono">Wordmark</td><td class="mono">520 ms</td><td class="mono">opacity 0 → 1, translateX(−6px) → 0</td><td class="bar-cell"><div class="tlbar" style="width:39%; margin-left:52%; background:var(--fg);"></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="cap" style="margin-top:var(--s-4); max-width:var(--measure);">Trail wipe eases on <code>cubic-bezier(.22, 1, .36, 1)</code> — fast out of the gate, long settle, so it reads as distance covered rather than a bar filling. The body lands on <code>cubic-bezier(.34, 1.56, .64, 1)</code>; the 4 % overshoot is the whole illusion, and removing it makes the mark look pasted on. Total 860 ms.</p>
+
+  <div class="note" style="margin-top:var(--s-5);">
+    <b>How the wipe works.</b> The trail is clipped by a <code>&lt;rect&gt;</code> inside a <code>&lt;clipPath&gt;</code>, and only that rect is translated — never the path, never a <code>width</code> attribute. Pure transform means it composites on the GPU and behaves identically in every engine. Each instance needs a unique <code>clipPath</code> id; <code>MartenMark</code> generates one with <code>useId()</code>.
+  </div>
+
+  <h3 class="blk">Motion rules</h3>
+  <div class="grid g3">
+    <div class="card"><div class="t-label">Rule 01</div><p style="font-size:14px; margin-top:8px;">Only one mark animation is on screen at a time. A thinking agent suppresses the route loader.</p></div>
+    <div class="card"><div class="t-label">Rule 02</div><p style="font-size:14px; margin-top:8px;">Loaders appear only after 400 ms of latency. Below that, show nothing — a flash of loader reads slower than no loader.</p></div>
+    <div class="card"><div class="t-label">Rule 03</div><p style="font-size:14px; margin-top:8px;">Under <code>prefers-reduced-motion</code>, all four resolve to the static mark with the trail fully drawn. No fades, no substitutes.</p></div>
+    <div class="card"><div class="t-label">Rule 04</div><p style="font-size:14px; margin-top:8px;">The body never rotates in a loop and never leaves the frame. Only Leap moves it, and only once.</p></div>
+    <div class="card"><div class="t-label">Rule 05</div><p style="font-size:14px; margin-top:8px;">The trail is never animated independently of meaning. If nothing is loading, the trail is simply drawn.</p></div>
+    <div class="card"><div class="t-label">Rule 06</div><p style="font-size:14px; margin-top:8px;">Nothing scales the mark past 1.04. Beyond that the 1.9 u body–trail gap closes and the silhouette turns to mush.</p></div>
+  </div>
+</section>
+
+<!-- ══════════ 04 ══════════ -->
+<section id="s04">
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <h2>Color</h2>
+    <div class="sub">One red, one warm neutral ramp, four muted semantics. Nothing else ships.</div>
+  </div>
+
+  <p class="lede">Marten Red <span class="mono">#8A0E0D</span> is taken straight from the logo plate. It is a <strong>deep oxblood, not a signal red</strong> — dark enough to sit under body text at 9.2:1, saturated enough to own a full-bleed plate. The neutrals are bone, warmed toward the red so nothing on screen reads as a borrowed system grey.</p>
+
+  <h3 class="blk">Marten Red</h3>
+  <div class="ramp" style="margin-bottom:var(--s-5);">
+    <div class="sw sw-dark" style="background:#4A0908;"><span class="nm">950</span><span class="hx">#4A0908</span></div>
+    <div class="sw sw-dark" style="background:#5F0C0A;"><span class="nm">900</span><span class="hx">#5F0C0A</span></div>
+    <div class="sw sw-dark" style="background:#74100E;"><span class="nm">800</span><span class="hx">#74100E</span></div>
+    <div class="sw sw-dark" style="background:#8A0E0D;"><span class="nm">700 · core</span><span class="hx">#8A0E0D</span></div>
+    <div class="sw sw-dark" style="background:#A31C18;"><span class="nm">600</span><span class="hx">#A31C18</span></div>
+    <div class="sw sw-dark" style="background:#BC3630;"><span class="nm">500</span><span class="hx">#BC3630</span></div>
+    <div class="sw sw-dark" style="background:#CF5F52;"><span class="nm">400 · dark ui</span><span class="hx">#CF5F52</span></div>
+    <div class="sw sw-light" style="background:#EFC4BE;"><span class="nm">200</span><span class="hx">#EFC4BE</span></div>
+    <div class="sw sw-light" style="background:#F8E7E3;"><span class="nm">100</span><span class="hx">#F8E7E3</span></div>
+  </div>
+
+  <h3 class="blk">Bone — the neutral ramp</h3>
+  <div class="ramp" style="margin-bottom:var(--s-5);">
+    <div class="sw sw-light" style="background:#FFFFFF;"><span class="nm">White</span><span class="hx">#FFFFFF</span></div>
+    <div class="sw sw-light" style="background:#FCF8F5;"><span class="nm">Bone 50</span><span class="hx">#FCF8F5</span></div>
+    <div class="sw sw-light" style="background:#F5EDE8;"><span class="nm">Bone 100</span><span class="hx">#F5EDE8</span></div>
+    <div class="sw sw-light" style="background:#EFE6DF;"><span class="nm">Cream 150</span><span class="hx">#EFE6DF</span></div>
+    <div class="sw sw-light" style="background:#E5D9D2;"><span class="nm">Bone 200</span><span class="hx">#E5D9D2</span></div>
+    <div class="sw sw-light" style="background:#CFC1B9;"><span class="nm">Bone 300</span><span class="hx">#CFC1B9</span></div>
+    <div class="sw sw-dark" style="background:#9E908A;"><span class="nm">Bone 400</span><span class="hx">#9E908A</span></div>
+    <div class="sw sw-dark" style="background:#6C625D;"><span class="nm">Bone 600</span><span class="hx">#6C625D</span></div>
+    <div class="sw sw-dark" style="background:#1A1614;"><span class="nm">Ink 900</span><span class="hx">#1A1614</span></div>
+  </div>
+  <p class="cap" style="margin-bottom:var(--s-6); max-width:var(--measure);"><b>Cream 150 <code>#EFE6DF</code> is the logo cream</b>, sampled from the supplied plate. It is the only value in the ramp that is fixed by the identity rather than chosen — everything else was tuned around it.</p>
+
+  <h3 class="blk">Semantic</h3>
+  <div class="card" style="margin-bottom:var(--s-5);">
+    <div class="semrow"><span class="dot" style="background:#4E7A5B;"></span><span class="t">Success</span><span class="h">#4E7A5B</span><span class="d">Node succeeded · call connected · positive delta · plan active. Sage, pushed green to sit clear of the brand red.</span></div>
+    <div class="semrow"><span class="dot" style="background:#8F6D2E;"></span><span class="t">Warning</span><span class="h">#8F6D2E</span><span class="d">Credits under 20 % · rate limit near · integration token expiring. Dark ochre, never orange.</span></div>
+    <div class="semrow"><span class="dot" style="background:#B23A2C;"></span><span class="t">Error</span><span class="h">#B23A2C</span><span class="d">Node failed · validation blocked · payment declined. Lighter and warmer than the brand red, and always carries an icon.</span></div>
+    <div class="semrow"><span class="dot" style="background:#4E6373;"></span><span class="t">Information</span><span class="h">#4E6373</span><span class="d">Scheduled runs · system notices · beta labels. Slate, never bright blue.</span></div>
+  </div>
+
+  <div class="note" style="margin-bottom:var(--s-6);">
+    <b>The two-reds rule.</b> A red brand and a red error state can collide, so they are separated by <b>role, not just hue</b>. Marten Red is a <b>surface</b> — plates, primary buttons, active nav, focus rings, chart series 1. Error red <code>#B23A2C</code> is <b>text and iconography</b> — never a fill larger than a badge. If you ever need error as a surface, use <code>--color-danger-soft</code> at 11 % with the border, never the solid.
+  </div>
+
+  <h3 class="blk">Prohibited</h3>
+  <div class="grid g4" style="margin-bottom:var(--s-6);">
+    <div class="card" style="text-align:center;"><div style="height:44px; border-radius:var(--r-sm); background:#FF2D2D; margin-bottom:10px;"></div><div class="cap">Signal red — reads as an alert, not a brand</div></div>
+    <div class="card" style="text-align:center;"><div style="height:44px; border-radius:var(--r-sm); background:#FF6A00; margin-bottom:10px;"></div><div class="cap">Saturated orange</div></div>
+    <div class="card" style="text-align:center;"><div style="height:44px; border-radius:var(--r-sm); background:#1E6BFF; margin-bottom:10px;"></div><div class="cap">SaaS blue</div></div>
+    <div class="card" style="text-align:center;"><div style="height:44px; border-radius:var(--r-sm); background:linear-gradient(90deg,#8A0E0D,#FF6A00); margin-bottom:10px;"></div><div class="cap">Red-to-orange gradients on the mark or plate</div></div>
+  </div>
+
+  <h3 class="blk">Surface mapping</h3>
+  <div class="tbl card card-flush" style="margin-bottom:var(--s-5);">
+    <table>
+      <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Applied to</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">--color-bg</td><td class="mono">#FCF8F5</td><td class="mono">#111010</td><td>App canvas, page ground, workflow canvas</td></tr>
+        <tr><td class="mono">--color-surface</td><td class="mono">#FFFFFF</td><td class="mono">#1C1A18</td><td>Cards, tables, panels, nodes, modals</td></tr>
+        <tr><td class="mono">--color-surface-2</td><td class="mono">#F5EDE8</td><td class="mono">#232120</td><td>Row hover, sidebar, tab strip, code blocks</td></tr>
+        <tr><td class="mono">--color-surface-sunk</td><td class="mono">#EFE6DF</td><td class="mono">#0C0A09</td><td>Inset wells, empty states, disabled fields</td></tr>
+        <tr><td class="mono">--color-border</td><td class="mono">#E5D9D2</td><td class="mono">#2E2A27</td><td>Default 1 px hairline on all containers</td></tr>
+        <tr><td class="mono">--color-border-strong</td><td class="mono">#CFC1B9</td><td class="mono">#3D3835</td><td>Inputs, node outlines, table header rule</td></tr>
+        <tr><td class="mono">--color-fg</td><td class="mono">#1A1614</td><td class="mono">#F2E9E3</td><td>Headings, primary body</td></tr>
+        <tr><td class="mono">--color-fg-2</td><td class="mono">#6C625D</td><td class="mono">#B3A8A2</td><td>Secondary body, descriptions, table cells</td></tr>
+        <tr><td class="mono">--color-fg-3</td><td class="mono">#9E908A</td><td class="mono">#857A75</td><td>Labels, captions, placeholders, timestamps</td></tr>
+        <tr><td class="mono">--color-accent</td><td class="mono">#8A0E0D</td><td class="mono">#CF5F52</td><td>Primary button, focus ring, active nav, links</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><b>Dark mode is not an inversion.</b> Marten Red <code>#8A0E0D</code> hits 1.95:1 on <code>#111010</code> — invisible. Dark mode substitutes Red 400 <code>#CF5F52</code> for every accent role, and lifts all four semantics one step the same way. The <b>logo plate keeps #8A0E0D in both themes</b>; it is a brand surface, not a UI token. Never write a colour literal into a component — only tokens.</div>
+</section>
+
+<!-- ══════════ 05 ══════════ -->
+<section id="s05">
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <h2>Typography</h2>
+    <div class="sub">Three faces, eleven roles, one scale. Nothing is set outside it.</div>
+  </div>
+
+  <p class="lede">Familjen Grotesk carries the voice — a Swedish grotesk with tight apertures and enough edge to hold its own beside an animal mark without turning folksy. Geist runs the product: drawn for interfaces, holds at 12 px, tabular figures line up every table and KPI. <strong>Geist Mono is the data voice</strong> — IDs, hex, credits, timestamps, node types.</p>
+
+  <div class="grid g3" style="margin-bottom:var(--s-6);">
+    <div class="card fontcard">
+      <div class="t-label">Display &amp; headings</div>
+      <div style="font-family:var(--f-display); font-size:32px; font-weight:600; letter-spacing:-.03em;">Familjen Grotesk</div>
+      <div class="glyphs" style="font-family:var(--f-display); font-weight:500;">AaBbGgKkRr 0123456789 &amp;@%</div>
+      <div class="cap">Weights 500 / 600 / 700. Italic reserved for a single emphasised word in marketing headlines. Tracking −0.02 to −0.04 em. The wordmark is 700 at −0.04 em.</div>
+    </div>
+    <div class="card fontcard">
+      <div class="t-label">Interface &amp; body</div>
+      <div style="font-family:var(--f-sans); font-size:32px; font-weight:600; letter-spacing:-.03em;">Geist</div>
+      <div class="glyphs" style="font-family:var(--f-sans); font-weight:400;">AaBbGgKkRr 0123456789 &amp;@%</div>
+      <div class="cap">Weights 400 / 500 / 600. The whole product UI. Never bold below 13 px — use 500 and colour instead.</div>
+    </div>
+    <div class="card fontcard">
+      <div class="t-label">Data &amp; labels</div>
+      <div style="font-family:var(--f-mono); font-size:30px; font-weight:500; letter-spacing:-.03em;">Geist Mono</div>
+      <div class="glyphs" style="font-family:var(--f-mono); font-weight:400;">AaBbGgKkRr 0123456789 &amp;@%</div>
+      <div class="cap">Weights 400 / 500. Uppercase labels track +0.12 em. All identifiers, credit counts, hex values and timestamps.</div>
+    </div>
+  </div>
+
+  <h3 class="blk">Type scale</h3>
+  <div class="spec"><div class="meta"><b>Display</b>Familjen Grotesk 600<br>60 / 61 · −0.035em<br><span class="mono">text-display</span></div><div class="t-display">First to the signal.</div></div>
+  <div class="spec"><div class="meta"><b>Heading 1</b>Familjen Grotesk 600<br>40 / 44 · −0.03em<br><span class="mono">text-h1</span></div><div class="t-h1">Your agents shipped 1,284 touches this week</div></div>
+  <div class="spec"><div class="meta"><b>Heading 2</b>Familjen Grotesk 600<br>30 / 35 · −0.025em<br><span class="mono">text-h2</span></div><div class="t-h2">Pipeline by source</div></div>
+  <div class="spec"><div class="meta"><b>Title</b>Geist 600<br>20 / 26 · −0.015em<br><span class="mono">text-title</span></div><div class="t-title">Q3 Enterprise Outbound — North America</div></div>
+  <div class="spec"><div class="meta"><b>Subtitle</b>Geist 400<br>17 / 25<br><span class="mono">text-subtitle</span></div><div class="t-sub">Alice qualified 318 accounts against your ICP and routed 41 to the calling queue.</div></div>
+  <div class="spec"><div class="meta"><b>Body</b>Geist 400<br>15 / 24<br><span class="mono">text-body</span></div><div class="t-body" style="max-width:65ch;">Red Marten continuously scores every account in your workspace against buying-intent signals — hiring velocity, technology changes, funding events and competitor research — then hands the top decile to the agent best suited to work it. Nothing sits in a queue waiting for a human to notice it.</div></div>
+  <div class="spec"><div class="meta"><b>Small</b>Geist 400<br>13 / 20<br><span class="mono">text-small</span></div><div class="t-small" style="max-width:65ch;">Secondary descriptions, table cells, node configuration help text and inline hints.</div></div>
+  <div class="spec"><div class="meta"><b>Caption</b>Geist 400<br>12 / 17<br><span class="mono">text-caption</span></div><div class="t-cap">Last synced 4 minutes ago · Source: Apollo + Red Marten Intent Graph</div></div>
+  <div class="spec"><div class="meta"><b>Label</b>Geist Mono 500<br>11 / 14 · +0.12em · UPPER<br><span class="mono">text-label</span></div><div class="t-label">Meetings booked · last 30 days</div></div>
+  <div class="spec"><div class="meta"><b>Button</b>Geist 500<br>14 / 14 · −0.005em<br><span class="mono">text-button</span></div><div class="t-btn">Launch agent</div></div>
+  <div class="spec"><div class="meta"><b>Numeric</b>Geist Mono 500<br>26 / 30 · tabular<br><span class="mono">text-numeric</span></div><div class="t-num">$4,182,900 · 2,140 cr · 68.4 %</div></div>
+
+  <h3 class="blk">Rules</h3>
+  <div class="grid g3">
+    <div class="card"><p style="font-size:14px;"><b>Measure.</b> Running text is capped at 68 ch. Marketing paragraphs at 52 ch. Table cells never wrap past two lines — truncate with a tooltip.</p></div>
+    <div class="card"><p style="font-size:14px;"><b>Figures.</b> Every column of numbers uses <code>font-variant-numeric: tabular-nums</code>. Currency is never abbreviated below $10 k.</p></div>
+    <div class="card"><p style="font-size:14px;"><b>Case.</b> Sentence case everywhere — buttons, nav, headers, toasts. Uppercase is reserved for the Label role only.</p></div>
+  </div>
+</section>
+
+<!-- ══════════ 06 ══════════ -->
+<section id="s06">
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <h2>Space, grid &amp; radius</h2>
+    <div class="sub">An 8 px base with a 4 px half-step. Every gap in the product is on this list.</div>
+  </div>
+
+  <div class="grid g2" style="gap:var(--s-7);">
+    <div>
+      <h3 class="blk" style="margin-top:0;">Spacing scale</h3>
+      <div class="scalebars">
+        <div class="scalerow"><span class="tk">space-1</span><span class="px">4px</span><div class="vis" style="width:4px;"></div></div>
+        <div class="scalerow"><span class="tk">space-2</span><span class="px">8px</span><div class="vis" style="width:8px;"></div></div>
+        <div class="scalerow"><span class="tk">space-3</span><span class="px">12px</span><div class="vis" style="width:12px;"></div></div>
+        <div class="scalerow"><span class="tk">space-4</span><span class="px">16px</span><div class="vis" style="width:16px;"></div></div>
+        <div class="scalerow"><span class="tk">space-5</span><span class="px">24px</span><div class="vis" style="width:24px;"></div></div>
+        <div class="scalerow"><span class="tk">space-6</span><span class="px">32px</span><div class="vis" style="width:32px;"></div></div>
+        <div class="scalerow"><span class="tk">space-7</span><span class="px">48px</span><div class="vis" style="width:48px;"></div></div>
+        <div class="scalerow"><span class="tk">space-8</span><span class="px">64px</span><div class="vis" style="width:64px;"></div></div>
+        <div class="scalerow"><span class="tk">space-9</span><span class="px">96px</span><div class="vis" style="width:96px;"></div></div>
+        <div class="scalerow"><span class="tk">space-10</span><span class="px">128px</span><div class="vis" style="width:128px;"></div></div>
+      </div>
+      <p class="cap" style="margin-top:var(--s-4);">Card padding 24. Section gap 32. Page gutter 32 desktop / 20 mobile. Landing section rhythm 96–128.</p>
+    </div>
+    <div>
+      <h3 class="blk" style="margin-top:0;">Radius</h3>
+      <div class="radgrid">
+        <div class="rr" style="border-radius:4px;"><span>4</span></div>
+        <div class="rr" style="border-radius:6px;"><span>6</span></div>
+        <div class="rr" style="border-radius:10px;"><span>10</span></div>
+        <div class="rr" style="border-radius:14px;"><span>14</span></div>
+        <div class="rr" style="border-radius:20px;"><span>20</span></div>
+        <div class="rr" style="border-radius:28px;"><span>28</span></div>
+        <div class="rr" style="border-radius:999px;"><span>∞</span></div>
+      </div>
+      <div class="tl" style="margin-top:var(--s-4);">
+        <table><tbody>
+          <tr><th>4 · xs</th><td>Checkbox, tag, sparkline mask</td></tr>
+          <tr><th>6 · sm</th><td>Small button, chip, icon tile</td></tr>
+          <tr><th>10 · md</th><td>Button, input, select, dropdown item</td></tr>
+          <tr><th>14 · lg</th><td>Card, panel, node, table container</td></tr>
+          <tr><th>20 · xl</th><td>Modal, drawer, feature tile</td></tr>
+          <tr><th>28 · 2xl</th><td>Hero media, app icon, logo plate</td></tr>
+          <tr><th>∞ · full</th><td>Badge, avatar, pill, credit meter</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">Layout grid</h3>
+  <div class="grid g4">
+    <div class="card"><div class="t-label">Desktop ≥ 1280</div><p style="font-size:14px; margin-top:8px;">12 col · 24 gutter · max 1440 · sidebar 264 / rail 64 collapsed</p></div>
+    <div class="card"><div class="t-label">Laptop 1024–1279</div><p style="font-size:14px; margin-top:8px;">12 col · 20 gutter · sidebar auto-collapses to 64</p></div>
+    <div class="card"><div class="t-label">Tablet 768–1023</div><p style="font-size:14px; margin-top:8px;">8 col · 20 gutter · sidebar becomes overlay drawer</p></div>
+    <div class="card"><div class="t-label">Mobile &lt; 768</div><p style="font-size:14px; margin-top:8px;">4 col · 16 gutter · bottom tab bar · canvas is view-only</p></div>
+  </div>
+</section>
+
+<!-- ══════════ 07 ══════════ -->
+<section id="s07">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
+    <h2>Elevation &amp; glass</h2>
+    <div class="sub">Shadows are warm-tinted and shallow. Depth comes from hierarchy, not drama.</div>
+  </div>
+
+  <div class="elev" style="margin-bottom:var(--s-6);">
+    <div><div class="e e0"><span class="cap">flat</span></div><div class="lb">shadow-0 · in-flow</div></div>
+    <div><div class="e e1"><span class="cap">rest</span></div><div class="lb">shadow-1 · card</div></div>
+    <div><div class="e e2"><span class="cap">raised</span></div><div class="lb">shadow-2 · node, button</div></div>
+    <div><div class="e e3"><span class="cap">float</span></div><div class="lb">shadow-3 · dropdown, popover</div></div>
+    <div><div class="e e4"><span class="cap">modal</span></div><div class="lb">shadow-4 · dialog, drawer</div></div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="t-label">Warm shadow formula</div>
+      <pre style="margin-top:12px;"><span class="c">/* Light — tinted with Ink, never pure black */</span>
+--shadow-2: 0 2px 6px -1px rgb(26 22 20 / .07),
+            0 1px 2px rgb(26 22 20 / .05);
+--shadow-4: 0 32px 64px -20px rgb(26 22 20 / .22),
+            0 4px 12px rgb(26 22 20 / .06);
+
+<span class="c">/* Dark — deeper, untinted, borders do the work */</span>
+--shadow-4: 0 32px 64px -20px rgb(0 0 0 / .75),
+            0 4px 12px rgb(0 0 0 / .4);</pre>
+    </div>
+    <div class="card">
+      <div class="t-label">Glass</div>
+      <div style="margin-top:12px; border-radius:var(--r-lg); overflow:hidden; border:1px solid var(--border); position:relative; height:150px; background:linear-gradient(120deg,#8A0E0D,#CFC1B9 55%,#5F0C0A);">
+        <div style="position:absolute; inset:22px; border-radius:var(--r-md); background:var(--glass); backdrop-filter:blur(18px) saturate(140%); -webkit-backdrop-filter:blur(18px) saturate(140%); border:1px solid rgba(255,255,255,.28); display:grid; place-items:center; color:var(--fg); font-size:13.5px; font-weight:500;">
+          Sticky header · command bar · canvas toolbar
+        </div>
+      </div>
+      <p class="cap" style="margin-top:12px;">Glass is used in exactly three places: the app top bar on scroll, the workflow canvas toolbar, and the command palette. <code>backdrop-filter: blur(18px) saturate(140%)</code> over <code>--color-glass</code>. Everywhere else uses a solid surface.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 08 ══════════ -->
+<section id="s08">
+  <div class="sec-head">
+    <span class="sec-num">08</span>
+    <h2>Iconography &amp; imagery</h2>
+    <div class="sub">One stroke weight, one corner language. The mark never becomes an icon.</div>
+  </div>
+
+  <div class="grid g2" style="gap:var(--s-6); margin-bottom:var(--s-6);">
+    <div class="card">
+      <div class="t-label">Icon spec</div>
+      <div style="display:flex; gap:22px; margin:18px 0; color:var(--fg);">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h12M3 17h7"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h4a3 3 0 0 1 3 3V14"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 14.5 21 20l-2 2-5.5-5.5"/><circle cx="10" cy="10" r="7"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5A2 2 0 0 1 6.7 3.6l2 .4a2 2 0 0 1 1.5 1.6l.3 2a2 2 0 0 1-1 2l-1 .6a12 12 0 0 0 5 5l.6-1a2 2 0 0 1 2-1l2 .3a2 2 0 0 1 1.6 1.5l.4 2a2 2 0 0 1-1.9 2.2A15.5 15.5 0 0 1 4.5 5.5Z"/></svg>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+      </div>
+      <div class="tl">
+        <table><tbody>
+          <tr><th>Library</th><td>Lucide, restyled — no mixed sets</td></tr>
+          <tr><th>Grid</th><td>24 × 24, 2 u padding</td></tr>
+          <tr><th>Stroke</th><td>1.6 px at 24 · 1.5 px at 20 · 1.75 px at 16</td></tr>
+          <tr><th>Caps &amp; joins</th><td>Round · round</td></tr>
+          <tr><th>Colour</th><td><code>currentColor</code> only. Never multi-colour.</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="t-label">Where the mark may and may not go</div>
+      <p style="font-size:14px; margin:12px 0 16px;">The marten is a <b>logo</b>, not an icon. It appears in the app rail, on the auth card, in loading and thinking states, on the app icon and in the favicon — and nowhere else. It is never a bullet, never a list marker, never a node icon, never a cursor, never a watermark behind content.</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="node" style="min-width:0; padding:9px 12px;"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6.5h18v11H3z"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><div><div class="nm">Send email</div><div class="ty">action · rm.email</div></div></div>
+        <div class="node" style="min-width:0; padding:9px 12px;"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><div><div class="nm">Wait 2 days</div><div class="ty">control · rm.delay</div></div></div>
+      </div>
+      <p class="cap" style="margin-top:16px;"><b>Illustration.</b> Agents are represented by generated portrait avatars in a warm duotone (Ink over Cream 150), never 3D renders, never cartoon animals. Product screenshots on marketing pages sit on a Bone 100 plate at 20 px radius with <code>shadow-4</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 09 ══════════ -->
+<section id="s09">
+  <div class="sec-head">
+    <span class="sec-num">09</span>
+    <h2>Motion system</h2>
+    <div class="sub">Four durations, three curves. Motion confirms causality — nothing moves to entertain.</div>
+  </div>
+
+  <div class="grid g2" style="gap:var(--s-6);">
+    <div class="card">
+      <div class="t-label">Curves</div>
+      <div class="tl" style="margin-top:12px;">
+        <table>
+          <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">ease-out</td><td class="mono">.22, 1, .36, 1</td><td>Entrances, panels, the trail wipe</td></tr>
+            <tr><td class="mono">ease-inout</td><td class="mono">.65, 0, .35, 1</td><td>Loops, canvas pans, breathing states</td></tr>
+            <tr><td class="mono">ease-spring</td><td class="mono">.34, 1.56, .64, 1</td><td>Body landing, node snap, toggle</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card">
+      <div class="t-label">Durations</div>
+      <div class="tl" style="margin-top:12px;">
+        <table>
+          <thead><tr><th>Token</th><th>ms</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">duration-fast</td><td class="mono">140</td><td>Hover, focus, colour change</td></tr>
+            <tr><td class="mono">duration-base</td><td class="mono">240</td><td>Dropdown, tab, toast, tooltip</td></tr>
+            <tr><td class="mono">duration-slow</td><td class="mono">420</td><td>Drawer, modal, page transition</td></tr>
+            <tr><td class="mono">duration-cine</td><td class="mono">860</td><td>Leap, splash, hero reveal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="blk">Signature interactions</h3>
+  <div class="grid g3">
+    <div class="card"><div class="t-label">Counter roll</div><p style="font-size:14px; margin-top:8px;">KPI values count up from 0 over 900 ms, ease-out, tabular figures so width never jitters. Fires once per mount, never on refresh.</p></div>
+    <div class="card"><div class="t-label">Connection draw</div><p style="font-size:14px; margin-top:8px;">Workflow edges draw with <code>stroke-dashoffset</code> over 420 ms when created; during a run, a 3 px accent dash travels the edge at 40 px/s.</p></div>
+    <div class="card"><div class="t-label">Card lift</div><p style="font-size:14px; margin-top:8px;">Hover raises a card 2 px and steps <code>shadow-2 → shadow-3</code> in 140 ms. Never scale, never tilt.</p></div>
+    <div class="card"><div class="t-label">Chat stream</div><p style="font-size:14px; margin-top:8px;">Agent replies fade in per line at 60 ms stagger while Scent loops in the avatar slot. Stops the instant the first token lands.</p></div>
+    <div class="card"><div class="t-label">Row reveal</div><p style="font-size:14px; margin-top:8px;">Table results stagger 24 ms per row, capped at 12 rows — beyond that the whole block fades as one.</p></div>
+    <div class="card"><div class="t-label">Skeletons</div><p style="font-size:14px; margin-top:8px;">Sunk-surface blocks with a 1.4 s red shimmer at 5 % opacity. Matched to the exact geometry of the content they replace.</p></div>
+  </div>
+</section>
+
+<!-- ══════════ 10 ══════════ -->
+<section id="s10">
+  <div class="sec-head">
+    <span class="sec-num">10</span>
+    <h2>Component primitives</h2>
+    <div class="sub">The atoms every one of the remaining eleven phases is assembled from.</div>
+  </div>
+
+  <h3 class="blk">Buttons</h3>
+  <div class="card" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:var(--s-4);">
+    <button class="btn btn-primary" type="button">Launch agent</button>
+    <button class="btn btn-secondary" type="button">Book demo</button>
+    <button class="btn btn-ink" type="button">Buy credits</button>
+    <button class="btn btn-ghost" type="button">Cancel</button>
+    <button class="btn btn-danger btn-sm" type="button">Delete workflow</button>
+    <button class="btn btn-primary btn-lg" type="button">Start free</button>
+    <button class="btn btn-secondary btn-sm" type="button" disabled style="opacity:.45; cursor:not-allowed;">Publish</button>
+  </div>
+  <div class="tbl card card-flush" style="margin-bottom:var(--s-6);">
+    <table>
+      <thead><tr><th>Variant</th><th>Fill</th><th>Use</th><th>Per view</th></tr></thead>
+      <tbody>
+        <tr><td><b>Primary</b></td><td class="mono">--color-accent (Marten Red)</td><td>The one action the screen exists for</td><td>Max 1</td></tr>
+        <tr><td><b>Secondary</b></td><td class="mono">--color-surface + border-strong</td><td>Parallel path — demo, export, duplicate</td><td>Max 2</td></tr>
+        <tr><td><b>Ink</b></td><td class="mono">--color-fg</td><td>Commerce — credits, upgrade, plan change</td><td>Max 1</td></tr>
+        <tr><td><b>Ghost</b></td><td class="mono">transparent</td><td>Dismiss, cancel, tertiary nav</td><td>Unlimited</td></tr>
+        <tr><td><b>Danger</b></td><td class="mono">outline --color-danger</td><td>Destructive, always behind confirmation</td><td>Max 1</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="blk">Inputs &amp; validation</h3>
+  <div class="grid g3" style="margin-bottom:var(--s-6);">
+    <div class="card"><div class="field"><label for="i1">Workspace name</label><input class="input" id="i1" value="Northwind Revenue" readonly></div><p class="cap" style="margin-top:8px;">Rest — border-strong, 10 px radius.</p></div>
+    <div class="card"><div class="field"><label for="i2">Sender address</label><input class="input" id="i2" placeholder="alice@northwind.com" style="border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft);"></div><p class="cap" style="margin-top:8px;">Focus — accent ring at 3 px.</p></div>
+    <div class="card"><div class="field"><label for="i3">Daily send limit</label><input class="input err" id="i3" value="0"><span class="errmsg">⚠ Must be at least 1 to publish this workflow.</span></div></div>
+  </div>
+
+  <h3 class="blk">Status &amp; badges</h3>
+  <div class="card" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:var(--s-6);">
+    <span class="badge b-success"><span class="pulse"></span>Running</span>
+    <span class="badge b-success">Completed</span>
+    <span class="badge b-warning">Credits low</span>
+    <span class="badge b-danger">Failed · retry 2/3</span>
+    <span class="badge b-info">Scheduled 09:00</span>
+    <span class="badge b-neutral">Draft</span>
+    <span class="badge b-accent">Pro plan</span>
+    <span class="badge b-neutral">v14 · published</span>
+  </div>
+
+  <h3 class="blk">Node states — the canvas atom</h3>
+  <div class="card" style="display:flex; gap:20px; flex-wrap:wrap; align-items:center; background:var(--bg-alt); background-image:radial-gradient(var(--border-strong) 1px, transparent 1px); background-size:18px 18px; margin-bottom:var(--s-4);">
+    <div class="node">
+      <span class="port in"></span>
+      <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 3v6M12 21v-6"/><circle cx="12" cy="12" r="3"/><path d="M3 12h6M21 12h-6"/></svg></span>
+      <div><div class="nm">Find accounts</div><div class="ty">source · data-studio</div></div>
+      <span class="port out"></span>
+    </div>
+    <div class="node running">
+      <span class="port in"></span>
+      <span class="st"><span class="badge b-accent" style="font-size:10px; padding:2px 8px;"><span class="pulse"></span>Running</span></span>
+      <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/><rect x="8" y="8" width="8" height="8" rx="2"/></svg></span>
+      <div><div class="nm">Alice · qualify</div><div class="ty">agent · gpt-class</div></div>
+      <span class="port out"></span>
+    </div>
+    <div class="node ok">
+      <span class="port in"></span>
+      <span class="st"><span class="badge b-success" style="font-size:10px; padding:2px 8px;">318 out</span></span>
+      <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6.5h18v11H3z"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
+      <div><div class="nm">Send email</div><div class="ty">action · rm.email</div></div>
+      <span class="port out"></span>
+    </div>
+    <div class="node fail">
+      <span class="port in"></span>
+      <span class="st"><span class="badge b-danger" style="font-size:10px; padding:2px 8px;">Failed</span></span>
+      <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4.5 5.5A2 2 0 0 1 6.7 3.6l2 .4a2 2 0 0 1 1.5 1.6l.3 2a2 2 0 0 1-1 2l-1 .6a12 12 0 0 0 5 5l.6-1a2 2 0 0 1 2-1l2 .3a2 2 0 0 1 1.6 1.5l.4 2a2 2 0 0 1-1.9 2.2A15.5 15.5 0 0 1 4.5 5.5Z"/></svg></span>
+      <div><div class="nm">Voice dial</div><div class="ty">action · twilio</div></div>
+      <span class="port out"></span>
+    </div>
+  </div>
+  <p class="cap" style="margin-bottom:var(--s-6); max-width:var(--measure);">Node width is fixed at 224 px so the canvas stays legible at 40 % zoom. Status lives on a badge that overhangs the top edge by 8 px — readable when the node body is occluded by an edge. Ports are 9 px, snap radius 18 px.</p>
+
+  <h3 class="blk">KPI tiles</h3>
+  <div class="grid g4">
+    <div class="kpi">
+      <span class="k">Pipeline generated</span><span class="v">$4.18M</span>
+      <span class="delta up">▲ 23.4 % vs last 30d</span>
+      <svg class="spark" viewBox="0 0 120 32" height="32" width="100%" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 26 L15 24 L30 25 L45 19 L60 20 L75 13 L90 14 L105 7 L120 4" fill="none" stroke="var(--success)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M0 26 L15 24 L30 25 L45 19 L60 20 L75 13 L90 14 L105 7 L120 4 L120 32 L0 32Z" fill="var(--success)" opacity=".1"/>
+        <circle cx="120" cy="4" r="2.4" fill="var(--success)"/>
+      </svg>
+    </div>
+    <div class="kpi">
+      <span class="k">Meetings booked</span><span class="v">1,284</span>
+      <span class="delta up">▲ 11.2 % vs last 30d</span>
+      <svg class="spark" viewBox="0 0 120 32" height="32" width="100%" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 22 L15 25 L30 18 L45 21 L60 15 L75 17 L90 11 L105 12 L120 8" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M0 22 L15 25 L30 18 L45 21 L60 15 L75 17 L90 11 L105 12 L120 8 L120 32 L0 32Z" fill="var(--accent)" opacity=".1"/>
+        <circle cx="120" cy="8" r="2.4" fill="var(--accent)"/>
+      </svg>
+    </div>
+    <div class="kpi">
+      <span class="k">Reply rate</span><span class="v">7.9%</span>
+      <span class="delta down">▼ 1.1 pts vs last 30d</span>
+      <svg class="spark" viewBox="0 0 120 32" height="32" width="100%" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 9 L15 11 L30 8 L45 14 L60 12 L75 18 L90 16 L105 21 L120 23" fill="none" stroke="var(--danger)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M0 9 L15 11 L30 8 L45 14 L60 12 L75 18 L90 16 L105 21 L120 23 L120 32 L0 32Z" fill="var(--danger)" opacity=".09"/>
+        <circle cx="120" cy="23" r="2.4" fill="var(--danger)"/>
+      </svg>
+    </div>
+    <div class="kpi">
+      <span class="k">Credits remaining</span><span class="v">2,140</span>
+      <span class="delta" style="color:var(--fg-3);">≈ 9 days at current pace</span>
+      <div style="height:7px; border-radius:var(--r-full); background:var(--surface-sunk); margin-top:12px; overflow:hidden;">
+        <div style="width:34%; height:100%; background:var(--accent); border-radius:var(--r-full);"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 11 ══════════ -->
+<section id="s11">
+  <div class="sec-head">
+    <span class="sec-num">11</span>
+    <h2>Data language</h2>
+    <div class="sub">Charts inherit the palette. Series colour is assigned by position, never by taste.</div>
+  </div>
+
+  <p class="lede">Red Marten is a reporting product before it's anything else, so the chart system is part of the brand, not a downstream decision. <strong>Categorical series run in a fixed order</strong> so the same source keeps the same colour on every screen in the product.</p>
+
+  <div class="grid g2" style="gap:var(--s-5); margin-bottom:var(--s-5);">
+    <div class="chartbox">
+      <h4>Pipeline by channel · last 8 weeks</h4>
+      <p class="cap" style="margin-bottom:16px;">Source: Red Marten attribution · updated 4 min ago</p>
+      <svg viewBox="0 0 460 190" width="100%" height="190" aria-label="Stacked area chart of pipeline by channel">
+        <g stroke="var(--border)" stroke-width="1">
+          <line x1="34" y1="20" x2="450" y2="20"/><line x1="34" y1="60" x2="450" y2="60"/>
+          <line x1="34" y1="100" x2="450" y2="100"/><line x1="34" y1="140" x2="450" y2="140"/>
+          <line x1="34" y1="170" x2="450" y2="170" stroke="var(--border-strong)"/>
+        </g>
+        <g font-family="var(--f-mono)" font-size="9" fill="var(--fg-3)">
+          <text x="4" y="23">900k</text><text x="4" y="63">675k</text><text x="4" y="103">450k</text><text x="4" y="143">225k</text>
+          <text x="34" y="185">W1</text><text x="145" y="185">W3</text><text x="256" y="185">W5</text><text x="367" y="185">W7</text>
+        </g>
+        <path d="M34 150 L92 142 L150 136 L208 120 L266 112 L324 96 L382 84 L440 66 L440 170 L34 170Z" fill="#8A0E0D" opacity=".92"/>
+        <path d="M34 150 L92 142 L150 136 L208 120 L266 112 L324 96 L382 84 L440 66" fill="none" stroke="#8A0E0D" stroke-width="1.5"/>
+        <path d="M34 122 L92 118 L150 104 L208 96 L266 82 L324 78 L382 62 L440 48 L440 66 L382 84 L324 96 L266 112 L208 120 L150 136 L92 142 L34 150Z" fill="#5F6B5E" opacity=".88"/>
+        <path d="M34 100 L92 92 L150 86 L208 72 L266 64 L324 54 L382 42 L440 30 L440 48 L382 62 L324 78 L266 82 L208 96 L150 104 L92 118 L34 122Z" fill="#CFC1B9" opacity=".95"/>
+        <circle cx="440" cy="66" r="3" fill="#8A0E0D"/><circle cx="440" cy="48" r="3" fill="#5F6B5E"/><circle cx="440" cy="30" r="3" fill="#CFC1B9"/>
+      </svg>
+      <div style="display:flex; gap:16px; margin-top:12px; flex-wrap:wrap;">
+        <span class="cap" style="display:flex; gap:6px; align-items:center;"><i style="width:9px;height:9px;border-radius:2px;background:#8A0E0D;display:inline-block;"></i>Email · $412k</span>
+        <span class="cap" style="display:flex; gap:6px; align-items:center;"><i style="width:9px;height:9px;border-radius:2px;background:#5F6B5E;display:inline-block;"></i>LinkedIn · $286k</span>
+        <span class="cap" style="display:flex; gap:6px; align-items:center;"><i style="width:9px;height:9px;border-radius:2px;background:#CFC1B9;display:inline-block;"></i>Voice · $174k</span>
+      </div>
+    </div>
+    <div class="chartbox">
+      <h4>Agent output · touches this week</h4>
+      <p class="cap" style="margin-bottom:16px;">Top 6 of 25 active agents</p>
+      <svg viewBox="0 0 460 190" width="100%" height="190" aria-label="Horizontal bar chart of agent output">
+        <g font-family="var(--f-sans)" font-size="11" fill="var(--fg-2)">
+          <text x="0" y="17">Alice</text><text x="0" y="46">Julian</text><text x="0" y="75">Marcus</text>
+          <text x="0" y="104">Priya</text><text x="0" y="133">Dana</text><text x="0" y="162">Kai</text>
+        </g>
+        <g font-family="var(--f-mono)" font-size="10" fill="var(--fg-3)">
+          <text x="440" y="17" text-anchor="end">4,120</text><text x="440" y="46" text-anchor="end">3,486</text>
+          <text x="440" y="75" text-anchor="end">2,904</text><text x="440" y="104" text-anchor="end">2,215</text>
+          <text x="440" y="133" text-anchor="end">1,740</text><text x="440" y="162" text-anchor="end">1,102</text>
+        </g>
+        <g>
+          <rect x="60" y="6" width="330" height="14" rx="3" fill="#8A0E0D"/>
+          <rect x="60" y="35" width="279" height="14" rx="3" fill="#8A0E0D" opacity=".82"/>
+          <rect x="60" y="64" width="232" height="14" rx="3" fill="#8A0E0D" opacity=".68"/>
+          <rect x="60" y="93" width="177" height="14" rx="3" fill="#8A0E0D" opacity=".54"/>
+          <rect x="60" y="122" width="139" height="14" rx="3" fill="#8A0E0D" opacity=".42"/>
+          <rect x="60" y="151" width="88" height="14" rx="3" fill="#8A0E0D" opacity=".3"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="grid g2" style="gap:var(--s-5);">
+    <div class="card">
+      <div class="t-label">Categorical order — fixed</div>
+      <div style="display:flex; gap:8px; margin:14px 0; flex-wrap:wrap;">
+        <span class="badge" style="background:#8A0E0D; color:#FCF8F5;">1 · Marten Red</span>
+        <span class="badge" style="background:#5F6B5E; color:#FCF8F5;">2 · Patina</span>
+        <span class="badge" style="background:#CFC1B9; color:#1A1614;">3 · Bone 300</span>
+        <span class="badge" style="background:#6C625D; color:#FCF8F5;">4 · Bone 600</span>
+        <span class="badge" style="background:#9E908A; color:#FCF8F5;">5 · Bone 400</span>
+        <span class="badge" style="background:#3A3330; color:#FCF8F5;">6 · Ink 800</span>
+      </div>
+      <p class="cap">Beyond six categories, group the tail into "Other" at Bone 200 <code>#E5D9D2</code>. Sequential ramps run Bone 100 → Marten Red; diverging runs Red ← Bone 200 → Patina.</p>
+    </div>
+    <div class="card">
+      <div class="t-label">Chart rules</div>
+      <ul style="margin:12px 0 0; padding-left:18px; font-size:14px; color:var(--fg-2); line-height:1.75;">
+        <li>Horizontal gridlines only, at <code>--color-border</code>. No vertical grid, no chart borders.</li>
+        <li>The final data point always carries a filled dot — the eye lands on "now".</li>
+        <li>Area fills at 10 % opacity of the stroke colour. Never gradients.</li>
+        <li>Every chart states its source and freshness in a caption. No exceptions.</li>
+        <li>Semantic colour appears in charts only for deltas, never for series.</li>
+        <li>Empty state shows the axes with a one-line reason, never a blank box.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 12 ══════════ -->
+<section id="s12">
+  <div class="sec-head">
+    <span class="sec-num">12</span>
+    <h2>Applications</h2>
+    <div class="sub">Where the identity actually lands across the twelve product phases.</div>
+  </div>
+
+  <h3 class="blk">Icon build-out</h3>
+  <div class="card" style="margin-bottom:var(--s-6);">
+    <div class="appicons">
+      <div class="appicon"><div class="sq ai-16" style="background:#8A0E0D;"><span data-marten data-noeye style="width:13px;height:13px;display:block;color:#EFE6DF;"></span></div><span class="lb">16 favicon</span></div>
+      <div class="appicon"><div class="sq ai-32" style="background:#8A0E0D;"><span data-marten data-noeye style="width:26px;height:26px;display:block;color:#EFE6DF;"></span></div><span class="lb">32 tab</span></div>
+      <div class="appicon"><div class="sq ai-64" style="background:#8A0E0D;"><span data-marten style="width:52px;height:52px;display:block;color:#EFE6DF;"></span></div><span class="lb">64 dock</span></div>
+      <div class="appicon"><div class="sq ai-128" style="background:#8A0E0D;"><span data-marten style="width:104px;height:104px;display:block;color:#EFE6DF;"></span></div><span class="lb">512 app store</span></div>
+      <div class="appicon"><div class="sq ai-128" style="background:#EFE6DF;"><span data-marten style="width:104px;height:104px;display:block;color:#8A0E0D;"></span></div><span class="lb">cream variant</span></div>
+    </div>
+    <p class="cap" style="margin-top:var(--s-5);">App icon is <b>Cream 150 on Marten Red</b>, mark at 78 % of the tile, radius 22 % (iOS superellipse where supported). <b>At 32 px and below the eye is removed</b> — it fills in and reads as a defect. Favicon ships as SVG with a PNG fallback set at 16/32/180/512.</p>
+  </div>
+
+  <h3 class="blk">Splash &amp; loading screens</h3>
+  <div class="grid g3" style="margin-bottom:var(--s-6);">
+    <div class="mo" style="aspect-ratio:16/10;">
+      <button class="replay" data-target="sp1" type="button">Replay</button>
+      <div style="display:grid; place-items:center; gap:16px;">
+        <span data-marten data-motion="leap" id="sp1" style="width:74px; display:block;"></span>
+        <div style="font-family:var(--f-display); font-size:19px; font-weight:700; letter-spacing:-.04em;">Red Marten</div>
+      </div>
+      <div class="lbl"><span>Splash · native + web</span><span>Leap</span></div>
+    </div>
+    <div class="mo" style="aspect-ratio:16/10; background:var(--bg); color:var(--fg); border-color:var(--border);">
+      <div style="display:grid; place-items:center; gap:14px;">
+        <span data-marten data-motion="trail" style="width:56px; display:block; color:var(--accent);"></span>
+        <div class="cap">Loading your workspace…</div>
+      </div>
+      <div class="lbl" style="color:var(--fg-3); border-color:var(--border);"><span>Dashboard boot</span><span>Trail</span></div>
+    </div>
+    <div class="mo" style="aspect-ratio:16/10; background:var(--surface); color:var(--fg); border-color:var(--border); place-items:stretch;">
+      <div style="padding:18px; display:flex; gap:12px; align-items:flex-start;">
+        <span data-marten data-motion="scent" style="width:28px; display:block; flex:none; margin-top:2px; color:var(--accent);"></span>
+        <div>
+          <div style="font-size:13px; font-weight:500;">Alice</div>
+          <div class="cap" style="margin-top:3px;">Reading 12 sources on Northwind Logistics…</div>
+          <div style="display:flex; gap:6px; margin-top:10px;">
+            <span class="badge b-neutral" style="font-size:10px;">Crunchbase</span>
+            <span class="badge b-neutral" style="font-size:10px;">LinkedIn</span>
+            <span class="badge b-neutral" style="font-size:10px;">+10</span>
+          </div>
+        </div>
+      </div>
+      <div class="lbl" style="color:var(--fg-3); border-color:var(--border);"><span>AI thinking</span><span>Scent</span></div>
+    </div>
+  </div>
+
+  <h3 class="blk">Identity across the twelve phases</h3>
+  <div class="tbl card card-flush">
+    <table>
+      <thead><tr><th>Phase</th><th>Surface</th><th>Identity carriers</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">01</td><td><b>Brand &amp; design system</b></td><td>This book · tokens.css · tokens.json · Tailwind preset · SVG asset set</td></tr>
+        <tr><td class="mono">02</td><td><b>Landing page</b></td><td>Leap in hero · full-bleed red band · Bone ground · Display 60 · red CTA</td></tr>
+        <tr><td class="mono">03</td><td><b>Authentication</b></td><td>Leap on the auth card · split layout, Bone left / red plate right</td></tr>
+        <tr><td class="mono">04</td><td><b>Dashboard</b></td><td>Trail on boot · 26 px rail mark · glass top bar · KPI tiles · Scent in chat</td></tr>
+        <tr><td class="mono">05</td><td><b>Data Studio</b></td><td>Trail on query · fixed chart order · mono for all identifiers · sunk filter well</td></tr>
+        <tr><td class="mono">06</td><td><b>Workflow builder</b></td><td>Sprint on run · node atom · 18 px canvas dot grid · glass toolbar · red edges</td></tr>
+        <tr><td class="mono">07</td><td><b>Voice AI</b></td><td>Scent on live call · sentiment on semantic scale · mono transcripts</td></tr>
+        <tr><td class="mono">08</td><td><b>AI Analytics</b></td><td>Full chart language · AI summary blocks framed in accent-soft</td></tr>
+        <tr><td class="mono">09</td><td><b>Brand Intelligence</b></td><td>Scent during generation · report typography at Body 15/24 · SWOT on Bone 100</td></tr>
+        <tr><td class="mono">10</td><td><b>Settings &amp; integrations</b></td><td>Partner marks in 32 px tiles · status badges · audit log in mono</td></tr>
+        <tr><td class="mono">11</td><td><b>Billing &amp; credits</b></td><td>Ink button variant — commerce never wears the brand red</td></tr>
+        <tr><td class="mono">12</td><td><b>Profile &amp; team</b></td><td>Duotone avatars · role badges · workspace switcher carries the mark</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════ 13 ══════════ -->
+<section id="s13">
+  <div class="sec-head">
+    <span class="sec-num">13</span>
+    <h2>Design tokens</h2>
+    <div class="sub">The contract between this book and the codebase. Components read tokens only.</div>
+  </div>
+
+  <p class="lede">Tokens ship in three synchronised forms: <strong>CSS custom properties</strong> for runtime theming, <strong>JSON</strong> for design-tool sync, and a <strong>Tailwind preset</strong> so utility classes resolve to the same values. All three are generated from the JSON — never edited independently.</p>
+
+  <div class="grid g2" style="gap:var(--s-5);">
+    <div>
+      <div class="t-label" style="margin-bottom:10px;">tokens.css — excerpt</div>
+      <pre><span class="c">/* ── Red Marten · core ── */</span>
+<span class="t">--color-bg</span>:            <span class="v">#FCF8F5</span>;
+<span class="t">--color-surface</span>:       <span class="v">#FFFFFF</span>;
+<span class="t">--color-surface-2</span>:     <span class="v">#F5EDE8</span>;
+<span class="t">--color-surface-sunk</span>:  <span class="v">#EFE6DF</span>;
+<span class="t">--color-border</span>:        <span class="v">#E5D9D2</span>;
+<span class="t">--color-border-strong</span>: <span class="v">#CFC1B9</span>;
+<span class="t">--color-fg</span>:            <span class="v">#1A1614</span>;
+<span class="t">--color-fg-2</span>:          <span class="v">#6C625D</span>;
+<span class="t">--color-fg-3</span>:          <span class="v">#9E908A</span>;
+<span class="t">--color-accent</span>:        <span class="v">#8A0E0D</span>;
+<span class="t">--color-accent-soft</span>:   <span class="v">rgb(138 14 13 / .08)</span>;
+
+<span class="c">/* ── brand surfaces — theme-invariant ── */</span>
+<span class="t">--brand-red</span>:   <span class="v">#8A0E0D</span>;
+<span class="t">--brand-cream</span>: <span class="v">#EFE6DF</span>;
+
+<span class="c">/* ── semantic ── */</span>
+<span class="t">--color-success</span>: <span class="v">#4E7A5B</span>;
+<span class="t">--color-warning</span>: <span class="v">#8F6D2E</span>;
+<span class="t">--color-danger</span>:  <span class="v">#B23A2C</span>;
+<span class="t">--color-info</span>:    <span class="v">#4E6373</span>;
+
+<span class="c">/* ── motion ── */</span>
+<span class="t">--ease-spring</span>:  <span class="v">cubic-bezier(.34,1.56,.64,1)</span>;
+<span class="t">--duration-cine</span>: <span class="v">860ms</span>;
+<span class="t">--mark-leap-body-delay</span>: <span class="v">200ms</span>;</pre>
+    </div>
+    <div>
+      <div class="t-label" style="margin-bottom:10px;">tokens.json — excerpt (W3C DTCG)</div>
+      <pre>{
+  <span class="t">"color"</span>: {
+    <span class="t">"red"</span>: {
+      <span class="t">"700"</span>: { "$value": <span class="v">"#8A0E0D"</span>, "$type": "color",
+               "$description": "core, from the logo plate" },
+      <span class="t">"400"</span>: { "$value": <span class="v">"#CF5F52"</span>, "$type": "color",
+               "$description": "dark-theme accent" }
+    },
+    <span class="t">"bone"</span>: {
+      <span class="t">"50"</span>:  { "$value": <span class="v">"#FCF8F5"</span> },
+      <span class="t">"150"</span>: { "$value": <span class="v">"#EFE6DF"</span>,
+               "$description": "logo cream — fixed" },
+      <span class="t">"900"</span>: { "$value": <span class="v">"#1A1614"</span> }
+    }
+  },
+  <span class="t">"motion"</span>: {
+    <span class="t">"mark"</span>: {
+      <span class="t">"leap"</span>: { "$value": { "duration": <span class="v">860</span>,
+                             "bodyDelay": <span class="v">200</span>,
+                             "ease": <span class="v">"spring"</span> } }
+    }
+  }
+}</pre>
+    </div>
+  </div>
+
+  <div class="note" style="margin-top:var(--s-5);">
+    <b>Naming convention.</b> <code>--{category}-{role}-{modifier}</code>. Categories: <code>color</code>, <code>brand</code>, <code>font</code>, <code>text</code>, <code>space</code>, <code>radius</code>, <code>shadow</code>, <code>ease</code>, <code>duration</code>, <code>z</code>. A component may never reference a ramp step directly (<code>--color-bone-300</code>) — only a role (<code>--color-border-strong</code>). The one exception is <code>--brand-red</code> and <code>--brand-cream</code>, which are deliberately theme-invariant because the logo plate must not shift between light and dark.
+  </div>
+</section>
+
+<!-- ══════════ 14 ══════════ -->
+<section id="s14">
+  <div class="sec-head">
+    <span class="sec-num">14</span>
+    <h2>Accessibility</h2>
+    <div class="sub">WCAG 2.2 AA is the floor for shipping, not a later pass.</div>
+  </div>
+
+  <h3 class="blk">Contrast — verified</h3>
+  <div style="display:grid; gap:2px; margin-bottom:var(--s-5);">
+    <div class="crow" style="background:#8A0E0D; color:#EFE6DF;"><span>Cream on Marten Red · the logo plate</span><span class="mono cap">#EFE6DF</span><span class="rat">7.9:1</span><span class="badge b-success" style="justify-self:end;">AAA</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#8A0E0D;"><span>Marten Red on Bone · links, accent text</span><span class="mono cap">#8A0E0D</span><span class="rat">9.2:1</span><span class="badge b-success" style="justify-self:end;">AAA</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#1A1614;"><span>Ink on Bone · body &amp; headings</span><span class="mono cap">#1A1614</span><span class="rat">17.0:1</span><span class="badge b-success" style="justify-self:end;">AAA</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#6C625D;"><span>Bone 600 on Bone · secondary text</span><span class="mono cap">#6C625D</span><span class="rat">5.7:1</span><span class="badge b-success" style="justify-self:end;">AA</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#9E908A;"><span>Bone 400 on Bone · labels &amp; captions only</span><span class="mono cap">#9E908A</span><span class="rat">2.9:1</span><span class="badge b-warning" style="justify-self:end;">Decorative</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#B23A2C;"><span>Error on Bone · error text</span><span class="mono cap">#B23A2C</span><span class="rat">5.6:1</span><span class="badge b-success" style="justify-self:end;">AA</span></div>
+    <div class="crow" style="background:#FCF8F5; color:#8F6D2E;"><span>Warning on Bone · warning text</span><span class="mono cap">#8F6D2E</span><span class="rat">4.5:1</span><span class="badge b-success" style="justify-self:end;">AA</span></div>
+    <div class="crow" style="background:#111010; color:#CF5F52;"><span>Red 400 on dark · the dark-theme accent</span><span class="mono cap">#CF5F52</span><span class="rat">4.9:1</span><span class="badge b-success" style="justify-self:end;">AA</span></div>
+    <div class="crow" style="background:#111010; color:#8A0E0D;"><span>Marten Red on dark — why the substitution exists</span><span class="mono cap">#8A0E0D</span><span class="rat">1.9:1</span><span class="badge b-danger" style="justify-self:end;">Never</span></div>
+  </div>
+  <p class="cap" style="margin-bottom:var(--s-6); max-width:var(--measure);">Bone 400 <code>#9E908A</code> is the one token below 4.5:1 — permitted for the Label and Caption roles at 12 px+ where it functions as a non-essential adornment, and never for text a user must read to complete a task.</p>
+
+  <h3 class="blk">Interaction requirements</h3>
+  <div class="grid g3">
+    <div class="card"><div class="t-label">Focus</div><p style="font-size:14px; margin-top:8px;">2 px accent ring, 3 px offset, on every interactive element including canvas nodes. Never <code>outline: none</code> without a replacement.</p></div>
+    <div class="card"><div class="t-label">Targets</div><p style="font-size:14px; margin-top:8px;">44 × 44 px minimum on touch. Dense table rows use a 32 px row with a full-row hit area.</p></div>
+    <div class="card"><div class="t-label">State beyond colour</div><p style="font-size:14px; margin-top:8px;">Every status carries an icon or label alongside its colour — node status, sentiment, deltas, badges. Critical where brand red and error red share a hue family.</p></div>
+    <div class="card"><div class="t-label">Motion</div><p style="font-size:14px; margin-top:8px;"><code>prefers-reduced-motion</code> resolves all four mark behaviours to the static mark with the trail fully drawn. No parallax, no autoplay video.</p></div>
+    <div class="card"><div class="t-label">Canvas</div><p style="font-size:14px; margin-top:8px;">The workflow builder ships a full keyboard path: tab to node, <kbd>Enter</kbd> to configure, arrows to move, <kbd>C</kbd> to connect. A list view mirrors the graph for screen readers.</p></div>
+    <div class="card"><div class="t-label">Charts</div><p style="font-size:14px; margin-top:8px;">Every chart has a text summary and an accessible data table behind a "View data" disclosure.</p></div>
+  </div>
+</section>
+
+<footer style="padding:var(--s-8) 0 var(--s-9); display:flex; gap:var(--s-5); align-items:center; flex-wrap:wrap;">
+  <span data-marten style="width:34px; height:34px; display:block; color:var(--accent);"></span>
+  <div>
+    <div style="font-family:var(--f-display); font-weight:700; letter-spacing:-.03em; font-size:17px;">Red Marten Brand Book v1.0</div>
+    <div class="cap">Phase 1 of 12 · Next: Landing page — hero, feature system, agent gallery, pricing.</div>
+  </div>
+  <div class="cap mono" style="margin-left:auto;">Mark vectored from test.png · 96.06 % pixel match · 41 cubics</div>
+</footer>
+
+</div><!-- /wrap -->
+</main>
+</div><!-- /shell -->
+
+<script>
+(function(){
+  var tpl = document.getElementById('marten-tpl');
+  var uid = 0;
+
+  /* Instantiate the mark everywhere it is requested */
+  document.querySelectorAll('[data-marten], [data-marten-static]').forEach(function(host){
+    var svg = tpl.content.firstElementChild.cloneNode(true);
+    var isStatic = host.hasAttribute('data-marten-static');
+    var motion = host.getAttribute('data-motion');
+    var cp = svg.querySelector('.cp');
+    var tail = svg.querySelector('.tail');
+    var id = 'rm-clip-' + (++uid);
+
+    if (motion === 'leap' || motion === 'trail') {
+      cp.id = id;
+      tail.setAttribute('clip-path', 'url(#' + id + ')');
+    } else {
+      svg.querySelector('defs').remove();       /* no wipe needed — keep the DOM clean */
+    }
+    if (motion) svg.setAttribute('data-motion', motion);
+    if (host.hasAttribute('data-noeye')) {
+      /* below 32px the counter fills in: drop it and keep the silhouette */
+      var b = svg.querySelector('.body');
+      b.setAttribute('d', b.getAttribute('d').split('ZM')[0] + 'Z');
+    }
+
+    if (isStatic) {
+      /* inline into an existing <g> inside a diagram */
+      while (svg.firstChild) {
+        if (svg.firstChild.tagName === 'defs') { svg.removeChild(svg.firstChild); continue; }
+        host.appendChild(svg.firstChild);
+      }
+    } else {
+      svg.style.cssText = 'display:block;width:100%;height:auto';
+      host.className = (host.className + ' ' + svg.getAttribute('class')).trim();
+      svg.setAttribute('class', host.className);
+      host.appendChild(svg);
+      host.removeAttribute('class');
+    }
+  });
+
+  /* Replay one-shot animations */
+  document.querySelectorAll('.replay').forEach(function(b){
+    b.addEventListener('click', function(){
+      var host = document.getElementById(b.dataset.target);
+      if (!host) return;
+      var svg = host.tagName === 'svg' ? host : host.querySelector('svg');
+      if (!svg) return;
+      svg.removeAttribute('data-motion');
+      void svg.getBoundingClientRect();
+      svg.setAttribute('data-motion', 'leap');
+    });
+  });
+
+  /* Theme cycle: system → light → dark */
+  var modes = ['system','light','dark'];
+  var labels = {system:'Theme · System', light:'Theme · Light', dark:'Theme · Dark'};
+  var i = 0;
+  var btn = document.getElementById('themeToggle');
+  var lbl = document.getElementById('themeLabel');
+  btn.addEventListener('click', function(){
+    i = (i + 1) % modes.length;
+    var m = modes[i];
+    if (m === 'system') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', m);
+    lbl.textContent = labels[m];
+  });
+
+  /* Rail active-section highlight */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      links.forEach(function(a){
+        var on = a.getAttribute('href') === '#' + e.target.id;
+        a.style.background = on ? 'var(--accent-soft)' : '';
+        a.style.color = on ? 'var(--fg)' : '';
+      });
+    });
+  }, {rootMargin: '-20% 0px -70% 0px'});
+  document.querySelectorAll('section[id]').forEach(function(s){ obs.observe(s); });
+})();
+</script>
