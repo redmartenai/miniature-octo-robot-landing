@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red Marten — Your revenue team, running while you sleep</title>
+<meta name="description" content="Red Marten runs five things end to end: content, WhatsApp, email, LinkedIn and ads — from one brief to a booked meeting.">
+
+<!-- ===================================================================
+     Static page. No JavaScript at all, by design: every section below
+     is literal markup, so the file renders identically whether it is
+     opened from disk, served, or pasted into an editor. Nothing here
+     needs to be compiled, built or deployed to be viewed.
+     =================================================================== -->
+
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@600,500,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="auralis.css">
+</head>
+<body hidden>
+<noscript>This page needs JavaScript: its styles, behaviour and imagery load as separate files.</noscript>
+
+<!-- ============ FLOATING NAV — fixed, so it rides over every frame ============ -->
+<header class="topbar">
+  <nav class="navpill" aria-label="Primary">
+    <a class="brand" href="#top">
+      <span class="mk" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M42.62 25.32L85.63 25.50L91.00 26.94L94.05 28.37L98.53 31.42L101.76 34.64L103.91 37.69L105.34 40.38L106.95 45.22L107.49 48.80L107.49 52.20L106.95 55.97L105.70 59.91L104.27 62.78L102.29 65.65L97.99 69.95L94.41 72.28L92.26 73.17L92.08 73.53L110.00 94.68L82.94 94.68L66.81 77.11L63.76 74.96L60.18 73.89L57.67 74.25L56.06 75.14L54.80 76.40L54.09 78.01L53.91 94.68L34.73 94.68L34.73 93.24L35.45 90.38L37.24 87.51L38.85 85.90L43.51 82.31L53.01 73.53L56.42 71.02L60.36 68.87L65.91 66.90L73.44 66.00L77.03 64.57L80.97 62.06L85.81 60.45L92.62 60.45L96.20 61.88L98.17 63.32L98.17 61.70L96.74 58.84L95.30 57.40L93.15 56.15L89.75 55.43L81.51 55.43L83.66 53.28L86.34 51.67L89.21 50.77L91.72 50.41L98.53 50.23L101.04 48.80L102.47 47.01L98.35 43.78L95.48 40.73L94.41 40.02L91.00 38.58L86.88 38.05L84.55 36.25L82.22 35.18L81.33 36.43L81.33 39.48L77.74 41.27L72.19 45.57L68.60 47.90L63.76 50.23L54.62 53.64L50.86 55.61L46.74 58.66L44.23 61.16L42.97 62.96L42.62 62.96L42.62 25.32Z"/><path d="M41.00 65.29L41.18 65.47L34.91 75.14L32.22 78.55L27.74 83.03L21.83 87.33L13.41 91.99L10.00 94.68L10.36 90.38L12.33 84.82L14.84 80.88L18.42 76.94L22.72 73.53L26.31 71.38L34.01 67.80L41.00 65.29Z"/><path d="M90.82 43.06L92.26 43.06L94.23 44.68L91.36 44.68L89.75 43.24L90.82 43.06Z"/></svg></span>
+      Red&nbsp;Marten
+    </a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#services">Workflows</a></li>
+<!--       <li><a href="#how">How it works</a></li> -->
+      <li><a href="#results">Results</a></li>
+<!--       <li><a href="#pricing">Pricing</a></li> -->
+      <!-- Blogs has no section on this page — point at the real route when it exists -->
+      <li><a href="/blogs">Blogs</a></li>
+    </ul>
+    <button class="navtoggle" type="button" id="navtoggle" aria-expanded="false"
+            aria-controls="navlinks" aria-label="Menu"><i></i><i></i></button>
+    <div class="navcta">
+      <button class="nav-solid" type="button" data-connect="intro">Meet MARA</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ============ 1 · HERO (frame 1) ============ -->
+<header class="hero" id="top">
+  <span class="hero-bg-fallback" aria-hidden="true"></span>
+  <span class="shine" aria-hidden="true"></span>
+  <span class="glowpt" aria-hidden="true"></span>
+  <div class="hero-body">
+    <h1>Your revenue team,<span class="em">running while you sleep</span></h1>
+    <p class="sub">Red Marten finds the accounts, scores the intent, writes the outreach, makes the calls and keeps the CRM clean — then tells you the three decisions that actually need a human.</p>
+    <div class="hero-cta">
+      <button class="pill pill-light" type="button" data-connect="signup">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
+    </div>
+    <p class="fine">Five services &middot; one approval step &middot; the CRM kept current</p>
+  </div>
+</header>
+
+<!-- ============ TRUST ============ -->
+<section class="trust" aria-label="Customers">
+  <div class="wrap">
+    <p class="tlbl">Trusted by revenue teams at</p>
+    <ul class="tlogos">
+      <li>Northwind Logistics</li><li>Kestrel Analytics</li><li>Brightpath Health</li>
+      <li>Halden Systems</li><li>Corvus Payments</li><li>Vantage Freight</li><li>Harbourline Ports</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ WHAT HAPPENED WHILE YOU SLEPT ============ -->
+<section class="slept" id="slept">
+  <span class="slept-photo" aria-hidden="true"></span>
+  <span class="slept-dawn" aria-hidden="true"></span>
+  <span class="slept-veil" aria-hidden="true"></span>
+  <span class="slept-warm" aria-hidden="true"></span>
+  <div class="wrap slept-in">
+    <span class="slept-eyebrow">Last night &middot; unattended</span>
+    <h2>What happened <span class="em">while you slept</span></h2>
+    <div class="nrun" aria-hidden="true">
+      <span class="nrun-state"><span class="nrun-dot"></span><span class="nrun-word">Run complete</span></span>
+      <span class="nrun-track"><span class="nrun-fill"></span></span>
+      <span class="nrun-count"><span class="nrun-n">6</span>/6</span>
+    </div>
+    <ol class="nightline">
+        <li style="--i:0" data-dur="900">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Campaign performance analyzed</span>
+          <span class="na">Ads Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:1" data-dur="640">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">32 new accounts identified</span>
+          <span class="na">Growth Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:2" data-dur="1080">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Personalized outreach launched</span>
+          <span class="na">Outbound Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:3" data-dur="560">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">CRM records updated</span>
+          <span class="na">CRM Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:4" data-dur="780">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Forecast generated</span>
+          <span class="na">Finance Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:5" data-dur="720">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Executive summary prepared</span>
+          <span class="na">Reporting Agent</span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+    </ol>
+    <p class="slept-close">You were offline.<br><span class="em">Your business wasn&rsquo;t.</span></p>
+  </div>
+</section>
+
+<!-- ============ 2 · SERVICES (frame 2) ============
+     Five cards, one per service. Each card's photo is its own file:
+       assets/card-1.jpg  Content automation
+       assets/card-2.jpg  WhatsApp outreach
+       assets/card-3.jpg  Email outreach & retargeting
+       assets/card-4.jpg  LinkedIn outreach
+       assets/card-5.jpg  LinkedIn & Meta ads
+     Swap those five files to redesign the cards; no markup change needed. -->
+<section class="sec" id="services" style="padding-top:clamp(22px,min(5vw,4.4vh),72px)">
+  <div class="wrap">
+    <div class="shead">
+      <span class="chip"><i>&#10011;</i> Autonomous workflows</span>
+      <h2>Five things we run,<br><span class="em">end to end</span></h2>
+      <p>One brief in, meetings out. Every channel is run, watched and written back to the CRM without you touching any of it.</p>
+    </div>
+
+    <div class="bento">
+      <article class="bc bc--a is-photo">
+        <span class="bc-art" style="background-image:url('assets/card-content.jpg')" aria-hidden="true"></span>
+        <span class="bc-veil" aria-hidden="true"></span>
+        <div class="bc-in">
+          <span class="bc-lbl">Content</span>
+          <h3>Content automation</h3>
+          <p>Writes the content. Ships it on schedule.</p>
+          <span class="bc-meta">7 platforms · 1 day setup</span>
+        </div>
+      </article>
+      <article class="bc bc--b is-photo">
+        <span class="bc-art" style="background-image:url('assets/card-whatsapp.jpg')" aria-hidden="true"></span>
+        <span class="bc-veil" aria-hidden="true"></span>
+        <div class="bc-in">
+          <span class="bc-lbl">WhatsApp</span>
+          <h3>WhatsApp outreach</h3>
+          <p>Opens the conversation. Replies in your voice.</p>
+          <span class="bc-meta">Realtime · 1 hour setup</span>
+        </div>
+      </article>
+      <article class="bc bc--c is-photo">
+        <span class="bc-art" style="background-image:url('assets/card-email.jpg')" aria-hidden="true"></span>
+        <span class="bc-veil" aria-hidden="true"></span>
+        <div class="bc-in">
+          <span class="bc-lbl">Email</span>
+          <h3>Email outreach &amp; retargeting</h3>
+          <p>Sequences the email. Retargets everyone who ignored it.</p>
+          <span class="bc-meta">One prompt · 30 min setup</span>
+        </div>
+      </article>
+      <article class="bc bc--d is-paper">
+        <div class="bc-in">
+          <span class="bc-lbl">LinkedIn</span>
+          <h3>LinkedIn outreach</h3>
+          <p>Finds them on LinkedIn. Books the meeting there too.</p>
+          <span class="bc-meta">One prompt · 10 min setup</span>
+        </div>
+      </article>
+      <article class="bc bc--e is-photo">
+        <span class="bc-art" style="background-image:url('assets/card-5.jpg')" aria-hidden="true"></span>
+        <span class="bc-veil" aria-hidden="true"></span>
+        <div class="bc-in">
+          <span class="bc-lbl">Ads</span>
+          <h3>LinkedIn &amp; Meta ads</h3>
+          <p>Turns the pain point into the ad. And the ad into a meeting.</p>
+          <span class="bc-meta">LinkedIn · Meta</span>
+        </div>
+      </article>
+    </div>
+
+<!--     <div style="text-align:center"><a class="pill pill-dark" href="#how">See how it works <span class="bdg" aria-hidden="true">&#8599;</span></a></div> -->
+  </div>
+</section>
+
+<!-- ============ 3 · HOW IT WORKS (card fan on animated ocean) ============ -->
+<!-- DISABLED HOW IT WORKS section — commented out on request, not deleted
+<section class="sec" id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <span class="chip"><i>&#9673;</i> How it works</span>
+      <h2>From the brief to <span class="em">the booked meeting</span></h2>
+      <p>Pick a service to open it. Your inputs go in, the work runs in order, and the only stop is the one decision that needs you.</p>
+    </div>
+
+    <div class="oceanwrap">
+      <span class="ocean-base" aria-hidden="true"></span>
+      <span class="ocean-photo" aria-hidden="true"></span>
+      <span class="ripple" aria-hidden="true"><i></i></span>
+      <span class="swash" aria-hidden="true"><i></i></span>
+      <svg class="fx-defs" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+        <filter id="waterFx" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.020 0.046" numOctaves="2" seed="7" result="n">
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="n" xChannelSelector="R" yChannelSelector="G" scale="7">
+            <animate attributeName="scale" dur="9s" repeatCount="indefinite"
+                     calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                     values="4;10;4"/>
+          </feDisplacementMap>
+        </filter>
+        <filter id="swashFx" x="-15%" y="-15%" width="130%" height="130%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.034 0.072" numOctaves="2" seed="19" result="n2">
+          </feTurbulence>
+          <feDisplacementMap in="SourceGraphic" in2="n2" xChannelSelector="R" yChannelSelector="G" scale="12">
+            <animate attributeName="scale" dur="5s" repeatCount="indefinite"
+                     calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1"
+                     values="7;16;7"/>
+          </feDisplacementMap>
+        </filter>
+      </svg>
+      <span class="ocean-dim" aria-hidden="true"></span>
+
+      <div class="fan" id="fan">
+        <button class="fcard" type="button" data-fan="0" aria-label="Content automation">
+          <div class="fcard-img" style="background:linear-gradient(150deg,#F6C87A,#E0813A 46%,#8E3F1B)"><span>Content</span></div>
+          <div class="fcard-body">
+            <h3>Content automation</h3>
+            <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/content</p>
+            <div class="fstats"><div><span>Steps</span><b>5</b></div><div><span>Setup</span><b>1 day</b></div><div><span>Platforms</span><b>7</b></div></div>
+            <div class="fsteps">
+              <ol>
+              <li><b>Take your inputs</b></li>
+              <li><b>Add the keywords</b></li>
+              <li><b>Apply your brand guidelines</b></li>
+              <li><b>Match your tone</b></li>
+              <li><b>Generate and sanitise images</b></li>
+              </ol>
+            </div>
+          </div>
+        </button>
+        <button class="fcard" type="button" data-fan="1" aria-label="WhatsApp outreach">
+          <div class="fcard-img" style="background:linear-gradient(150deg,#8FE3B4,#25A06B 48%,#0C4A38)"><span>WhatsApp</span></div>
+          <div class="fcard-body">
+            <h3>WhatsApp outreach</h3>
+            <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/whatsapp</p>
+            <div class="fstats"><div><span>Steps</span><b>5</b></div><div><span>Setup</span><b>1 hour</b></div><div><span>Reply</span><b>&lt;1 min</b></div></div>
+            <div class="fsteps">
+              <ol>
+              <li><b>Apply your brand guidelines</b></li>
+              <li><b>Build the creative</b></li>
+              <li><b>Send the messages</b></li>
+              <li><b>Monitor in realtime</b></li>
+              <li><b>Retarget the quiet ones</b></li>
+              </ol>
+            </div>
+          </div>
+        </button>
+        <button class="fcard is-active" type="button" data-fan="2" aria-label="Email outreach &amp; retargeting">
+          <div class="fcard-img" style="background:linear-gradient(150deg,#A7C7F5,#3D6FC4 48%,#12275A)"><span>Email</span></div>
+          <div class="fcard-body">
+            <h3>Email outreach &amp; retargeting</h3>
+            <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/sequences</p>
+            <div class="fstats"><div><span>Steps</span><b>9</b></div><div><span>Setup</span><b>30 min</b></div><div><span>Follow-up</span><b>Auto</b></div></div>
+            <div class="fsteps">
+              <ol>
+              <li><b>Extract the leads</b></li>
+              <li><b>Personalise the content</b></li>
+              <li><b>Feed the CRM</b></li>
+              <li><b>Launch the outreach</b></li>
+              <li><b>Auto follow-up</b></li>
+              <li><b>Auto reply</b></li>
+              <li><b>Monitor in realtime</b></li>
+              <li><b>Retarget the quiet ones</b></li>
+              <li><b>Analytics</b></li>
+              </ol>
+            </div>
+          </div>
+        </button>
+        <button class="fcard" type="button" data-fan="3" aria-label="LinkedIn outreach">
+          <div class="fcard-img" style="background:linear-gradient(150deg,#C7B2F0,#6F45C8 48%,#2A1350)"><span>LinkedIn</span></div>
+          <div class="fcard-body">
+            <h3>LinkedIn outreach</h3>
+            <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/linkedin</p>
+            <div class="fstats"><div><span>Steps</span><b>6</b></div><div><span>Setup</span><b>10 min</b></div><div><span>Booking</span><b>In-thread</b></div></div>
+            <div class="fsteps">
+              <ol>
+              <li><b>Extract the ICP</b></li>
+              <li><b>Get the leads</b></li>
+              <li><b>Run the outreach</b></li>
+              <li><b>Monitor in realtime</b></li>
+              <li><b>Retarget the quiet ones</b></li>
+              <li><b>Book the meeting</b></li>
+              </ol>
+            </div>
+          </div>
+        </button>
+        <button class="fcard" type="button" data-fan="4" aria-label="LinkedIn &amp; Meta ads">
+          <div class="fcard-img" style="background:linear-gradient(150deg,#F7A8B8,#D3405F 48%,#5A1024)"><span>Ads</span></div>
+          <div class="fcard-body">
+            <h3>LinkedIn &amp; Meta ads</h3>
+            <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/ads</p>
+            <div class="fstats"><div><span>Steps</span><b>4</b></div><div><span>Networks</span><b>2</b></div><div><span>Creative</span><b>Video</b></div></div>
+            <div class="fsteps">
+              <ol>
+              <li><b>Start from the pain point</b></li>
+              <li><b>Generate the creative</b></li>
+              <li><b>Read the analytics</b></li>
+              <li><b>Retarget the leads</b></li>
+              </ol>
+            </div>
+          </div>
+        </button>
+      </div>
+      <p class="fhint">Click any card to bring it forward</p>
+    </div>
+  </div>
+</section>
+<!-- /DISABLED HOW IT WORKS section -->
+
+<!-- ============ THE SYSTEM · workflow + agents, one frame ============ -->
+<section class="sec" id="system" style="padding-top:0">
+  <div class="wrap">
+    <div class="sys">
+      <span class="sys-ghost" aria-hidden="true">SYSTEM</span>
+
+      <header class="sys-head">
+        <div>
+          <span class="sys-chip"><i aria-hidden="true">&#9673;</i> Right now</span>
+          <h2>The system <span class="em">at work</span></h2>
+        </div>
+        <p>One workflow, running end to end, and the agents carrying it. Nothing here
+           was scheduled by a person &mdash; this is the board as it stands this minute.</p>
+      </header>
+
+      <div class="sys-grid">
+        <article class="cap cap--flow">
+          <div class="cap-in">
+            <span class="cap-lbl">One workflow</span>
+            <ol class="cap-chain">
+            <li><span>01</span>Lead arrives</li>
+            <li><span>02</span>Research</li>
+            <li><span>03</span>Qualification</li>
+            <li><span>04</span>CRM sync</li>
+            <li><span>05</span>Outreach</li>
+            <li><span>06</span>Meeting booked</li>
+            </ol>
+          </div>
+          <div class="cap-foot">
+            <div><b>42</b><span>Actions</span></div>
+            <div><b>7</b><span>Systems</span></div>
+            <div><b>0</b><span>Manual</span></div>
+          </div>
+        </article>
+
+        <article class="cap">
+          <div class="cap-top">
+            <span class="cap-dot" aria-hidden="true"></span>
+            <span class="cap-st">Active</span>
+          </div>
+          <div class="cap-in">
+            <b>Growth Agent</b>
+            <p>Ranking intent signals</p>
+          </div>
+        </article>
+        <article class="cap">
+          <div class="cap-top">
+            <span class="cap-dot" aria-hidden="true"></span>
+            <span class="cap-st">Processing</span>
+          </div>
+          <div class="cap-in">
+            <b>CRM Agent</b>
+            <p>Reconciling 512 records</p>
+          </div>
+        </article>
+        <article class="cap">
+          <div class="cap-top">
+            <span class="cap-dot" aria-hidden="true"></span>
+            <span class="cap-st">Generating forecast</span>
+          </div>
+          <div class="cap-in">
+            <b>Finance Agent</b>
+            <p>Q3 model, 84 invoices matched</p>
+          </div>
+        </article>
+        <article class="cap">
+          <div class="cap-top">
+            <span class="cap-dot" aria-hidden="true"></span>
+            <span class="cap-st">Launching sequence</span>
+          </div>
+          <div class="cap-in">
+            <b>Outbound Agent</b>
+            <p>312 messages queued</p>
+          </div>
+        </article>
+        <article class="cap">
+          <div class="cap-top">
+            <span class="cap-dot" aria-hidden="true"></span>
+            <span class="cap-st">Monitoring accounts</span>
+          </div>
+          <div class="cap-in">
+            <b>Customer Success Agent</b>
+            <p>2 renewals flagged</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4 · RESULTS (mosaic) ============ -->
+<section class="sec" id="results" style="padding-top:0">
+  <div class="wrap">
+    <div class="gal">
+      <span class="gal-stage" aria-hidden="true">
+        <span class="gal-photo"></span>
+        <svg class="gal-run" viewBox="0 0 1665 944" preserveAspectRatio="xMidYMid slice"
+             xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="runSpark">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/>
+              <stop offset=".3" stop-color="#FFE3AC" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#FFC978" stop-opacity="0"/>
+            </radialGradient>
+            <path id="runPath" d="M20.0 761.0C26.7 760.0 47.3 757.0 60.0 755.0C72.7 753.0 84.0 751.0 96.0 749.0C108.0 747.0 120.0 745.3 132.0 743.0C144.0 740.7 156.0 737.7 168.0 735.0C180.0 732.3 192.0 730.0 204.0 727.0C216.0 724.0 228.0 720.7 240.0 717.0C252.0 713.3 264.0 709.3 276.0 705.0C288.0 700.7 300.0 696.3 312.0 691.0C324.0 685.7 336.0 679.7 348.0 673.0C360.0 666.3 372.0 659.8 384.0 651.0C396.0 642.2 408.0 631.8 420.0 620.0C432.0 608.2 444.0 593.8 456.0 580.0C468.0 566.2 480.0 548.2 492.0 537.0C504.0 525.8 516.0 522.5 528.0 513.0C540.0 503.5 552.0 488.3 564.0 480.0C576.0 471.7 588.0 467.8 600.0 463.0C612.0 458.2 624.0 454.5 636.0 451.0C648.0 447.5 660.0 444.5 672.0 442.0C684.0 439.5 694.7 437.5 708.0 436.0C721.3 434.5 735.3 433.5 752.0 433.0C768.7 432.5 788.7 432.5 808.0 433.0C827.3 433.5 852.0 435.5 868.0 436.0C884.0 436.5 892.0 436.3 904.0 436.0C916.0 435.7 928.0 435.5 940.0 434.0C952.0 432.5 964.0 430.2 976.0 427.0C988.0 423.8 1000.0 420.0 1012.0 415.0C1024.0 410.0 1034.0 403.3 1048.0 397.0C1062.0 390.7 1079.0 384.5 1096.0 377.0C1113.0 369.5 1134.3 358.5 1150.0 352.0C1165.7 345.5 1179.3 342.3 1190.0 338.0C1200.7 333.7 1208.3 330.3 1214.0 326.0C1219.7 321.7 1223.3 317.0 1224.0 312.0C1224.7 307.0 1222.7 300.5 1218.0 296.0C1213.3 291.5 1205.7 287.3 1196.0 285.0C1186.3 282.7 1172.0 283.2 1160.0 282.0C1148.0 280.8 1134.0 280.2 1124.0 278.0C1114.0 275.8 1106.3 272.5 1100.0 269.0C1093.7 265.5 1087.7 261.2 1086.0 257.0C1084.3 252.8 1087.5 247.7 1090.0 244.0C1092.5 240.3 1100.0 238.3 1101.0 235.0C1102.0 231.7 1097.8 226.7 1096.0 224.0C1094.2 221.3 1091.0 219.8 1090.0 219.0"/>
+          </defs>
+          <use class="gal-trace" href="#runPath" xlink:href="#runPath"/>
+        <circle class="spark glow" r="34"><animateMotion dur="13s" begin="-4s" repeatCount="indefinite" rotate="auto"><mpath href="#runPath" xlink:href="#runPath"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.07;.88;1" dur="13s" begin="-4s" repeatCount="indefinite"/></circle>
+        <circle class="spark head" r="6.5"><animateMotion dur="13s" begin="-4s" repeatCount="indefinite" rotate="auto"><mpath href="#runPath" xlink:href="#runPath"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.07;.88;1" dur="13s" begin="-4s" repeatCount="indefinite"/></circle>
+        <circle class="spark tail a" r="4.6"><animateMotion dur="13s" begin="-3.82s" repeatCount="indefinite" rotate="auto"><mpath href="#runPath" xlink:href="#runPath"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.07;.88;1" dur="13s" begin="-3.82s" repeatCount="indefinite"/></circle>
+        <circle class="spark tail b" r="3"><animateMotion dur="13s" begin="-3.66s" repeatCount="indefinite" rotate="auto"><mpath href="#runPath" xlink:href="#runPath"/></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.07;.88;1" dur="13s" begin="-3.66s" repeatCount="indefinite"/></circle>
+        </svg>
+      </span>
+      <span class="gal-cloud c1" aria-hidden="true"></span>
+      <span class="gal-cloud c2" aria-hidden="true"></span>
+      <span class="gal-sun" aria-hidden="true"></span>
+      <span class="gal-veil" aria-hidden="true"></span>
+      <div class="figures">
+        <div><b>11M+</b><span>Leads processed</span></div>
+        <div><b>430K+</b><span>Meetings booked</span></div>
+        <div><b>97%</b><span>CRM accuracy</span></div>
+        <div><b>$148M+</b><span>Pipeline generated</span></div>
+      </div>
+
+      <div class="gal-head">
+        <div>
+          <span class="pillbl">What comes out</span>
+          <h2>Every run ends<br>in something booked</h2>
+        </div>
+        <p>Not a lead handed back to you, not a row in a spreadsheet. A meeting, on a calendar, with the CRM already written back.</p>
+      </div>
+      <div class="mosaic">
+      <article class="tile">
+        <span class="tile-art" style="background:linear-gradient(135deg,#F3B45C,#C86A28 46%,#5E2C10)" aria-hidden="true"></span>
+        <span class="tile-veil" aria-hidden="true"></span>
+        <div class="tile-cnt">
+          <span class="lbl">Content</span>
+          <h3>One approval</h3>
+          <p>The only human step. Send a note instead and it is rewritten and comes straight back to you.</p>
+        </div>
+      </article>
+      <article class="tile">
+        <span class="tile-art" style="background:linear-gradient(135deg,#7FDCA9,#1E9A66 48%,#0A4230)" aria-hidden="true"></span>
+        <span class="tile-veil" aria-hidden="true"></span>
+        <div class="tile-cnt">
+          <span class="lbl">WhatsApp</span>
+          <h3>Booked in-thread</h3>
+          <p>Answered in under a minute, at any hour, in the thread they already trust — not handed back to you as a lead.</p>
+        </div>
+      </article>
+      <article class="tile">
+        <span class="tile-art" style="background:linear-gradient(135deg,#9EC0F2,#3767BE 48%,#132A57)" aria-hidden="true"></span>
+        <span class="tile-veil" aria-hidden="true"></span>
+        <div class="tile-cnt">
+          <span class="lbl">Email</span>
+          <h3>Booked automatically</h3>
+          <p>Nobody gets written off: non-openers become an audience, not a dead row.</p>
+        </div>
+      </article>
+      <article class="tile">
+        <span class="tile-art" style="background:linear-gradient(135deg,#C3ADEE,#6740C2 48%,#26124A)" aria-hidden="true"></span>
+        <span class="tile-veil" aria-hidden="true"></span>
+        <div class="tile-cnt">
+          <span class="lbl">LinkedIn</span>
+          <h3>CRM kept current</h3>
+          <p>Written back at every step, not at the end — so the pipeline is true when you look at it.</p>
+        </div>
+      </article>
+      <article class="tile">
+        <span class="tile-art" style="background:linear-gradient(135deg,#F5A0B2,#CB3A59 48%,#530E21)" aria-hidden="true"></span>
+        <span class="tile-veil" aria-hidden="true"></span>
+        <div class="tile-cnt">
+          <span class="lbl">Ads</span>
+          <h3>Booked from an ad</h3>
+          <p>Creative built from what your buyers complain about, carried through to a meeting — not a form fill.</p>
+        </div>
+      </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT FOR ============ -->
+<section class="sec" id="built" style="padding-top:0">
+  <div class="wrap">
+    <div class="built">
+      <h2>Built for <span class="em">modern revenue teams.</span></h2>
+      <p>Whether you are running outbound sales, paid acquisition, customer success, finance
+         operations or CRM management, Red Marten deploys workflows that keep moving the business
+         forward long after your team signs off for the day.</p>
+    </div>
+    <ul class="cats"><li>Paid Media Workflows</li><li>Outbound Sales Workflows</li><li>Inbound Lead Workflows</li><li>CRM Automation</li><li>Revenue Operations</li><li>Finance Automation</li><li>Customer Success Automation</li><li>Reporting &amp; Analytics</li><li>Lead Enrichment</li><li>Prospect Research</li><li>Meeting Booking</li><li>Follow-up Automation</li><li>Account-Based Marketing</li><li>Lifecycle Marketing</li><li>E-commerce Automation</li><li>Support Automation</li><li>Internal Operations</li><li>Executive Reporting</li><li>Forecasting &amp; Planning</li><li>AI Agent Orchestration</li></ul>
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="sec phil" id="philosophy" style="padding-top:0">
+  <div class="wrap">
+    <h2>Technology should <span class="em">disappear.</span></h2>
+    <p>The best systems do not demand attention. They quietly move work forward,
+       surface what matters, and stay out of the way.</p>
+    <p class="phil-sign">That is Red Marten.</p>
+  </div>
+</section>
+
+<!-- ============ 5 · PRICING ============ -->
+<!-- DISABLED PRICING section — commented out on request, not deleted
+<section class="sec" id="pricing" style="padding-top:0">
+  <div class="wrap">
+    <div class="shead">
+      <h2>Pay for work done, <span class="em">not seats parked</span></h2>
+      <p>Every plan includes the full product. Credits meter the actual work, so a quiet month costs less.</p>
+    </div>
+    <div class="planwrap" id="planwrap">
+      <div class="plan-nav" role="tablist" aria-label="Pricing plans"><button type="button" data-go="0" aria-current="true" aria-label="Plan 1"><i></i></button><button type="button" data-go="1" aria-current="false" aria-label="Plan 2"><i></i></button><button type="button" data-go="2" aria-current="false" aria-label="Plan 3"><i></i></button><button type="button" data-go="3" aria-current="false" aria-label="Plan 4"><i></i></button></div>
+      <article class="plan is-on" data-plan="0" aria-label="Free plan">
+        <span class="plan-art" style="background-image:url('assets/plan-1.jpg')" aria-hidden="true"></span>
+        <span class="plan-veil" aria-hidden="true"></span>
+        <div class="plan-head">
+          <h2>Free<em>plan</em></h2>
+          <p>Everything runs on one graph. Start on the free tier and keep the same workflows as you grow.</p>
+        </div>
+        <div class="plan-card">
+          <div class="addon">
+            <b>Bill annually?</b>
+            <p>The same product paid yearly. Credits, seats and services all stay exactly as they are.</p>
+            <div class="addon-foot">
+              <span class="delta">&minus;20%</span>
+              <button class="tog" type="button" data-annual aria-pressed="false" aria-label="Bill annually"></button>
+            </div>
+          </div>
+          <div class="plan-mid">
+            <div class="plan-amt"><b data-m="$0" data-y="$0">$0</b><small>/month</small></div>
+            <div class="plan-foot">
+              <span class="k">Seats</span><span class="v">1</span>
+              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+            </div>
+          </div>
+          <ul class="plan-feats">
+            <li><i aria-hidden="true">&#10003;</i>1,000 credits monthly</li>
+            <li><i aria-hidden="true">&#10003;</i>1 seat, 1 service</li>
+            <li><i aria-hidden="true">&#10003;</i>Content automation only</li>
+          </ul>
+        </div>
+      </article>
+      <article class="plan" data-plan="1" aria-label="Starter plan" aria-hidden="true">
+        <span class="plan-art" style="background-image:url('assets/plan-2.jpg')" aria-hidden="true"></span>
+        <span class="plan-veil" aria-hidden="true"></span>
+        <div class="plan-head">
+          <h2>Starter<em>plan</em></h2>
+          <p>Three services running end to end, with the CRM written back at every step.</p>
+        </div>
+        <div class="plan-card">
+          <div class="addon">
+            <b>Bill annually?</b>
+            <p>The same product paid yearly. Credits, seats and services all stay exactly as they are.</p>
+            <div class="addon-foot">
+              <span class="delta">&minus;20%</span>
+              <button class="tog" type="button" data-annual aria-pressed="false" aria-label="Bill annually"></button>
+            </div>
+          </div>
+          <div class="plan-mid">
+            <div class="plan-amt"><b data-m="$79" data-y="$63">$79</b><small>/month</small></div>
+            <div class="plan-foot">
+              <span class="k">Seats</span><span class="v">3</span>
+              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+            </div>
+          </div>
+          <ul class="plan-feats">
+            <li><i aria-hidden="true">&#10003;</i>25,000 credits monthly</li>
+            <li><i aria-hidden="true">&#10003;</i>3 seats, 3 services</li>
+            <li><i aria-hidden="true">&#10003;</i>Content, email and LinkedIn</li>
+            <li><i aria-hidden="true">&#10003;</i>Email support</li>
+          </ul>
+        </div>
+      </article>
+      <article class="plan" data-plan="2" aria-label="Growth plan" aria-hidden="true">
+        <span class="plan-art" style="background-image:url('assets/plan-3.jpg')" aria-hidden="true"></span>
+        <span class="plan-veil" aria-hidden="true"></span>
+        <div class="plan-head">
+          <h2>Growth<em>plan</em></h2>
+          <p>All five services, every channel fed from one brief, one approval before anything ships.</p>
+        </div>
+        <div class="plan-card">
+          <div class="addon">
+            <b>Bill annually?</b>
+            <p>The same product paid yearly. Credits, seats and services all stay exactly as they are.</p>
+            <div class="addon-foot">
+              <span class="delta">&minus;20%</span>
+              <button class="tog" type="button" data-annual aria-pressed="false" aria-label="Bill annually"></button>
+            </div>
+          </div>
+          <div class="plan-mid">
+            <div class="plan-amt"><b data-m="$349" data-y="$279">$349</b><small>/month</small></div>
+            <div class="plan-foot">
+              <span class="k">Seats</span><span class="v">10</span>
+              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+            </div>
+          </div>
+          <ul class="plan-feats">
+            <li><i aria-hidden="true">&#10003;</i>150,000 credits monthly</li>
+            <li><i aria-hidden="true">&#10003;</i>10 seats, all five services</li>
+            <li><i aria-hidden="true">&#10003;</i>WhatsApp and ads included</li>
+            <li><i aria-hidden="true">&#10003;</i>API and webhooks</li>
+            <li><i aria-hidden="true">&#10003;</i>Priority support</li>
+          </ul>
+        </div>
+      </article>
+      <article class="plan" data-plan="3" aria-label="Enterprise plan" aria-hidden="true">
+        <span class="plan-art" style="background-image:url('assets/plan-4.jpg')" aria-hidden="true"></span>
+        <span class="plan-veil" aria-hidden="true"></span>
+        <div class="plan-head">
+          <h2>Enterprise<em>plan</em></h2>
+          <p>Your data residency, your controls, and an engineer who knows your account.</p>
+        </div>
+        <div class="plan-card">
+          <div class="addon">
+            <b>Bill annually?</b>
+            <p>The same product paid yearly. Credits, seats and services all stay exactly as they are.</p>
+            <div class="addon-foot">
+              <span class="delta">&minus;20%</span>
+              <button class="tog" type="button" data-annual aria-pressed="false" aria-label="Bill annually"></button>
+            </div>
+          </div>
+          <div class="plan-mid">
+            <div class="plan-amt"><b>Custom</b></div>
+            <div class="plan-foot">
+              <span class="k">Seats</span><span class="v">Unlimited</span>
+              <button class="plan-cta" type="button" data-connect="demo">Talk to sales <i aria-hidden="true">&#8599;</i></button>
+            </div>
+          </div>
+          <ul class="plan-feats">
+            <li><i aria-hidden="true">&#10003;</i>Custom credit pool</li>
+            <li><i aria-hidden="true">&#10003;</i>Unlimited seats</li>
+            <li><i aria-hidden="true">&#10003;</i>EU or US data residency</li>
+            <li><i aria-hidden="true">&#10003;</i>SSO, SCIM, audit logs</li>
+            <li><i aria-hidden="true">&#10003;</i>Named solutions engineer</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <p class="pfine">Credits cover enrichment, model calls, messages and ad creative. Unused credits roll over one month.</p>
+  </div>
+</section>
+<!-- /DISABLED PRICING section -->
+
+<!-- ============ 6 · FINAL CTA ============ -->
+<section class="final">
+  <span class="final-photo" aria-hidden="true"></span>
+  <span class="fog g1" aria-hidden="true"></span>
+  <span class="fog g2" aria-hidden="true"></span>
+  <span class="fog g3" aria-hidden="true"></span>
+  <span class="final-dim" aria-hidden="true"></span>
+  <span class="final-glow" aria-hidden="true"></span>
+  <div class="final-inner">
+    <h2>Start with <span class="em">one service</span></h2>
+    <p>Give it a brief, approve the first run, and watch one channel go out end to end. Most teams have something live before the end of the first day.</p>
+    <div class="final-cta">
+      <button class="pill pill-light" type="button" data-connect="signup">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div class="foot">
+    <span class="fbrand">
+      <span class="mk" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M42.62 25.32L85.63 25.50L91.00 26.94L94.05 28.37L98.53 31.42L101.76 34.64L103.91 37.69L105.34 40.38L106.95 45.22L107.49 48.80L107.49 52.20L106.95 55.97L105.70 59.91L104.27 62.78L102.29 65.65L97.99 69.95L94.41 72.28L92.26 73.17L92.08 73.53L110.00 94.68L82.94 94.68L66.81 77.11L63.76 74.96L60.18 73.89L57.67 74.25L56.06 75.14L54.80 76.40L54.09 78.01L53.91 94.68L34.73 94.68L34.73 93.24L35.45 90.38L37.24 87.51L38.85 85.90L43.51 82.31L53.01 73.53L56.42 71.02L60.36 68.87L65.91 66.90L73.44 66.00L77.03 64.57L80.97 62.06L85.81 60.45L92.62 60.45L96.20 61.88L98.17 63.32L98.17 61.70L96.74 58.84L95.30 57.40L93.15 56.15L89.75 55.43L81.51 55.43L83.66 53.28L86.34 51.67L89.21 50.77L91.72 50.41L98.53 50.23L101.04 48.80L102.47 47.01L98.35 43.78L95.48 40.73L94.41 40.02L91.00 38.58L86.88 38.05L84.55 36.25L82.22 35.18L81.33 36.43L81.33 39.48L77.74 41.27L72.19 45.57L68.60 47.90L63.76 50.23L54.62 53.64L50.86 55.61L46.74 58.66L44.23 61.16L42.97 62.96L42.62 62.96L42.62 25.32Z"/><path d="M41.00 65.29L41.18 65.47L34.91 75.14L32.22 78.55L27.74 83.03L21.83 87.33L13.41 91.99L10.00 94.68L10.36 90.38L12.33 84.82L14.84 80.88L18.42 76.94L22.72 73.53L26.31 71.38L34.01 67.80L41.00 65.29Z"/><path d="M90.82 43.06L92.26 43.06L94.23 44.68L91.36 44.68L89.75 43.24L90.82 43.06Z"/></svg></span>
+      Red&nbsp;Marten
+    </span>
+    <span class="sp"></span>
+    <!-- <a href="#pricing">Pricing</a> --><a href="#services">Workflows</a><!-- <a href="#how">How it works</a> --><a href="/blogs">Blogs</a>
+    <span>&copy; 2026 Red Marten Pvt Ltd</span>
+  </div>
+</footer>
+
+
+<!-- ============ CONNECT WITH MARTEN ============ -->
+<div class="connect" id="connect" role="dialog" aria-modal="true" aria-labelledby="cheading" hidden>
+  <div class="cpanel">
+    <div class="ctop">
+      <span class="mk" aria-hidden="true"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M42.62 25.32L85.63 25.50L91.00 26.94L94.05 28.37L98.53 31.42L101.76 34.64L103.91 37.69L105.34 40.38L106.95 45.22L107.49 48.80L107.49 52.20L106.95 55.97L105.70 59.91L104.27 62.78L102.29 65.65L97.99 69.95L94.41 72.28L92.26 73.17L92.08 73.53L110.00 94.68L82.94 94.68L66.81 77.11L63.76 74.96L60.18 73.89L57.67 74.25L56.06 75.14L54.80 76.40L54.09 78.01L53.91 94.68L34.73 94.68L34.73 93.24L35.45 90.38L37.24 87.51L38.85 85.90L43.51 82.31L53.01 73.53L56.42 71.02L60.36 68.87L65.91 66.90L73.44 66.00L77.03 64.57L80.97 62.06L85.81 60.45L92.62 60.45L96.20 61.88L98.17 63.32L98.17 61.70L96.74 58.84L95.30 57.40L93.15 56.15L89.75 55.43L81.51 55.43L83.66 53.28L86.34 51.67L89.21 50.77L91.72 50.41L98.53 50.23L101.04 48.80L102.47 47.01L98.35 43.78L95.48 40.73L94.41 40.02L91.00 38.58L86.88 38.05L84.55 36.25L82.22 35.18L81.33 36.43L81.33 39.48L77.74 41.27L72.19 45.57L68.60 47.90L63.76 50.23L54.62 53.64L50.86 55.61L46.74 58.66L44.23 61.16L42.97 62.96L42.62 62.96L42.62 25.32Z"/><path d="M41.00 65.29L41.18 65.47L34.91 75.14L32.22 78.55L27.74 83.03L21.83 87.33L13.41 91.99L10.00 94.68L10.36 90.38L12.33 84.82L14.84 80.88L18.42 76.94L22.72 73.53L26.31 71.38L34.01 67.80L41.00 65.29Z"/><path d="M90.82 43.06L92.26 43.06L94.23 44.68L91.36 44.68L89.75 43.24L90.82 43.06Z"/></svg></span>
+      <button class="cback" type="button" data-goto="menu">Back</button>
+      <button class="cclose" type="button" data-cclose aria-label="Close"><span class="cd" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="cx" aria-hidden="true">&#10005;</span></button>
+    </div>
+
+    <div class="cart" aria-hidden="true">
+      <span class="orb"></span>
+      <span class="pulse p1"></span>
+      <span class="pulse p2"></span>
+      <span class="pulse p3"></span>
+      <span class="cmark"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M42.62 25.32L85.63 25.50L91.00 26.94L94.05 28.37L98.53 31.42L101.76 34.64L103.91 37.69L105.34 40.38L106.95 45.22L107.49 48.80L107.49 52.20L106.95 55.97L105.70 59.91L104.27 62.78L102.29 65.65L97.99 69.95L94.41 72.28L92.26 73.17L92.08 73.53L110.00 94.68L82.94 94.68L66.81 77.11L63.76 74.96L60.18 73.89L57.67 74.25L56.06 75.14L54.80 76.40L54.09 78.01L53.91 94.68L34.73 94.68L34.73 93.24L35.45 90.38L37.24 87.51L38.85 85.90L43.51 82.31L53.01 73.53L56.42 71.02L60.36 68.87L65.91 66.90L73.44 66.00L77.03 64.57L80.97 62.06L85.81 60.45L92.62 60.45L96.20 61.88L98.17 63.32L98.17 61.70L96.74 58.84L95.30 57.40L93.15 56.15L89.75 55.43L81.51 55.43L83.66 53.28L86.34 51.67L89.21 50.77L91.72 50.41L98.53 50.23L101.04 48.80L102.47 47.01L98.35 43.78L95.48 40.73L94.41 40.02L91.00 38.58L86.88 38.05L84.55 36.25L82.22 35.18L81.33 36.43L81.33 39.48L77.74 41.27L72.19 45.57L68.60 47.90L63.76 50.23L54.62 53.64L50.86 55.61L46.74 58.66L44.23 61.16L42.97 62.96L42.62 62.96L42.62 25.32Z"/><path d="M41.00 65.29L41.18 65.47L34.91 75.14L32.22 78.55L27.74 83.03L21.83 87.33L13.41 91.99L10.00 94.68L10.36 90.38L12.33 84.82L14.84 80.88L18.42 76.94L22.72 73.53L26.31 71.38L34.01 67.80L41.00 65.29Z"/><path d="M90.82 43.06L92.26 43.06L94.23 44.68L91.36 44.68L89.75 43.24L90.82 43.06Z"/></svg></span>
+    </div>
+
+    <div class="cbody">
+      <div class="cstep on cintro" data-step="intro">
+        <span class="iname" id="cheading">Hi, I&rsquo;m MARA</span>
+        <span class="iline"><b>Short for Marten Autonomous Revenue Agent.</b></span>
+        <span class="iline"><b>I run five services end to end while you sleep.</b></span>
+        <div class="iskip icta">
+          <span class="ibar" aria-hidden="true"><i></i></span>
+          <button class="cbtn ghost" type="button" data-goto="menu">Continue</button>
+        </div>
+      </div>
+
+      <div class="cstep" data-step="menu">
+        <p class="cgreet">So &mdash; where would you like to start?</p>
+        <div class="cdots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+        <h2>What brings you here today?</h2>
+        <p class="clead">Five services, one approval step. Pick where you want to start.</p>
+        <div class="cbtns">
+          <button class="cbtn key" type="button" data-goto="signup">Sign up</button>
+          <button class="cbtn" type="button" data-goto="login">Log in</button>
+          <button class="cbtn ghost" type="button" data-goto="demo">Book a demo</button>
+        </div>
+      </div>
+
+      <div class="cstep" data-step="login">
+        <p class="cgreet">Welcome back.</p>
+        <div class="cdots" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i></div>
+        <h2>Log in to your pond</h2>
+        <p class="clead">Pick up where the agents left off.</p>
+        <form data-cform>
+          <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
+          <label class="cfield"><span>Password</span><input type="password" name="password" autocomplete="current-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required></label>
+          <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Log in</button></div>
+        </form>
+        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
+      </div>
+
+      <div class="cstep" data-step="signup">
+        <p class="cgreet">Free forever plan. No card required.</p>
+        <div class="cdots" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i></div>
+        <h2>Start free</h2>
+        <p class="clead">One workflow, running before the end of the first day.</p>
+        <form data-cform>
+          <div class="crow">
+            <label class="cfield"><span>Name</span><input type="text" name="name" autocomplete="name" placeholder="Alex Rivera" required></label>
+            <label class="cfield"><span>Company</span><input type="text" name="company" autocomplete="organization" placeholder="Northwind" required></label>
+          </div>
+          <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
+          <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Create account</button></div>
+        </form>
+        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
+      </div>
+
+      <div class="cstep" data-step="demo">
+        <p class="cgreet">Thirty minutes, your data, no slides.</p>
+        <div class="cdots" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i></div>
+        <h2>Book a demo</h2>
+        <p class="clead">We run one of the five services against your ICP live on the call.</p>
+        <form data-cform>
+          <div class="crow">
+            <label class="cfield"><span>Name</span><input type="text" name="name" autocomplete="name" placeholder="Alex Rivera" required></label>
+            <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
+          </div>
+          <label class="cfield"><span>Team size</span>
+            <select name="size">
+              <option>Founder-led, just me</option>
+              <option>2&ndash;10 in revenue</option>
+              <option>11&ndash;50 in revenue</option>
+              <option>50+ in revenue</option>
+            </select>
+          </label>
+          <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Book the demo</button></div>
+        </form>
+        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
+      </div>
+
+      <div class="cstep" data-step="done">
+        <div class="cok" aria-hidden="true">&#10003;</div>
+        <div class="cdots" aria-hidden="true"><i></i><i></i><i></i><i class="on"></i></div>
+        <h2>That would have gone through</h2>
+        <p class="clead">This is a front-end prototype, so nothing was sent and nothing was stored. Wire the form to your endpoint and this is the flow your users will see.</p>
+        <div class="cbtns"><button class="cbtn ghost" type="button" data-goto="menu">Back to start</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="auralis.js"></script>
+</body>
+</html>
