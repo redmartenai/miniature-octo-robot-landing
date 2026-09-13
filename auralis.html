@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Red Marten — Your revenue team, running while you sleep</title>
-<meta name="description" content="Red Marten runs five things end to end: content, WhatsApp, email, LinkedIn and ads — from one brief to a booked meeting.">
+<title>Red Marten: Your revenue team, running while you sleep</title>
+<meta name="description" content="Red Marten runs five things end to end: content, WhatsApp, email, LinkedIn and ads, from one brief to a booked meeting.">
 
 <!-- ===================================================================
      Static page. No JavaScript at all, by design: every section below
@@ -25,7 +25,7 @@
 <body hidden>
 <noscript>This page needs JavaScript: its styles, behaviour and imagery load as separate files.</noscript>
 
-<!-- ============ FLOATING NAV — fixed, so it rides over every frame ============ -->
+<!-- ============ FLOATING NAV: fixed, so it rides over every frame ============ -->
 <header class="topbar">
   <nav class="navpill" aria-label="Primary">
     <a class="brand" href="#top">
@@ -38,13 +38,14 @@
 <!--       <li><a href="#how">How it works</a></li> -->
       <li><a href="#results">Results</a></li>
 <!--       <li><a href="#pricing">Pricing</a></li> -->
-      <!-- Blogs has no section on this page — point at the real route when it exists -->
+      <!-- Blogs has no section on this page: point at the real route when it exists -->
       <li><a href="/blogs">Blogs</a></li>
     </ul>
     <button class="navtoggle" type="button" id="navtoggle" aria-expanded="false"
             aria-controls="navlinks" aria-label="Menu"><i></i><i></i></button>
     <div class="navcta">
-      <button class="nav-solid" type="button" data-connect="intro">Meet MARA</button>
+      <button class="nav-login" type="button" data-connect="login">Log in</button>
+      <button class="nav-solid" type="button" data-connect="intro" data-manual-intro>Meet MARA</button>
     </div>
   </nav>
 </header>
@@ -56,24 +57,20 @@
   <span class="glowpt" aria-hidden="true"></span>
   <div class="hero-body">
     <h1>Your revenue team,<span class="em">running while you sleep</span></h1>
-    <p class="sub">Red Marten finds the accounts, scores the intent, writes the outreach, makes the calls and keeps the CRM clean — then tells you the three decisions that actually need a human.</p>
+    <p class="sub">Red Marten finds the accounts, scores the intent, writes the outreach, makes the calls and keeps the CRM clean, then tells you the three decisions that actually need a human.</p>
     <div class="hero-cta">
-      <button class="pill pill-light" type="button" data-connect="signup">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
+      <button class="pill pill-light" type="button" data-connect="menu">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
     </div>
-    <p class="fine">Five services &middot; one approval step &middot; the CRM kept current</p>
   </div>
 </header>
 
-<!-- ============ TRUST ============ -->
-<section class="trust" aria-label="Customers">
+<div class="section-nav-band">
   <div class="wrap">
-    <p class="tlbl">Trusted by revenue teams at</p>
-    <ul class="tlogos">
-      <li>Northwind Logistics</li><li>Kestrel Analytics</li><li>Brightpath Health</li>
-      <li>Halden Systems</li><li>Corvus Payments</li><li>Vantage Freight</li><li>Harbourline Ports</li>
-    </ul>
+    <nav class="section-nav" aria-label="Section navigation">
+      <span>Last night &middot; unattended</span>
+    </nav>
   </div>
-</section>
+</div>
 
 <!-- ============ WHAT HAPPENED WHILE YOU SLEPT ============ -->
 <section class="slept" id="slept">
@@ -82,69 +79,82 @@
   <span class="slept-veil" aria-hidden="true"></span>
   <span class="slept-warm" aria-hidden="true"></span>
   <div class="wrap slept-in">
-    <span class="slept-eyebrow">Last night &middot; unattended</span>
     <h2>What happened <span class="em">while you slept</span></h2>
     <div class="nrun" aria-hidden="true">
       <span class="nrun-state"><span class="nrun-dot"></span><span class="nrun-word">Run complete</span></span>
       <span class="nrun-track"><span class="nrun-fill"></span></span>
-      <span class="nrun-count"><span class="nrun-n">6</span>/6</span>
+      <span class="nrun-count"><span class="nrun-n">5</span>/5</span>
     </div>
     <ol class="nightline">
-        <li style="--i:0" data-dur="900">
+        <li style="--i:0" data-dur="2000" data-sub="Reading last week&rsquo;s top performers|Drafting 9 posts in your brand voice|Matching each to its platform &middot; 7 channels|Queueing them for your 9am sign-off">
           <span class="ns" aria-hidden="true">
             <span class="ns-dot"></span>
             <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
           </span>
-          <span class="nl">Campaign performance analyzed</span>
+          <span class="nl">Content written and scheduled</span>
+          <span class="na">Content Agent</span>
+          <span class="nsub" aria-hidden="true"><span class="nsub-t"></span></span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:1" data-dur="1450" data-sub="Checking warm-up headroom &middot; 6 inboxes|Personalising 482 first-touch emails|Retargeting 96 opens that never replied">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Outreach emails personalised and sent</span>
+          <span class="na">Email Agent</span>
+          <span class="nsub" aria-hidden="true"><span class="nsub-t"></span></span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:2" data-dur="2150" data-sub="Checking daily invite limits &middot; 4 seats|Writing each note off the profile|Following up 54 accepted connections|Logging 12 replies for the morning">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">LinkedIn invites sent and followed up</span>
+          <span class="na">LinkedIn Agent</span>
+          <span class="nsub" aria-hidden="true"><span class="nsub-t"></span></span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:3" data-dur="1600" data-sub="Validating 64 numbers on WhatsApp|Sending approved templates &middot; 3 languages|Escalating 4 buying signals to you">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">WhatsApp conversations opened</span>
+          <span class="na">WhatsApp Agent</span>
+          <span class="nsub" aria-hidden="true"><span class="nsub-t"></span></span>
+          <span class="nprog" aria-hidden="true"></span>
+        </li>
+        <li style="--i:4" data-dur="1950" data-sub="Reading CPL against the 30-day baseline|Pausing 3 creatives below threshold|Shifting &pound;1,240 into what converts|Refreshing the retargeting audiences">
+          <span class="ns" aria-hidden="true">
+            <span class="ns-dot"></span>
+            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
+          </span>
+          <span class="nl">Ad spend rebalanced overnight</span>
           <span class="na">Ads Agent</span>
-          <span class="nprog" aria-hidden="true"></span>
-        </li>
-        <li style="--i:1" data-dur="640">
-          <span class="ns" aria-hidden="true">
-            <span class="ns-dot"></span>
-            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
-          </span>
-          <span class="nl">32 new accounts identified</span>
-          <span class="na">Growth Agent</span>
-          <span class="nprog" aria-hidden="true"></span>
-        </li>
-        <li style="--i:2" data-dur="1080">
-          <span class="ns" aria-hidden="true">
-            <span class="ns-dot"></span>
-            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
-          </span>
-          <span class="nl">Personalized outreach launched</span>
-          <span class="na">Outbound Agent</span>
-          <span class="nprog" aria-hidden="true"></span>
-        </li>
-        <li style="--i:3" data-dur="560">
-          <span class="ns" aria-hidden="true">
-            <span class="ns-dot"></span>
-            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
-          </span>
-          <span class="nl">CRM records updated</span>
-          <span class="na">CRM Agent</span>
-          <span class="nprog" aria-hidden="true"></span>
-        </li>
-        <li style="--i:4" data-dur="780">
-          <span class="ns" aria-hidden="true">
-            <span class="ns-dot"></span>
-            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
-          </span>
-          <span class="nl">Forecast generated</span>
-          <span class="na">Finance Agent</span>
-          <span class="nprog" aria-hidden="true"></span>
-        </li>
-        <li style="--i:5" data-dur="720">
-          <span class="ns" aria-hidden="true">
-            <span class="ns-dot"></span>
-            <svg class="ns-check" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg>
-          </span>
-          <span class="nl">Executive summary prepared</span>
-          <span class="na">Reporting Agent</span>
+          <span class="nsub" aria-hidden="true"><span class="nsub-t"></span></span>
           <span class="nprog" aria-hidden="true"></span>
         </li>
     </ol>
+
+    <!-- the work under the log: the five headline steps are what you read in
+         the morning, these are the jobs the agents keep running underneath
+         them. Text is swapped by JS from a pool; decorative, so aria-hidden. -->
+    <div class="nbg" aria-hidden="true">
+      <div class="nbg-hd">
+        <span class="nbg-orb"></span>
+        <span class="nbg-ttl">Also running underneath</span>
+        <span class="nbg-rule"></span>
+        <span class="nbg-n"><b class="nbg-live">18</b> workers &middot; <b class="nbg-ops">2,417</b> operations tonight</span>
+      </div>
+      <ul class="nbg-list">
+        <li style="--j:0"><span class="nbg-spin"></span><span class="nbg-t"></span></li>
+        <li style="--j:1"><span class="nbg-spin"></span><span class="nbg-t"></span></li>
+        <li style="--j:2"><span class="nbg-spin"></span><span class="nbg-t"></span></li>
+        <li style="--j:3"><span class="nbg-spin"></span><span class="nbg-t"></span></li>
+      </ul>
+    </div>
     <p class="slept-close">You were offline.<br><span class="em">Your business wasn&rsquo;t.</span></p>
   </div>
 </section>
@@ -172,7 +182,7 @@
         <div class="bc-in">
           <span class="bc-lbl">Content</span>
           <h3>Content automation</h3>
-          <p>Writes the content. Ships it on schedule.</p>
+          <p>Writes in your brand voice and tone. Schedules it, waits for your sign-off, then posts.</p>
           <span class="bc-meta">7 platforms · 1 day setup</span>
         </div>
       </article>
@@ -182,7 +192,7 @@
         <div class="bc-in">
           <span class="bc-lbl">WhatsApp</span>
           <h3>WhatsApp outreach</h3>
-          <p>Opens the conversation. Replies in your voice.</p>
+          <p>Guidelines in, creative built, messages sent, threads monitored, quiet ones retargeted. Meetings booked, not handed back to you.</p>
           <span class="bc-meta">Realtime · 1 hour setup</span>
         </div>
       </article>
@@ -192,7 +202,7 @@
         <div class="bc-in">
           <span class="bc-lbl">Email</span>
           <h3>Email outreach &amp; retargeting</h3>
-          <p>Sequences the email. Retargets everyone who ignored it.</p>
+          <p>Leads extracted, personalised, sequenced, followed up, replied to, monitored and retargeted. Meetings booked straight onto your calendar.</p>
           <span class="bc-meta">One prompt · 30 min setup</span>
         </div>
       </article>
@@ -200,7 +210,7 @@
         <div class="bc-in">
           <span class="bc-lbl">LinkedIn</span>
           <h3>LinkedIn outreach</h3>
-          <p>Finds them on LinkedIn. Books the meeting there too.</p>
+          <p>ICP extracted, leads matched, outreach sequenced, threads monitored, quiet ones retargeted, meetings booked in-thread, CRM kept current at every step.</p>
           <span class="bc-meta">One prompt · 10 min setup</span>
         </div>
       </article>
@@ -210,7 +220,7 @@
         <div class="bc-in">
           <span class="bc-lbl">Ads</span>
           <h3>LinkedIn &amp; Meta ads</h3>
-          <p>Turns the pain point into the ad. And the ad into a meeting.</p>
+          <p>Ads built straight from your buyers&rsquo; real pain points, tested by what converts, retargeted to the engaged-but-quiet. Turning ad spend into meetings, not form fills.</p>
           <span class="bc-meta">LinkedIn · Meta</span>
         </div>
       </article>
@@ -221,7 +231,7 @@
 </section>
 
 <!-- ============ 3 · HOW IT WORKS (card fan on animated ocean) ============ -->
-<!-- DISABLED HOW IT WORKS section — commented out on request, not deleted
+<!-- DISABLED HOW IT WORKS section: commented out on request, not deleted
 <section class="sec" id="how" style="padding-top:0">
   <div class="wrap">
     <div class="shead">
@@ -263,14 +273,17 @@
           <div class="fcard-body">
             <h3>Content automation</h3>
             <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/content</p>
-            <div class="fstats"><div><span>Steps</span><b>5</b></div><div><span>Setup</span><b>1 day</b></div><div><span>Platforms</span><b>7</b></div></div>
+            <div class="fstats"><div><span>Steps</span><b>8</b></div><div><span>Setup</span><b>1 day</b></div><div><span>Platforms</span><b>7</b></div></div>
             <div class="fsteps">
               <ol>
               <li><b>Take your inputs</b></li>
               <li><b>Add the keywords</b></li>
-              <li><b>Apply your brand guidelines</b></li>
+              <li><b>Apply your brand voice</b></li>
               <li><b>Match your tone</b></li>
               <li><b>Generate and sanitise images</b></li>
+              <li><b>Schedule the calendar</b></li>
+              <li><b>Send for your approval</b></li>
+              <li><b>Auto-post once you sign off</b></li>
               </ol>
             </div>
           </div>
@@ -280,7 +293,7 @@
           <div class="fcard-body">
             <h3>WhatsApp outreach</h3>
             <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/whatsapp</p>
-            <div class="fstats"><div><span>Steps</span><b>5</b></div><div><span>Setup</span><b>1 hour</b></div><div><span>Reply</span><b>&lt;1 min</b></div></div>
+            <div class="fstats"><div><span>Steps</span><b>6</b></div><div><span>Setup</span><b>1 hour</b></div><div><span>Reply</span><b>&lt;1 min</b></div></div>
             <div class="fsteps">
               <ol>
               <li><b>Apply your brand guidelines</b></li>
@@ -288,6 +301,7 @@
               <li><b>Send the messages</b></li>
               <li><b>Monitor in realtime</b></li>
               <li><b>Retarget the quiet ones</b></li>
+              <li><b>Book the meeting</b></li>
               </ol>
             </div>
           </div>
@@ -297,7 +311,7 @@
           <div class="fcard-body">
             <h3>Email outreach &amp; retargeting</h3>
             <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/sequences</p>
-            <div class="fstats"><div><span>Steps</span><b>9</b></div><div><span>Setup</span><b>30 min</b></div><div><span>Follow-up</span><b>Auto</b></div></div>
+            <div class="fstats"><div><span>Steps</span><b>10</b></div><div><span>Setup</span><b>30 min</b></div><div><span>Follow-up</span><b>Auto</b></div></div>
             <div class="fsteps">
               <ol>
               <li><b>Extract the leads</b></li>
@@ -308,6 +322,7 @@
               <li><b>Auto reply</b></li>
               <li><b>Monitor in realtime</b></li>
               <li><b>Retarget the quiet ones</b></li>
+              <li><b>Book the meeting</b></li>
               <li><b>Analytics</b></li>
               </ol>
             </div>
@@ -318,7 +333,7 @@
           <div class="fcard-body">
             <h3>LinkedIn outreach</h3>
             <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/linkedin</p>
-            <div class="fstats"><div><span>Steps</span><b>6</b></div><div><span>Setup</span><b>10 min</b></div><div><span>Booking</span><b>In-thread</b></div></div>
+            <div class="fstats"><div><span>Steps</span><b>7</b></div><div><span>Setup</span><b>10 min</b></div><div><span>Booking</span><b>In-thread</b></div></div>
             <div class="fsteps">
               <ol>
               <li><b>Extract the ICP</b></li>
@@ -327,6 +342,7 @@
               <li><b>Monitor in realtime</b></li>
               <li><b>Retarget the quiet ones</b></li>
               <li><b>Book the meeting</b></li>
+              <li><b>Keep the CRM current</b></li>
               </ol>
             </div>
           </div>
@@ -336,13 +352,15 @@
           <div class="fcard-body">
             <h3>LinkedIn &amp; Meta ads</h3>
             <p class="floc"><i aria-hidden="true">&#9670;</i>app.redmarten.ai/ads</p>
-            <div class="fstats"><div><span>Steps</span><b>4</b></div><div><span>Networks</span><b>2</b></div><div><span>Creative</span><b>Video</b></div></div>
+            <div class="fstats"><div><span>Steps</span><b>6</b></div><div><span>Networks</span><b>2</b></div><div><span>Creative</span><b>Video</b></div></div>
             <div class="fsteps">
               <ol>
               <li><b>Start from the pain point</b></li>
               <li><b>Generate the creative</b></li>
+              <li><b>Test what converts</b></li>
               <li><b>Read the analytics</b></li>
               <li><b>Retarget the leads</b></li>
+              <li><b>Book the meeting</b></li>
               </ol>
             </div>
           </div>
@@ -362,83 +380,22 @@
 
       <header class="sys-head">
         <div>
-          <span class="sys-chip"><i aria-hidden="true">&#9673;</i> Right now</span>
-          <h2>The system <span class="em">at work</span></h2>
+          <span class="sys-chip"><i aria-hidden="true">&#9673;</i> AI Agents</span>
+          <h2>Agents that actually <span class="em">finish the job.</span></h2>
         </div>
-        <p>One workflow, running end to end, and the agents carrying it. Nothing here
-           was scheduled by a person &mdash; this is the board as it stands this minute.</p>
+        <p>Most “AI agents” just talk. Yours calls APIs, pulls live data, and pushes the workflow forward on its own. Action, not conversation.</p>
       </header>
 
-      <div class="sys-grid">
-        <article class="cap cap--flow">
-          <div class="cap-in">
-            <span class="cap-lbl">One workflow</span>
-            <ol class="cap-chain">
-            <li><span>01</span>Lead arrives</li>
-            <li><span>02</span>Research</li>
-            <li><span>03</span>Qualification</li>
-            <li><span>04</span>CRM sync</li>
-            <li><span>05</span>Outreach</li>
-            <li><span>06</span>Meeting booked</li>
-            </ol>
-          </div>
-          <div class="cap-foot">
-            <div><b>42</b><span>Actions</span></div>
-            <div><b>7</b><span>Systems</span></div>
-            <div><b>0</b><span>Manual</span></div>
-          </div>
-        </article>
-
-        <article class="cap">
-          <div class="cap-top">
-            <span class="cap-dot" aria-hidden="true"></span>
-            <span class="cap-st">Active</span>
-          </div>
-          <div class="cap-in">
-            <b>Growth Agent</b>
-            <p>Ranking intent signals</p>
-          </div>
-        </article>
-        <article class="cap">
-          <div class="cap-top">
-            <span class="cap-dot" aria-hidden="true"></span>
-            <span class="cap-st">Processing</span>
-          </div>
-          <div class="cap-in">
-            <b>CRM Agent</b>
-            <p>Reconciling 512 records</p>
-          </div>
-        </article>
-        <article class="cap">
-          <div class="cap-top">
-            <span class="cap-dot" aria-hidden="true"></span>
-            <span class="cap-st">Generating forecast</span>
-          </div>
-          <div class="cap-in">
-            <b>Finance Agent</b>
-            <p>Q3 model, 84 invoices matched</p>
-          </div>
-        </article>
-        <article class="cap">
-          <div class="cap-top">
-            <span class="cap-dot" aria-hidden="true"></span>
-            <span class="cap-st">Launching sequence</span>
-          </div>
-          <div class="cap-in">
-            <b>Outbound Agent</b>
-            <p>312 messages queued</p>
-          </div>
-        </article>
-        <article class="cap">
-          <div class="cap-top">
-            <span class="cap-dot" aria-hidden="true"></span>
-            <span class="cap-st">Monitoring accounts</span>
-          </div>
-          <div class="cap-in">
-            <b>Customer Success Agent</b>
-            <p>2 renewals flagged</p>
-          </div>
-        </article>
+      <div class="sys-grid agent-grid">
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Running now</span></div><div class="cap-in"><b>Instagram data scraper</b><div class="agent-detail"><i></i><p>Point it at an Instagram handle and get back structured data: bio, follower and following counts, post history, hashtags, and engagement per post. Ready to drop straight into your workflow. No screenshotting, no manual exports, just clean fields your next step can actually use.</p></div></div></article>
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Researching</span></div><div class="cap-in"><b>Researcher agent</b><div class="agent-detail"><i></i><p>Point it at a topic, question, URL or research paper and it works across the web and the literature, pulls the relevant sources, and returns a structured summary: key facts, citations and gaps, ready to drop into your workflow. No more losing an afternoon to twenty open tabs.</p></div></div></article>
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Extracting</span></div><div class="cap-in"><b>SEO keyword extraction</b><div class="agent-detail"><i></i><p>Feed it a URL, page, or block of text and it pulls out the keywords that matter: search volume, intent, and gaps versus what is already ranking. Wire it into your content pipeline and every draft gets keyword data before a human even opens it.</p></div></div></article>
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Benchmarking</span></div><div class="cap-in"><b>Competitor analysis</b><div class="agent-detail"><i></i><p>Point it at a competitor and it pulls the full picture: company details, recent posts, brand tone, writing style, even their colour palette. Structured output your workflow can use to benchmark, brief, or build against, without manually screenshotting their site and Instagram.</p></div></div></article>
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Monitoring markets</span></div><div class="cap-in"><b>Stock agent</b><div class="agent-detail"><i></i><p>Give it a ticker or company name and it pulls live price, historical trends and key financials into one structured output, ready to feed into alerts, reports or your next workflow step. No manual checking, no refreshing a chart every hour.</p></div></div></article>
+        <article class="cap agent-card"><div class="cap-top"><span class="cap-dot" aria-hidden="true"></span><span class="cap-st">Generating options</span></div><div class="cap-in"><b>Thumbnail generation</b><div class="agent-detail"><i></i><p>Give it a description, the video, an image, any of the three in any combination. It generates thumbnail options built around whatever you hand it, not a generic template, in every language you publish in. Wire it into your upload flow and every video gets scroll-stopping options ready before you would even open an editor.</p></div></div></article>
+      </div>
+      <div class="agent-dots" role="tablist" aria-label="Agent cards">
+        <button type="button" role="tab" aria-label="Show Instagram data scraper" aria-selected="true"></button><button type="button" role="tab" aria-label="Show Researcher agent" aria-selected="false"></button><button type="button" role="tab" aria-label="Show SEO keyword extraction" aria-selected="false"></button><button type="button" role="tab" aria-label="Show Competitor analysis" aria-selected="false"></button><button type="button" role="tab" aria-label="Show Stock agent" aria-selected="false"></button><button type="button" role="tab" aria-label="Show Thumbnail generation" aria-selected="false"></button>
       </div>
     </div>
   </div>
@@ -447,6 +404,11 @@
 <!-- ============ 4 · RESULTS (mosaic) ============ -->
 <section class="sec" id="results" style="padding-top:0">
   <div class="wrap">
+    <div class="results-intro">
+      <span class="pillbl">Results</span>
+      <h2>From kickoff to booked meetings, in the first month.</h2>
+      <p>The same sequence on every engagement: we go live, onboard against your ICP, and the pipeline starts handing back qualified leads and meetings already on the calendar.</p>
+    </div>
     <div class="gal">
       <span class="gal-stage" aria-hidden="true">
         <span class="gal-photo"></span>
@@ -471,13 +433,6 @@
       <span class="gal-cloud c2" aria-hidden="true"></span>
       <span class="gal-sun" aria-hidden="true"></span>
       <span class="gal-veil" aria-hidden="true"></span>
-      <div class="figures">
-        <div><b>11M+</b><span>Leads processed</span></div>
-        <div><b>430K+</b><span>Meetings booked</span></div>
-        <div><b>97%</b><span>CRM accuracy</span></div>
-        <div><b>$148M+</b><span>Pipeline generated</span></div>
-      </div>
-
       <div class="gal-head">
         <div>
           <span class="pillbl">What comes out</span>
@@ -501,7 +456,7 @@
         <div class="tile-cnt">
           <span class="lbl">WhatsApp</span>
           <h3>Booked in-thread</h3>
-          <p>Answered in under a minute, at any hour, in the thread they already trust — not handed back to you as a lead.</p>
+          <p>Answered in under a minute, at any hour, in the thread they already trust, not handed back to you as a lead.</p>
         </div>
       </article>
       <article class="tile">
@@ -519,7 +474,7 @@
         <div class="tile-cnt">
           <span class="lbl">LinkedIn</span>
           <h3>CRM kept current</h3>
-          <p>Written back at every step, not at the end — so the pipeline is true when you look at it.</p>
+          <p>Written back at every step, not at the end, so the pipeline is true when you look at it.</p>
         </div>
       </article>
       <article class="tile">
@@ -528,7 +483,7 @@
         <div class="tile-cnt">
           <span class="lbl">Ads</span>
           <h3>Booked from an ad</h3>
-          <p>Creative built from what your buyers complain about, carried through to a meeting — not a form fill.</p>
+          <p>Creative built from what your buyers complain about, carried through to a meeting, not a form fill.</p>
         </div>
       </article>
       </div>
@@ -536,31 +491,24 @@
   </div>
 </section>
 
-<!-- ============ BUILT FOR ============ -->
-<section class="sec" id="built" style="padding-top:0">
+<!-- ============ INTEGRATIONS ============ -->
+<section class="integrations" aria-label="Integrations and tools">
   <div class="wrap">
-    <div class="built">
-      <h2>Built for <span class="em">modern revenue teams.</span></h2>
-      <p>Whether you are running outbound sales, paid acquisition, customer success, finance
-         operations or CRM management, Red Marten deploys workflows that keep moving the business
-         forward long after your team signs off for the day.</p>
-    </div>
-    <ul class="cats"><li>Paid Media Workflows</li><li>Outbound Sales Workflows</li><li>Inbound Lead Workflows</li><li>CRM Automation</li><li>Revenue Operations</li><li>Finance Automation</li><li>Customer Success Automation</li><li>Reporting &amp; Analytics</li><li>Lead Enrichment</li><li>Prospect Research</li><li>Meeting Booking</li><li>Follow-up Automation</li><li>Account-Based Marketing</li><li>Lifecycle Marketing</li><li>E-commerce Automation</li><li>Support Automation</li><li>Internal Operations</li><li>Executive Reporting</li><li>Forecasting &amp; Planning</li><li>AI Agent Orchestration</li></ul>
+    <p class="integrations-label">How we work</p>
+    <h2 class="integrations-title">Every tool and CRM worth using, pointed at one outcome.</h2>
+    <p class="integrations-copy">Your CRM, your inbox, your ad accounts, and the models doing the thinking. We run whichever combination gets the work right, and hand you one clean result instead of eight dashboards.</p>
+    <p class="integrations-count">500+ integrations, connected and live</p>
   </div>
-</section>
-
-<!-- ============ PHILOSOPHY ============ -->
-<section class="sec phil" id="philosophy" style="padding-top:0">
-  <div class="wrap">
-    <h2>Technology should <span class="em">disappear.</span></h2>
-    <p>The best systems do not demand attention. They quietly move work forward,
-       surface what matters, and stay out of the way.</p>
-    <p class="phil-sign">That is Red Marten.</p>
+  <div class="integration-marquee" aria-hidden="true">
+    <div class="integration-track">
+      <span class="integration-logo" aria-label="Instantly"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#instantly"></use></svg></span><span class="integration-logo" aria-label="HubSpot"><img src="https://cdn.simpleicons.org/hubspot/FF7A59" alt=""></span><span class="integration-logo" aria-label="Airtable"><img src="https://cdn.simpleicons.org/airtable/18BFFF" alt=""></span><span class="integration-logo" aria-label="Zoho"><img src="https://cdn.simpleicons.org/zoho/E42527" alt=""></span><span class="integration-logo" aria-label="Google Calendar"><img src="https://cdn.simpleicons.org/googlecalendar/4285F4" alt=""></span><span class="integration-logo" aria-label="Calendly"><img src="https://cdn.simpleicons.org/calendly/4F6DF5" alt=""></span><span class="integration-logo" aria-label="Zapmail"><img src="https://cdn.simpleicons.org/zapier/FF4A00" alt=""></span><span class="integration-logo" aria-label="Meta"><img src="https://cdn.simpleicons.org/meta/8D9DF4" alt=""></span><span class="integration-logo" aria-label="Claude"><img src="https://cdn.simpleicons.org/claude/D97757" alt=""></span><span class="integration-logo" aria-label="OpenAI"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg" alt=""></span><span class="integration-logo" aria-label="Gemini"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#gemini"></use></svg></span><span class="integration-logo" aria-label="Perplexity"><img src="https://cdn.simpleicons.org/perplexity/FFFFFF" alt=""></span><span class="integration-logo" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/59D68C" alt=""></span><span class="integration-logo" aria-label="LinkedIn"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#linkedin"></use></svg></span><span class="integration-logo" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt=""></span><span class="integration-logo" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt=""></span><span class="integration-logo" aria-label="Facebook"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt=""></span><span class="integration-logo" aria-label="WordPress"><img src="https://cdn.simpleicons.org/wordpress/21759B" alt=""></span><span class="integration-logo" aria-label="Ads"><img src="https://cdn.simpleicons.org/googleads/FBBC05" alt=""></span><span class="integration-logo integration-wordmark" aria-label="Zernio">Zernio</span>
+      <span class="integration-logo" aria-label="Instantly"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#instantly"></use></svg></span><span class="integration-logo" aria-label="HubSpot"><img src="https://cdn.simpleicons.org/hubspot/FF7A59" alt=""></span><span class="integration-logo" aria-label="Airtable"><img src="https://cdn.simpleicons.org/airtable/18BFFF" alt=""></span><span class="integration-logo" aria-label="Zoho"><img src="https://cdn.simpleicons.org/zoho/E42527" alt=""></span><span class="integration-logo" aria-label="Google Calendar"><img src="https://cdn.simpleicons.org/googlecalendar/4285F4" alt=""></span><span class="integration-logo" aria-label="Calendly"><img src="https://cdn.simpleicons.org/calendly/4F6DF5" alt=""></span><span class="integration-logo" aria-label="Zapmail"><img src="https://cdn.simpleicons.org/zapier/FF4A00" alt=""></span><span class="integration-logo" aria-label="Meta"><img src="https://cdn.simpleicons.org/meta/8D9DF4" alt=""></span><span class="integration-logo" aria-label="Claude"><img src="https://cdn.simpleicons.org/claude/D97757" alt=""></span><span class="integration-logo" aria-label="OpenAI"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/openai.svg" alt=""></span><span class="integration-logo" aria-label="Gemini"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#gemini"></use></svg></span><span class="integration-logo" aria-label="Perplexity"><img src="https://cdn.simpleicons.org/perplexity/FFFFFF" alt=""></span><span class="integration-logo" aria-label="WhatsApp"><img src="https://cdn.simpleicons.org/whatsapp/59D68C" alt=""></span><span class="integration-logo" aria-label="LinkedIn"><svg class="integration-sprite-icon" aria-hidden="true"><use href="assets/integration-logos.svg#linkedin"></use></svg></span><span class="integration-logo" aria-label="YouTube"><img src="https://cdn.simpleicons.org/youtube/FF0000" alt=""></span><span class="integration-logo" aria-label="Instagram"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt=""></span><span class="integration-logo" aria-label="Facebook"><img src="https://cdn.simpleicons.org/facebook/1877F2" alt=""></span><span class="integration-logo" aria-label="WordPress"><img src="https://cdn.simpleicons.org/wordpress/21759B" alt=""></span><span class="integration-logo" aria-label="Ads"><img src="https://cdn.simpleicons.org/googleads/FBBC05" alt=""></span><span class="integration-logo integration-wordmark" aria-label="Zernio">Zernio</span>
+    </div>
   </div>
 </section>
 
 <!-- ============ 5 · PRICING ============ -->
-<!-- DISABLED PRICING section — commented out on request, not deleted
+<!-- DISABLED PRICING section: commented out on request, not deleted
 <section class="sec" id="pricing" style="padding-top:0">
   <div class="wrap">
     <div class="shead">
@@ -589,7 +537,7 @@
             <div class="plan-amt"><b data-m="$0" data-y="$0">$0</b><small>/month</small></div>
             <div class="plan-foot">
               <span class="k">Seats</span><span class="v">1</span>
-              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+              <button class="plan-cta" type="button" data-connect="menu">Get started <i aria-hidden="true">&#8599;</i></button>
             </div>
           </div>
           <ul class="plan-feats">
@@ -619,7 +567,7 @@
             <div class="plan-amt"><b data-m="$79" data-y="$63">$79</b><small>/month</small></div>
             <div class="plan-foot">
               <span class="k">Seats</span><span class="v">3</span>
-              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+              <button class="plan-cta" type="button" data-connect="menu">Get started <i aria-hidden="true">&#8599;</i></button>
             </div>
           </div>
           <ul class="plan-feats">
@@ -650,7 +598,7 @@
             <div class="plan-amt"><b data-m="$349" data-y="$279">$349</b><small>/month</small></div>
             <div class="plan-foot">
               <span class="k">Seats</span><span class="v">10</span>
-              <button class="plan-cta" type="button" data-connect="signup">Get started <i aria-hidden="true">&#8599;</i></button>
+              <button class="plan-cta" type="button" data-connect="menu">Get started <i aria-hidden="true">&#8599;</i></button>
             </div>
           </div>
           <ul class="plan-feats">
@@ -710,9 +658,9 @@
   <span class="final-glow" aria-hidden="true"></span>
   <div class="final-inner">
     <h2>Start with <span class="em">one service</span></h2>
-    <p>Give it a brief, approve the first run, and watch one channel go out end to end. Most teams have something live before the end of the first day.</p>
+    <p>Connect the CRM you already have, pick a template, and let it work a list overnight. No migration, no setup team, no waiting.</p>
     <div class="final-cta">
-      <button class="pill pill-light" type="button" data-connect="signup">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
+      <button class="pill pill-light" type="button" data-connect="menu">Start free <span class="bdg" aria-hidden="true">&#8594;</span></button>
     </div>
   </div>
 </section>
@@ -753,8 +701,7 @@
         <span class="iline"><b>Short for Marten Autonomous Revenue Agent.</b></span>
         <span class="iline"><b>I run five services end to end while you sleep.</b></span>
         <div class="iskip icta">
-          <span class="ibar" aria-hidden="true"><i></i></span>
-          <button class="cbtn ghost" type="button" data-goto="menu">Continue</button>
+          <button class="cbtn ghost" type="button" data-goto="demo">Book a demo</button>
         </div>
       </div>
 
@@ -778,9 +725,8 @@
         <form data-cform>
           <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
           <label class="cfield"><span>Password</span><input type="password" name="password" autocomplete="current-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" required></label>
-          <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Log in</button></div>
+          <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Log in</button><button class="cbtn ghost" type="button" data-goto="signup">Sign up</button></div>
         </form>
-        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
       </div>
 
       <div class="cstep" data-step="signup">
@@ -796,7 +742,6 @@
           <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
           <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Create account</button></div>
         </form>
-        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
       </div>
 
       <div class="cstep" data-step="demo">
@@ -804,7 +749,7 @@
         <div class="cdots" aria-hidden="true"><i></i><i class="on"></i><i></i><i></i></div>
         <h2>Book a demo</h2>
         <p class="clead">We run one of the five services against your ICP live on the call.</p>
-        <form data-cform>
+        <form data-cform data-demo-form>
           <div class="crow">
             <label class="cfield"><span>Name</span><input type="text" name="name" autocomplete="name" placeholder="Alex Rivera" required></label>
             <label class="cfield"><span>Work email</span><input type="email" name="email" autocomplete="email" placeholder="you@company.com" required></label>
@@ -819,7 +764,6 @@
           </label>
           <div class="cbtns" style="margin-top:18px"><button class="cbtn key" type="submit">Book the demo</button></div>
         </form>
-        <p class="cnote">Front-end only &mdash; this form is not wired to a backend and sends nothing anywhere.</p>
       </div>
 
       <div class="cstep" data-step="done">
