@@ -12,7 +12,7 @@
    Deploying for real? Add the hostname to ALLOWED_HOSTS.
    Previewing inside an IDE panel that uses an iframe? Set ALLOW_EMBED = true.
    --------------------------------------------------------------------- */
-var ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', ''];
+var ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '', 'miniature-octo-robot-landing.vercel.app'];
 var ALLOW_EMBED = false;
 
 (function boot() {
