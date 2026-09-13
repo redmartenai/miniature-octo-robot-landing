@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 96">
+  <defs>
+    <linearGradient id="gemini" x1="12" y1="82" x2="84" y2="14" gradientUnits="userSpaceOnUse"><stop stop-color="#4B7BF5"/><stop offset=".48" stop-color="#8C6DF2"/><stop offset="1" stop-color="#D46BEA"/></linearGradient>
+  </defs>
+  <symbol id="gemini" viewBox="0 0 96 96"><path fill="url(#gemini)" d="M48 5c2.8 24.2 18.8 40.2 43 43-24.2 2.8-40.2 18.8-43 43-2.8-24.2-18.8-40.2-43-43 24.2-2.8 40.2-43 43-43Z"/><path fill="#6B7CF4" d="M20 10c1.1 8.5 6.5 13.9 15 15-8.5 1.1-13.9 6.5-15 15-1.1-8.5-6.5-13.9-15-15 8.5-1.1 13.9-6.5 15-15Z" opacity=".9"/></symbol>
+  <symbol id="linkedin" viewBox="0 0 96 96"><rect width="96" height="96" rx="19" fill="#0A66C2"/><circle cx="28" cy="29" r="7" fill="#fff"/><path fill="#fff" d="M22 42h12v32H22zm20 0h11v4.4c3.1-3.8 7.1-5.7 12-5.7 9.5 0 15 6 15 17.4V74H68V59.7c0-5.4-1.8-8.1-5.6-8.1-4.6 0-7.4 3.2-7.4 9.2V74H42z"/></symbol>
+  <symbol id="instantly" viewBox="0 0 96 96"><circle cx="48" cy="48" r="48" fill="#1683F7"/><path fill="#fff" d="M42 18h25L54 40h17L29 78l8-27H23z"/></symbol>
+</svg>
