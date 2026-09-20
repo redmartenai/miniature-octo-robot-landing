@@ -12,13 +12,19 @@
    Deploying for real? Add the hostname to ALLOWED_HOSTS.
    Previewing inside an IDE panel that uses an iframe? Set ALLOW_EMBED = true.
    --------------------------------------------------------------------- */
-var ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', ''];
+var ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', '',
+                    'redmarten.org', 'www.redmarten.org'];
+/* Vercel preview URLs get a fresh random subdomain per deployment, so they
+   match by suffix rather than by name. */
+var ALLOWED_HOST_SUFFIXES = ['.vercel.app'];
 var ALLOW_EMBED = false;
 
 (function boot() {
   'use strict';
   var onDisk = location.protocol === 'file:';
-  var hostOk = onDisk || ALLOWED_HOSTS.indexOf(location.hostname) !== -1;
+  var host = location.hostname;
+  var hostOk = onDisk || ALLOWED_HOSTS.indexOf(host) !== -1 ||
+    ALLOWED_HOST_SUFFIXES.some(function (s) { return host.slice(-s.length) === s; });
 
   var framed;
   try { framed = window.top !== window.self; } catch (e) { framed = true; }
