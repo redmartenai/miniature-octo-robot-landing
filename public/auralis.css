@@ -89,18 +89,32 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
 .nav-solid{padding:11px 20px;border-radius:var(--r-full);background:var(--ink);color:#fff;
   font:500 13.5px/1 var(--sans);transition:transform .2s var(--ease)}
 .nav-solid:hover{transform:translateY(-1px)}
+.nav-ghost{padding:11px 16px;border-radius:var(--r-full);background:transparent;color:var(--ink);
+  font:500 13.5px/1 var(--sans);transition:background .2s var(--ease)}
+.nav-ghost:hover{background:rgba(14,18,16,.07)}
+.navlinks .nav-login{display:none}
+@media (max-width:600px){
+  .nav-ghost{display:none}
+  .navlinks .nav-login{display:block}
+}
 .navtoggle{display:none;width:40px;height:40px;flex:none;border-radius:50%;
   border:1px solid var(--line-2);background:var(--paper);place-items:center;gap:4px;flex-direction:column}
 .navtoggle i{display:block;width:15px;height:1.6px;border-radius:2px;background:var(--ink);
   transition:transform .3s var(--ease),opacity .3s var(--ease)}
 .navtoggle[aria-expanded="true"] i:first-child{transform:translateY(2.8px) rotate(45deg)}
 .navtoggle[aria-expanded="true"] i:last-child{transform:translateY(-2.8px) rotate(-45deg)}
+/* the phone menu fades and drops in as it opens (it starts at opacity 0) */
+@keyframes navIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media (max-width:1080px){
   .navtoggle{display:flex}
   .navpill{flex-wrap:wrap;justify-content:space-between;row-gap:0}
   .navlinks{order:9;flex-basis:100%;flex-direction:column;align-items:stretch;gap:2px;margin:0;
     display:none;opacity:0}
   .navlinks.open{display:flex;margin:10px 0 4px;animation:navIn .34s var(--ease) both}
+  /* a full pill radius turns the opened (taller) bar into an oval that clips
+     its own menu, so the open bar takes a card radius instead */
+  .navpill:has(.navlinks.open){border-radius:26px}
+  .navpill:has(.navlinks.open)::before{border-radius:26px 26px 0 0}
   .navlinks a{padding:12px 14px}
   .navcta{margin-left:auto}
 }
@@ -164,7 +178,10 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
    small to full size as it docks (--p, 0→1, written by the stack script).
    Only transform moves, so the whole hand-over stays on the compositor. */
 .stack{position:relative}
+/* the stack script fades the hero out over the climb and hides it before the
+   next frame docks, so none of it shows around or above that frame */
 .stack.is-live > .hero{position:sticky;top:10px;z-index:0}
+.stack.is-docked > .hero{visibility:hidden}
 .stack.is-live > .slept{z-index:2;transform-origin:50% 0;will-change:transform;
   transform:scale(calc(.78 + .22 * var(--p,0)));box-shadow:0 -30px 90px rgba(4,7,10,.42)}
 
@@ -268,9 +285,10 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
 /* Hovering settles the card: the drift holds where it is and the scrim
    lifts a little, so the photograph comes forward under the cursor. No
    sibling is touched — dimming the rest of the grid was worse than nothing. */
-/* the radio is the one bright photograph, and it is a short card, so the
-   heading sits right on the lit dials — that card carries a heavier scrim */
-.bc--b .bc-veil{background:linear-gradient(180deg,rgba(8,10,9,.40) 0%,
+/* the radio photograph and the outreach illustration are the two bright
+   images, on short cards, so the heading sits right on their lit middles —
+   those cards carry a heavier scrim */
+.bc--b .bc-veil,.bc--c .bc-veil{background:linear-gradient(180deg,rgba(8,10,9,.40) 0%,
   rgba(8,10,9,.64) 46%,rgba(8,10,9,.94) 100%)}
 
 .bc.is-photo:hover .bc-art{animation-play-state:paused}
@@ -300,11 +318,26 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
 .bc.is-photo .bc-meta,.bc.is-ink .bc-meta{color:rgba(255,255,255,.58);
   border-top:1px solid rgba(255,255,255,.20)}
 
-.bc.is-mist .bc-lbl,.bc.is-paper .bc-lbl{background:rgba(14,18,16,.06);
+.bc.is-mist .bc-lbl,.bc.is-paper .bc-lbl,.bc.is-art .bc-lbl{background:rgba(14,18,16,.06);
   border:1px solid var(--line);color:var(--slate)}
-.bc.is-mist h3,.bc.is-paper h3{color:var(--ink)}
+.bc.is-mist h3,.bc.is-paper h3,.bc.is-art h3{color:var(--ink)}
 .bc.is-mist p,.bc.is-paper p{color:var(--muted)}
-.bc.is-mist .bc-meta,.bc.is-paper .bc-meta{color:var(--muted);border-top:1px solid var(--line)}
+.bc.is-art p{color:var(--slate)}
+.bc.is-mist .bc-meta,.bc.is-paper .bc-meta,.bc.is-art .bc-meta{color:var(--muted);border-top:1px solid var(--line)}
+
+/* an illustrated card: the art keeps its own cream paper. It runs full width
+   in a clear band across the top (sized to the viewport, so the section still
+   fits every laptop), and the type sits below it in ink on the same paper,
+   never over the drawing. */
+.bc.is-art{--art-paper:#FBF8EF;--art-h:clamp(40px,calc(13vh - 30px),120px);background:var(--art-paper)}
+.bc.is-art .bc-art{background-size:100% auto;background-position:50% 0;--kb-o:50% 18%}
+.bc.is-art .bc-veil{background:linear-gradient(to top,var(--art-paper) 0,var(--art-paper) calc(100% - var(--art-h) - 24px),
+  color-mix(in srgb,var(--art-paper),transparent 100%) calc(100% - var(--art-h) + 4px))}
+/* this one is a square drawing, so its band is taken from the middle */
+.bc--d.is-art .bc-art{background-position:50% 50%}
+.bc.is-art .bc-in{padding-top:calc(clamp(13px,min(2.4vw,2.5vh),30px) + var(--art-h))}
+.bc.is-art:hover .bc-art{animation-play-state:paused}
+.bc.is-art:hover .bc-veil{opacity:.9}
 
 @media (min-width:901px) and (max-height:1150px){
   .bento{grid-template-columns:1.22fr 1fr 1fr;
@@ -724,8 +757,9 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
 
 }
 
-/* ================= THE SYSTEM · five agents, one open at a time =================
-   Five tall photo cards. One stands open with what its agent did last night;
+/* ================= THE SYSTEM · what makes it autonomous, one card at a time =================
+   Five tall illustrated cards, one per capability beyond the agents (planning,
+   memory, learning, control, resilience). One stands open with its story;
    the others wait as slim strips with their names running up them. The
    hairline along the bottom of the open card is the timer: when it fills,
    the card narrows and the next one widens. Hover or click opens any card,
@@ -746,75 +780,77 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
   letter-spacing:-.035em;color:#fff}
 .sys-head p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.56)}
 
-.fold{--open:6;display:flex;gap:clamp(8px,.8vw,12px);height:clamp(300px,56vh,500px)}
-.fold-card{position:relative;flex:1 1 0;min-width:0;overflow:hidden;isolation:isolate;cursor:pointer;outline:none;
-  border-radius:clamp(14px,2vh,20px);background:#15130F;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.1),0 24px 50px rgba(0,0,0,.45);
+/* each card is an art print on its own paper: --bg is the illustration's
+   paper, --ink the type that reads on it, --ac the illustration's accent */
+.fold{--open:7;--gap:clamp(8px,.8vw,12px);container-type:inline-size;display:flex;gap:var(--gap);
+  height:clamp(300px,56vh,500px)}
+.fold-card{--bg:#F4EFE4;--ink:#1A1A17;--ac:#C3D53F;position:relative;flex:1 1 0;min-width:0;overflow:hidden;
+  isolation:isolate;cursor:pointer;outline:none;border-radius:clamp(14px,2vh,20px);background:var(--bg);color:var(--ink);
+  box-shadow:0 24px 50px rgba(0,0,0,.42);
   transition:flex-grow .95s cubic-bezier(.72,0,.2,1),box-shadow .6s var(--ease)}
-.fold-card.is-open{flex-grow:var(--open);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16),0 34px 70px rgba(0,0,0,.55)}
-.fold-card:focus-visible{box-shadow:inset 0 0 0 1px rgba(195,213,63,.8),0 24px 50px rgba(0,0,0,.45)}
+.fold-card.is-open{flex-grow:var(--open);box-shadow:0 34px 70px rgba(0,0,0,.55)}
+.fold-card:focus-visible{box-shadow:0 0 0 2px var(--accent),0 24px 50px rgba(0,0,0,.42)}
 
-/* the photograph: pushed in while it waits, settling back as the card opens */
-.fold-ph{position:absolute;inset:0;z-index:-2;transform:scale(1.14);transition:transform 1.6s var(--ease)}
-.fold-card.is-open .fold-ph{transform:scale(1.02)}
-.fold-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  animation:foldDrift 28s ease-in-out infinite alternate}
-.fold-card:nth-child(2n) .fold-ph img{animation-duration:33s;animation-delay:-11s}
-.fold-card:nth-child(3n) .fold-ph img{animation-duration:24s;animation-delay:-6s}
-@keyframes foldDrift{to{transform:scale(1.08) translate3d(-1.8%,-1.2%,0)}}
-/* one band of light crosses the photograph as its card opens */
-.fold-ph::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;
-  background:linear-gradient(105deg,transparent 35%,rgba(255,248,230,.22) 50%,transparent 65%) 160% 0/280% 100% no-repeat}
-.fold-card.is-open .fold-ph::after{animation:foldSheen 1.6s var(--ease) .25s}
-@keyframes foldSheen{0%{opacity:1;background-position:160% 0}100%{opacity:1;background-position:-80% 0}}
-.fold-shade{position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(8,9,8,.5),rgba(8,9,8,.28) 40%,rgba(8,9,8,.72));
-  transition:background-color .8s var(--ease)}
-.fold-shade::after{content:"";position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease);
-  background:linear-gradient(180deg,rgba(8,9,8,.34),transparent 24%,transparent 38%,rgba(8,9,8,.9))}
-.fold-card:not(.is-open) .fold-shade{background-color:rgba(8,9,8,.3)}
-.fold-card.is-open .fold-shade{background:transparent}
-.fold-card.is-open .fold-shade::after{opacity:1}
-.fold-card:not(.is-open):hover .fold-shade{background-color:rgba(8,9,8,.12)}
+/* the illustration fills a closed strip, and moves to the right of an open card */
+.fold-art{position:absolute;top:0;right:0;bottom:0;left:0;z-index:-2;overflow:hidden;
+  transition:left .95s cubic-bezier(.72,0,.2,1)}
+.fold-card.is-open .fold-art{left:44%}
+.fold-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);
+  transition:transform 1.4s var(--ease)}
+.fold-card.is-open .fold-art img{transform:none;animation:foldBreath 16s ease-in-out 1.2s infinite alternate}
+.fold-card:not(.is-open):hover .fold-art img{transform:scale(1.12)}
+@keyframes foldBreath{to{transform:scale(1.035)}}
+/* paper rising under a closed strip's title, so the name always reads */
+.fold-scrim{position:absolute;left:0;right:0;bottom:0;height:58%;z-index:-1;pointer-events:none;
+  background:linear-gradient(to top,var(--bg) 16%,color-mix(in srgb,var(--bg) 72%,transparent) 46%,transparent);
+  transition:opacity .6s var(--ease)}
+.fold-card.is-open .fold-scrim{opacity:0}
 
 .fold-n{position:absolute;left:clamp(12px,1.4vw,20px);top:clamp(12px,1.9vh,20px);
-  font:500 11px/1 var(--mono);letter-spacing:.12em;color:rgba(255,255,255,.8)}
-/* the name runs up a closed strip */
+  font:500 11px/1 var(--mono);letter-spacing:.12em;color:var(--ink);opacity:.62;mix-blend-mode:normal}
+.fold-card:not(.is-open) .fold-n{padding:5px 7px;margin:-5px -7px;border-radius:7px;
+  background:color-mix(in srgb,var(--bg) 78%,transparent);opacity:.85}
 .fold-tag{position:absolute;left:50%;bottom:clamp(16px,2.6vh,26px);transform:translateX(-50%) rotate(180deg);
   writing-mode:vertical-rl;white-space:nowrap;font:500 clamp(14px,2vh,17px)/1 var(--display);letter-spacing:-.01em;
-  color:#fff;transition:opacity .5s var(--ease) .35s}
+  color:var(--ink);transition:opacity .5s var(--ease) .35s}
 .fold-card.is-open .fold-tag{opacity:0;transition-delay:0s;transition-duration:.2s}
 .fold-live{position:absolute;right:clamp(12px,1.4vw,20px);top:clamp(10px,1.6vh,17px);display:inline-flex;align-items:center;gap:7px;
-  height:26px;padding:0 11px;border-radius:var(--r-full);background:rgba(10,12,10,.45);
-  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.16);
-  font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;
+  height:26px;padding:0 11px;border-radius:var(--r-full);background:color-mix(in srgb,var(--bg) 80%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid color-mix(in srgb,var(--ink) 14%,transparent);
+  font:500 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
   opacity:0;transform:translateY(-4px);transition:opacity .35s var(--ease),transform .5s var(--ease)}
-.fold-live i{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:foldLive 2s ease-in-out infinite}
+.fold-live i{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:foldLive 2s ease-in-out infinite}
 @keyframes foldLive{50%{opacity:.35}}
 .fold-card.is-open .fold-live{opacity:1;transform:none;transition-delay:.55s}
 
-/* the open card's story, rising line by line */
-.fold-txt{position:absolute;left:clamp(16px,2vw,30px);right:clamp(16px,2vw,30px);bottom:clamp(18px,3vh,32px);
-  min-width:clamp(260px,34vw,480px);pointer-events:none}
-.fold-txt > *{opacity:0;transform:translateY(16px);transition:opacity .25s ease,transform .25s ease}
+/* the story sits on the paper to the left of the art; its width is fixed to
+   the open card's, so nothing reflows while the card widens */
+.fold-txt{position:absolute;left:clamp(18px,2vw,30px);top:clamp(46px,7.4vh,72px);bottom:clamp(16px,2.8vh,28px);
+  width:calc((100cqw - 4 * var(--gap)) * var(--open) / (4 + var(--open)) * .44 - clamp(18px,2vw,30px) - 20px);
+  display:flex;flex-direction:column;pointer-events:none}
+.fold-txt > *{opacity:0;transform:translateY(14px);transition:opacity .25s ease,transform .25s ease}
 .fold-card.is-open .fold-txt > *{opacity:1;transform:none;transition:opacity .7s var(--ease),transform .9s var(--ease)}
-.fold-card.is-open .fold-txt > :nth-child(1){transition-delay:.42s}
-.fold-card.is-open .fold-txt > :nth-child(2){transition-delay:.5s}
-.fold-card.is-open .fold-txt > :nth-child(3){transition-delay:.6s}
-.fold-card.is-open .fold-txt > :nth-child(4){transition-delay:.72s}
-.fold-k{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.66)}
-.fold-txt h3{margin-top:clamp(8px,1.4vh,14px);font:500 clamp(24px,3.8vh,40px)/1.02 var(--display);letter-spacing:-.035em;color:#fff}
-.fold-txt p{margin-top:clamp(7px,1.2vh,12px);max-width:46ch;font:400 clamp(13px,1.7vh,15px)/1.5 var(--sans);color:rgba(255,255,255,.76)}
-.fold-figs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,28px);
-  margin:clamp(12px,2.2vh,22px) 0 0;padding:clamp(10px,1.8vh,16px) 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.2)}
-.fold-figs b{display:block;font:500 clamp(20px,3.2vh,30px)/1 var(--display);letter-spacing:-.035em;color:#fff}
-.fold-figs span{display:block;margin-top:6px;font:500 10px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,255,255,.58)}
+.fold-card.is-open .fold-txt > :nth-child(1){transition-delay:.45s}
+.fold-card.is-open .fold-txt > :nth-child(2){transition-delay:.53s}
+.fold-card.is-open .fold-txt > :nth-child(3){transition-delay:.63s}
+.fold-card.is-open .fold-txt > :nth-child(4){transition-delay:.75s}
+.fold-k{display:block;font:500 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--ink) 58%,transparent)}
+.fold-txt h3{margin-top:clamp(8px,1.4vh,14px);font:500 clamp(22px,3.3vh,34px)/1.04 var(--display);letter-spacing:-.035em;color:var(--ink)}
+.fold-txt p{margin-top:clamp(7px,1.2vh,12px);font:400 clamp(12.5px,1.65vh,14.5px)/1.5 var(--sans);
+  color:color-mix(in srgb,var(--ink) 74%,transparent)}
+.fold-figs{margin:auto 0 0;padding:clamp(8px,1.4vh,14px) 0 0;list-style:none}
+.fold-figs li{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:clamp(5px,1vh,9px) 0;
+  border-top:1px solid color-mix(in srgb,var(--ink) 14%,transparent)}
+.fold-figs b{font:500 clamp(18px,2.8vh,26px)/1 var(--display);letter-spacing:-.03em;color:var(--ink)}
+.fold-figs span{font:500 10px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;text-align:right;
+  color:color-mix(in srgb,var(--ink) 58%,transparent)}
 
-/* the timer: a hairline that fills while the card is open, and holds on hover */
-.fold-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.1);opacity:0;transition:opacity .4s}
-.fold-bar i{display:block;height:100%;background:linear-gradient(90deg,rgba(195,213,63,.5),var(--accent));
-  transform-origin:0 50%;transform:scaleX(0)}
+/* the timer: a hairline in the illustration's accent that fills while the card
+   is open, and holds while the pointer is over the row or the frame is off screen */
+.fold-bar{position:absolute;left:0;right:0;bottom:0;height:3px;background:color-mix(in srgb,var(--ink) 10%,transparent);
+  opacity:0;transition:opacity .4s}
+.fold-bar i{display:block;height:100%;background:var(--ac);transform-origin:0 50%;transform:scaleX(0)}
 .fold.is-live .fold-card.is-open .fold-bar{opacity:1}
 .fold-card.is-open .fold-bar i{animation:foldBar 6s linear forwards paused}
 .fold.is-live:not(.is-held) .fold-card.is-open .fold-bar i{animation-play-state:running}
@@ -824,28 +860,34 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
 .fold.is-armed .fold-card{opacity:0;transform:translateY(34px)}
 .fold.is-armed.is-in .fold-card{opacity:1;transform:none;
   transition:opacity .9s var(--ease) calc(var(--i) * 90ms),transform 1.1s var(--ease) calc(var(--i) * 90ms),flex-grow .95s cubic-bezier(.72,0,.2,1)}
-.fold.is-armed:not(.is-in) .fold-txt > *,.fold.is-armed:not(.is-in) .fold-live{opacity:0;transform:translateY(16px)}
+.fold.is-armed:not(.is-in) .fold-txt > *,.fold.is-armed:not(.is-in) .fold-live{opacity:0;transform:translateY(14px)}
 .fold-card:nth-child(1){--i:0}.fold-card:nth-child(2){--i:1}.fold-card:nth-child(3){--i:2}
 .fold-card:nth-child(4){--i:3}.fold-card:nth-child(5){--i:4}
 
 @media (prefers-reduced-motion:reduce){
-  .fold-ph img,.fold-card.is-open .fold-ph::after,.fold-live i{animation:none}
-  .fold-card,.fold-ph,.fold-txt > *,.fold-card.is-open .fold-txt > *{transition:none}
+  .fold-card.is-open .fold-art img,.fold-live i{animation:none}
+  .fold-card,.fold-art,.fold-art img,.fold-txt > *,.fold-card.is-open .fold-txt > *{transition:none}
   .fold-bar{display:none}
 }
 @media (max-width:900px){
   .sys-head{grid-template-columns:1fr}
-  .fold{--open:5}
+  .fold{--open:6}
 }
-/* on a phone the cards stack: closed ones become short bands with the name across */
+/* on a phone the cards stack: a closed card is a short band with its name
+   across, and the open one puts the art above its story */
 @media (max-width:700px){
   .fold{flex-direction:column;height:auto;gap:8px}
   .fold-card{flex:none;height:62px;transition:height .9s cubic-bezier(.72,0,.2,1),box-shadow .6s var(--ease)}
-  .fold-card.is-open{height:clamp(380px,112vw,470px)}
+  .fold-card.is-open{height:clamp(560px,152vw,620px)}
+  .fold-art{transition:bottom .9s cubic-bezier(.72,0,.2,1)}
+  .fold-card.is-open .fold-art{left:0;bottom:50%}
+  .fold-scrim{top:0;height:auto;right:0;width:auto;background:linear-gradient(to right,var(--bg) 62%,color-mix(in srgb,var(--bg) 40%,transparent) 88%,transparent)}
   .fold-tag{left:52px;bottom:auto;top:50%;transform:translateY(-50%);writing-mode:horizontal-tb}
   .fold-n{top:50%;transform:translateY(-50%)}
-  .fold-card.is-open .fold-n{top:clamp(12px,1.9vh,20px);transform:none}
-  .fold-txt{min-width:0}
+  .fold-card:not(.is-open) .fold-n{background:none}
+  .fold-card.is-open .fold-n{top:clamp(12px,1.9vh,20px);transform:none;padding:5px 7px;margin:-5px -7px;border-radius:7px;
+    background:color-mix(in srgb,var(--bg) 78%,transparent)}
+  .fold-txt{top:calc(50% + 18px);left:18px;right:18px;bottom:18px;width:auto}
   .fold.is-armed.is-in .fold-card{transition:opacity .9s var(--ease) calc(var(--i) * 90ms),transform 1.1s var(--ease) calc(var(--i) * 90ms),height .9s cubic-bezier(.72,0,.2,1)}
 }
 
@@ -1023,126 +1065,112 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
   .th-scene .th-flow{z-index:-2}
 }
 
-/* ================= FRAME 2 · the night shift, live =================
-   Six agents executing at once, not one list ticking down: each lane runs
-   its own steps with a live bar and counter, waits on the agents it needs,
-   and reports into an event stream. The markup is the finished night, so
-   it reads correctly before (and without) the script that replays it. */
-.ops-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(18px,3vw,48px);align-items:end}
-.ops-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;min-width:min(560px,100%);
-  border:1px solid rgba(255,255,255,.13);border-radius:16px;overflow:hidden;
-  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 50px rgba(0,0,0,.28)}
-.ops-metrics > div{padding:clamp(9px,1.4vh,14px) clamp(12px,1.3vw,18px);border-left:1px solid rgba(255,255,255,.08)}
-.ops-metrics > div:first-child{border-left:0}
-.ops-metrics dt{font:500 9.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.ops-metrics dd{margin:clamp(5px,.9vh,9px) 0 0;font:500 clamp(20px,min(2.2vw,3.3vh),32px)/1 var(--display);
-  letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:#fff;transition:color .6s ease}
-.ops-metrics dd.is-bump{color:var(--accent)}
+/* ================= FRAME 2 · how Red Marten executes =================
+   The run as an instrument laid over the forest: six concentric rings, one
+   per agent, each in three arcs for its three steps. Arcs fill as the steps
+   run (the live one in lime, with a bright tip), a ring that waits on another
+   sits dotted until the hand-off, and the bezel lights round with the run as
+   a whole. The markup is the finished run, so it reads before — and without —
+   the script that replays it. */
+.xrun{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  grid-template-areas:"copy dial" "data dial";grid-template-rows:auto 1fr;
+  column-gap:clamp(24px,4.4vw,76px);row-gap:clamp(14px,2.6vh,28px);align-items:start}
+.xrun-copy{grid-area:copy;min-width:0}
+.xrun-data{grid-area:data;min-width:0;display:flex;flex-direction:column}
+.xrun .slept-eyebrow{margin-bottom:clamp(12px,2vh,20px)}
+.xrun-lead{margin-top:clamp(10px,1.8vh,18px);max-width:40ch;
+  font:400 clamp(13.5px,1.8vh,15.5px)/1.6 var(--sans);color:rgba(255,255,255,.66)}
 
-.ops{margin-top:clamp(16px,2.6vh,30px)}
-.ops-bar{display:flex;align-items:center;gap:clamp(12px,2vw,20px);margin-bottom:10px;
-  font:500 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.55)}
-.ops-state{display:inline-flex;align-items:center;gap:9px;flex:none;min-width:118px}
-.ops-state i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.6)}
-.slept.ops-running .ops-state i{background:var(--accent);animation:runBreath 1.4s ease-in-out infinite}
-.slept.ops-running .ops-word{color:#fff}
-.ops-track{position:relative;flex:1;height:1px;background:rgba(255,255,255,.14)}
-.ops-track i{position:absolute;inset:0;background:var(--accent);transform-origin:left center;transform:scaleX(1)}
-.slept:not(.ops-running) .ops-track i{background:rgba(255,255,255,.45)}
-.ops-count{flex:none;font:400 11px/1 var(--mono);letter-spacing:.06em;color:rgba(255,255,255,.55);text-transform:none}
-.ops-count b{font-weight:500;color:#fff}
+/* the tally: four figures on frosted glass */
+.xrun-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;margin:0;
+  border-radius:16px;overflow:hidden;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 22px 50px rgba(0,0,0,.28)}
+.xrun-metrics > div{padding:clamp(10px,1.7vh,16px) clamp(12px,1.3vw,18px);background:rgba(9,13,11,.62);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.xrun-metrics dt{font:500 9.5px/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.xrun-metrics dd{margin:clamp(5px,.9vh,8px) 0 0;font:500 clamp(24px,4.2vh,40px)/1 var(--display);letter-spacing:-.035em;
+  color:#fff;font-variant-numeric:tabular-nums;transition:color .45s var(--ease),transform .45s var(--ease)}
+.xrun-metrics dd.is-bump{color:var(--accent);transform:translateY(-2px)}
 
-.ops-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:clamp(14px,2vw,28px);align-items:stretch}
+/* the latest three things the run did, newest on top */
+.xrun-log{margin:clamp(12px,2.2vh,22px) 0 0;padding:0;list-style:none;display:grid;gap:7px;
+  font:400 11.5px/1.45 var(--mono)}
+.xrun-log li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:10px;color:rgba(255,255,255,.78);
+  white-space:nowrap;transition:opacity .5s var(--ease)}
+.xrun-log li span{overflow:hidden;text-overflow:ellipsis}
+.xrun-log li b{font-weight:400;color:var(--accent)}
+.xrun-log li:nth-child(2){opacity:.58}
+.xrun-log li:nth-child(3){opacity:.3}
+.xrun-log li.is-new{animation:xlogIn .6s var(--ease)}
+@keyframes xlogIn{from{opacity:0;transform:translateY(-8px)}}
+.xrun .slept-close{margin-top:clamp(16px,3.4vh,44px)}
 
-/* ---- lanes ---- */
-.lanes{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.12)}
-.lane{position:relative;display:grid;grid-template-columns:16px minmax(0,132px) minmax(0,1fr) 84px 72px;
-  align-items:center;gap:clamp(10px,1.3vw,18px);padding:clamp(6px,1.15vh,11px) 4px;
-  border-bottom:1px solid rgba(255,255,255,.1);transition:opacity .5s ease}
-.lane::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .5s ease;
-  background:linear-gradient(90deg,rgba(195,213,63,.09),rgba(195,213,63,0) 62%)}
-.lane.is-running::before{opacity:1}
-.lane.is-queued,.lane.is-wait{opacity:.42}
-.ln-ic{position:relative;width:16px;height:16px}
-.ln-spin{position:absolute;inset:2px;border-radius:50%;border:1.5px solid rgba(195,213,63,.22);
-  border-top-color:var(--accent);opacity:0}
-.lane.is-running .ln-spin{opacity:1;animation:lnSpin .85s linear infinite}
-@keyframes lnSpin{to{transform:rotate(360deg)}}
-.ln-ok{position:absolute;inset:0;width:16px;height:16px;fill:none;stroke:#fff;stroke-width:1.8;
-  stroke-linecap:round;stroke-linejoin:round;opacity:0}
-.ln-ok path{stroke-dasharray:13;stroke-dashoffset:13;transition:stroke-dashoffset .4s var(--ease) .05s}
-.lane.is-done .ln-ok{opacity:1}
-.lane.is-done .ln-ok path{stroke-dashoffset:0}
-.lane.is-queued .ln-ic::after,.lane.is-wait .ln-ic::after{content:"";position:absolute;inset:4px;border-radius:50%;
-  border:1px dashed rgba(255,255,255,.5)}
-.ln-who{display:grid;gap:4px;min-width:0}
-.ln-who b{font:500 clamp(12.5px,min(1.05vw,1.85vh),14.5px)/1.1 var(--sans);color:#fff;white-space:nowrap}
-.ln-who em{font:400 10px/1.1 var(--mono);font-style:normal;letter-spacing:.04em;color:rgba(255,255,255,.42);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ln-task{display:grid;gap:clamp(4px,.7vh,7px);min-width:0}
-.ln-step{display:block;font:500 clamp(13.5px,min(1.2vw,2.15vh),17px)/1.15 var(--display);letter-spacing:-.02em;
-  color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ln-step.is-swap{animation:lnSwap .5s cubic-bezier(.16,1,.3,1) both}
-@keyframes lnSwap{from{opacity:0;transform:translate3d(0,60%,0)}to{opacity:1;transform:none}}
-.ln-meta{display:flex;align-items:center;gap:10px}
-.ln-bar{position:relative;flex:1;max-width:260px;height:3px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden}
-.ln-bar i{position:absolute;inset:0;border-radius:inherit;background:var(--accent);
-  transform-origin:left center;transform:scaleX(1)}
-.lane.is-done .ln-bar i{background:rgba(255,255,255,.55)}
-.ln-sub{flex:none;font:400 10px/1 var(--mono);letter-spacing:.04em;color:rgba(255,255,255,.42)}
-.ln-num{font:500 12px/1 var(--mono);text-align:right;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.8);
-  white-space:nowrap}
-.ln-state{justify-self:end;padding:5px 8px;border-radius:var(--r-full);border:1px solid rgba(255,255,255,.16);
-  font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);white-space:nowrap}
-.lane.is-running .ln-state{color:var(--accent);border-color:rgba(195,213,63,.42);background:rgba(195,213,63,.07)}
-.lane.is-done .ln-state{color:#fff;border-color:rgba(255,255,255,.3)}
+/* ---- the dial */
+.xd{grid-area:dial;position:relative;width:min(100%,64vh,640px);aspect-ratio:1;justify-self:center;align-self:center;
+  container-type:inline-size}
+.xd::before{content:"";position:absolute;inset:4%;z-index:-1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(236,214,170,.14),rgba(236,214,170,.04) 62%,rgba(236,214,170,0));
+  opacity:.55;transition:opacity 1.6s var(--ease),transform 1.6s var(--ease)}
+.slept.is-complete .xd::before{opacity:1;transform:scale(1.04)}
+.xd-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.xd-tick{stroke:rgba(255,255,255,.16);stroke-width:1.5;stroke-linecap:round;transition:stroke .5s var(--ease)}
+.xd-tick.is-major{stroke:rgba(255,255,255,.34);stroke-width:2.2}
+.xd-tick.is-lit{stroke:rgba(246,240,226,.9)}
+.xd-tick.is-lit.is-major{stroke:var(--accent)}
+.xd-ring{transform-box:view-box;transform-origin:300px 300px;transition:opacity .6s var(--ease)}
+.xd-track{fill:none;stroke:rgba(255,255,255,.075);stroke-width:12;stroke-linecap:round;transition:stroke .6s var(--ease)}
+.xd-fill{fill:none;stroke:rgba(246,240,226,.92);stroke-width:12;stroke-linecap:round;stroke-dasharray:100 100;
+  transition:stroke .5s var(--ease)}
+.xd-fill.is-live{stroke:var(--accent)}
+.xd-fill.is-empty{opacity:0}
+/* a ring waiting on another agent is only a dotted guide until its hand-off */
+.xd-ring.is-wait .xd-track{stroke:rgba(255,255,255,.26);stroke-width:2;stroke-dasharray:.35 1.9}
+.xd-tip{fill:#F4F8DC;opacity:0;transition:opacity .3s var(--ease)}
+.xd-ring.is-live .xd-tip{opacity:1}
+.xd-lab{font:500 10.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;fill:rgba(255,255,255,.46);
+  transition:fill .4s var(--ease)}
+.xd-lab .xd-ok{fill:var(--accent);opacity:0;transition:opacity .4s var(--ease)}
+.xd-ring.is-live .xd-lab{fill:#fff}
+.xd-ring.is-done .xd-lab{fill:rgba(246,240,226,.82)}
+.xd-ring.is-done .xd-ok{opacity:1}
+.xd-spark{fill:var(--accent)}
 
-/* ---- the event stream ---- */
-.feed{display:flex;flex-direction:column;min-height:0;border:1px solid rgba(255,255,255,.12);border-radius:16px;
-  background:linear-gradient(180deg,rgba(6,9,8,.62),rgba(6,9,8,.4));overflow:hidden;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.fd-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;
-  border-bottom:1px solid rgba(255,255,255,.08);
-  font:500 9.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-.fd-live{display:inline-flex;align-items:center;gap:7px;color:rgba(255,255,255,.7)}
-.fd-live i{width:6px;height:6px;border-radius:50%;background:#FF5A4E;box-shadow:0 0 10px rgba(255,90,78,.8)}
-.slept.ops-running .fd-live i{animation:runBreath 1.2s ease-in-out infinite}
-.fd-list{list-style:none;margin:0;padding:10px 14px 12px;flex:1;min-height:0;display:flex;flex-direction:column;
-  justify-content:flex-end;gap:7px;overflow:hidden;
-  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 34%);mask-image:linear-gradient(180deg,transparent 0,#000 34%)}
-.fd-list li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:10px;
-  font:400 11px/1.4 var(--mono);color:rgba(255,255,255,.66)}
-.fd-a{color:rgba(195,213,63,.88);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fd-list li.is-ok .fd-a{color:#fff}
-.fd-list li.is-ok .fd-t::before{content:"\2713  ";color:var(--accent)}
-.fd-list li.is-meet .fd-a{color:#FF8A6E}
-.fd-list li.is-new{animation:fdIn .45s cubic-bezier(.16,1,.3,1) both}
-.fd-list li.is-new .fd-t{animation:fdType .75s steps(26,end) both}
-@keyframes fdIn{from{opacity:0;transform:translate3d(0,10px,0)}to{opacity:1;transform:none}}
-@keyframes fdType{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-.fd-list li.is-cursor::after{content:"";display:inline-block;width:7px;height:12px;margin-left:3px;
-  vertical-align:-2px;background:rgba(255,255,255,.7);animation:fdBlink 1s steps(2,start) infinite;grid-column:2}
-@keyframes fdBlink{to{visibility:hidden}}
+/* the readout in the middle follows whichever step started last */
+.xd-core{position:absolute;left:50%;top:50%;width:33%;transform:translate(-50%,-50%);display:grid;justify-items:center;
+  gap:clamp(3px,.8cqw,6px);text-align:center;pointer-events:none}
+.xd-pct{display:flex;align-items:flex-start;font:500 clamp(30px,11.5cqw,78px)/.9 var(--display);letter-spacing:-.055em;
+  color:#fff;font-variant-numeric:tabular-nums}
+.xd-pct i{font-style:normal;font-size:.4em;margin:.16em 0 0 .08em;color:rgba(255,255,255,.55)}
+.xd-k{margin-top:clamp(4px,1cqw,8px);font:500 clamp(8.5px,1.65cqw,11px)/1.3 var(--mono);letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);white-space:nowrap}
+.xd-step{font:500 clamp(12px,2.9cqw,19px)/1.22 var(--display);letter-spacing:-.012em;color:rgba(255,255,255,.92)}
+.xd-sub{font:400 clamp(9px,1.7cqw,11.5px)/1.3 var(--mono);color:rgba(255,255,255,.5)}
+.xd-core .is-swap{animation:xswap .55s var(--ease)}
+@keyframes xswap{from{opacity:0;transform:translateY(7px)}}
 
-@media (max-width:1100px){
-  .ops-head{grid-template-columns:1fr}
-  .ops-metrics{min-width:0}
+/* the run completes: one sweep of light round the dial */
+.xd-sweep{position:absolute;inset:0;border-radius:50%;pointer-events:none;opacity:0;
+  background:conic-gradient(from 0deg,rgba(255,246,222,0) 0deg,rgba(255,246,222,0) 290deg,rgba(255,246,222,.32) 350deg,rgba(255,246,222,0) 360deg);
+  -webkit-mask:radial-gradient(closest-side,transparent 36%,#000 38%,#000 97%,transparent 100%);
+          mask:radial-gradient(closest-side,transparent 36%,#000 38%,#000 97%,transparent 100%)}
+.slept.is-complete .xd-sweep{animation:xsweep 2s var(--ease) 1}
+@keyframes xsweep{0%{opacity:1;transform:rotate(0)}85%{opacity:1}100%{opacity:0;transform:rotate(360deg)}}
+/* between runs the arcs wind back instead of vanishing */
+.xd.is-unwind .xd-fill{transition:stroke-dashoffset .9s cubic-bezier(.6,0,.3,1),stroke .5s}
+
+/* arrival, once: the ticks light round, the rings settle in from the centre */
+.xd.is-armed .xd-tick{opacity:0}
+.xd.is-armed .xd-ring{opacity:0;transform:scale(.9)}
+.xd.is-armed.is-in .xd-tick{opacity:1;transition:opacity .5s var(--ease) calc(var(--i) * 9ms),stroke .5s}
+.xd.is-armed.is-in .xd-ring{opacity:1;transform:none;
+  transition:opacity .8s var(--ease) calc(var(--r) * 90ms + .2s),transform 1.1s var(--ease) calc(var(--r) * 90ms + .2s)}
+
+@media (prefers-reduced-motion:reduce){
+  .slept.is-complete .xd-sweep,.xd-core .is-swap,.xrun-log li.is-new{animation:none}
 }
 @media (max-width:900px){
-  .ops-grid{grid-template-columns:1fr}
-  .feed{min-height:220px}
-  .lane{grid-template-columns:16px minmax(0,1fr) auto;row-gap:6px}
-  .ln-who{grid-column:2}
-  .ln-task{grid-column:2 / -1}
-  .ln-num{display:none}
-  .ln-state{grid-row:1;grid-column:3}
-  .ops-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .ops-metrics > div:nth-child(3){border-left:0}
-  .ops-metrics > div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08)}
-}
-@media (prefers-reduced-motion:reduce){
-  .ln-spin,.ops-state i,.fd-live i,.fd-list li,.fd-list li .fd-t,.ln-step{animation:none!important}
+  .xrun{grid-template-columns:1fr;grid-template-areas:"copy" "dial" "data";grid-template-rows:none}
+  .xd{width:min(100%,460px)}
 }
 
 /* ================= INTEGRATIONS · scene design =================

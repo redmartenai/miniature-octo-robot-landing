@@ -99,12 +99,15 @@ var ALLOW_EMBED = false;
      The hero pins and sinks back while the next frame rises over it, growing
      from small to full size as it docks. One custom property, --p (0→1 over
      the second frame's climb from the bottom of the screen to the top),
-     drives both sides of it in CSS. */
+     drives both sides of it in CSS. The hero fades out from 45% of the climb
+     and is hidden from 80%, so it never shows behind the frame you are
+     reading. */
   (function stack() {
     var st = document.querySelector('.stack');
     var next = st && st.querySelector('.slept');
     if (!st || !next || calmMotion) { return; }
     st.classList.add('is-live');
+    var hero = st.querySelector('.hero');
     var top = 0, vh = 0, last = -1;
     onScroll({
       measure: function () {
@@ -116,27 +119,34 @@ var ALLOW_EMBED = false;
         if (Math.abs(p - last) < 0.0006) { return; }
         last = p;
         st.style.setProperty('--p', p.toFixed(4));
+        /* set on the element itself, so no browser can miss the repaint of
+           a pinned layer: fades between 45% and 80% of the climb, then hides */
+        var gone = p >= 0.8;
+        hero.style.opacity = gone ? '0' : Math.min(1, Math.max(0, (0.8 - p) / 0.35)).toFixed(3);
+        hero.style.visibility = gone ? 'hidden' : '';
+        st.classList.toggle('is-docked', gone);
       }
     });
   })();
 
-  /* ---- frame 2: the night shift, live ------------------------------------
-     Six agents run at once. Each works through its own steps with a live
-     bar and counter; some wait on others (outbound on growth's shortlist,
-     finance on the CRM, reporting on everyone), so the lanes start, block
-     and finish at different moments the way a real run does. Every step
-     reports into the event stream, and four counters climb as the work
-     lands. When all six are done the night holds, then runs again.
+  /* ---- frame 2: how Red Marten executes, live -----------------------------
+     Six agents on one dial. Each ring is an agent and each of its three arcs
+     a step. Arcs fill as their steps run; a ring that waits on other agents
+     stays a dotted guide until its hand-off, when a spark runs in along the
+     12 o'clock line from each ring it waited on. The bezel lights round with
+     the run as a whole, and the readout in the middle follows whichever step
+     started last. When all six are done the dial takes one sweep of light,
+     holds, winds its arcs back and runs again.
 
      Everything hangs off one virtual clock that only advances while the
      frame is on screen, so pausing many concurrent processes is exact —
      nothing is banked, restarted or skipped. Figures are illustrative. */
-  (function nightOps() {
+  (function runDial() {
   var slept = document.getElementById('slept');
-  var ops = slept && slept.querySelector('.ops');
-  if (!ops || !window.IntersectionObserver || calmMotion) { return; }
+  var dial = slept && slept.querySelector('.xd');
+  if (!dial || !window.IntersectionObserver || calmMotion) { return; }
 
-  // [label, seconds, stream line, {n:[from,to,suffix]} | {m:[metric,to]}]
+  // [label, seconds, log line, {n:[from,to,suffix]} | {m:[metric,to]}]
   var PLAN = {
     ads: { deps: [], steps: [
       ['Pulling spend by campaign', 2.6, 'pulling spend across 14 campaigns', { n: [0, 14, ' campaigns'] }],
@@ -164,108 +174,135 @@ var ALLOW_EMBED = false;
       ['Checking against pipeline', 1.6, 'checking the model against open pipeline']],
       done: ['Forecast generated', 'Q3 model', 'forecast generated from the live pipeline'] },
     reporting: { deps: ['ads', 'outbound', 'finance'], steps: [
-      ['Collecting the night’s work', 1.8, 'collecting the night’s work from six agents'],
+      ['Collecting every result', 1.8, 'collecting results from all six agents'],
       ['Writing the summary', 2.6, 'writing the executive summary'],
       ['Flagging what needs you', 1.4, 'three decisions that need a human', { n: [0, 3, ' decisions'] }]],
-      done: ['Executive summary prepared', '3 decisions', '3 decisions flagged for your morning'] }
+      done: ['Executive summary prepared', '3 decisions', '3 decisions flagged for you'] }
   };
   var NAMES = { ads: 'Ads', growth: 'Growth', outbound: 'Outbound', crm: 'CRM', finance: 'Finance', reporting: 'Reporting' };
-  /* replies land while the rest of the night is still running */
+  /* replies turn into meetings while the rest of the run is still going */
   var MEETINGS = [[2.2, 'Kestrel Analytics'], [4.6, 'Halden Systems'], [6.9, 'Northwind Logistics'], [8.4, 'Corvus Payments']];
-  var HOLD = 4.5;
+  var HOLD = 4.5, UNWIND = 1.1;
+  /* ring geometry, matching the markup: 290 degrees from 12 o'clock, three arcs */
+  var START = -90, GAP = 4, SEG = (290 - 2 * GAP) / 3;
 
   var keys = Object.keys(PLAN);
-  var lanes = {};
+  var rings = {};
   keys.forEach(function (k) {
-    var el = ops.querySelector('.lane[data-a="' + k + '"]');
-    lanes[k] = { el: el, step: el.querySelector('.ln-step'), sub: el.querySelector('.ln-sub'),
-                 bar: el.querySelector('.ln-bar i'), num: el.querySelector('.ln-num'),
-                 state: el.querySelector('.ln-state'), plan: PLAN[k] };
+    var g = dial.querySelector('.xd-ring[data-a="' + k + '"]'), tip = g.querySelector('.xd-tip');
+    rings[k] = { g: g, fills: [].slice.call(g.querySelectorAll('.xd-fill')), tip: tip,
+                 r: 300 - parseFloat(tip.getAttribute('cy')), plan: PLAN[k] };
   });
+  var svg = dial.querySelector('.xd-svg');
+  var ticks = [].slice.call(dial.querySelectorAll('.xd-tick'));
+  var pn = dial.querySelector('.xd-pn'), kEl = dial.querySelector('.xd-k');
+  var stepEl = dial.querySelector('.xd-step'), subEl = dial.querySelector('.xd-sub');
+  var list = slept.querySelector('.xrun-log');
   var metricEl = {};
   [].forEach.call(slept.querySelectorAll('[data-m]'), function (d) { metricEl[d.getAttribute('data-m')] = d; });
-  var list  = ops.querySelector('.fd-list');
-  var track = ops.querySelector('.ops-track i');
-  var word  = ops.querySelector('.ops-word');
-  var nDone = ops.querySelector('.ops-n');
 
-  var vt = 0, last = 0, raf = 0, live = false, started = false;
-  var metric, shown, doneAt, doneCount, outboundAt, meetIdx;
+  var vt = 0, last = 0, raf = 0, live = false, started = false, unwinding = false, lit = 72;
+  var metric, shown, doneAt, doneCount, outboundAt, meetIdx, focus;
 
   function text(el, v) { if (el.textContent !== v) { el.textContent = v; } }
   function fmt(n) { return n >= 1000 ? Math.floor(n / 1000) + ',' + ('00' + (n % 1000)).slice(-3) : String(n); }
-  function swap(el, v) { el.textContent = v; el.classList.remove('is-swap'); void el.offsetWidth; el.classList.add('is-swap'); }
-
-  function log(who, msg, kind) {
-    var li = document.createElement('li');
-    li.className = 'is-new is-cursor' + (kind ? ' is-' + kind : '');
-    var a = document.createElement('span'); a.className = 'fd-a'; a.textContent = who;
-    var t = document.createElement('span'); t.className = 'fd-t'; t.textContent = msg;
-    li.appendChild(a); li.appendChild(t);
-    var prev = list.querySelector('.is-cursor');
-    if (prev) { prev.classList.remove('is-cursor'); }
-    list.appendChild(li);
-    while (list.children.length > 12) { list.removeChild(list.firstChild); }
+  function swap(el, v) {
+    if (el.textContent === v) { return; }
+    el.textContent = v; el.classList.remove('is-swap'); void el.offsetWidth; el.classList.add('is-swap');
   }
-
-  function setState(L, s, label) {
-    L.el.className = 'lane is-' + s;
-    text(L.state, label);
+  function setFill(f, p) {
+    f.style.strokeDashoffset = (100 * (1 - p)).toFixed(2);
+    f.classList.toggle('is-empty', p <= 0.002);
+  }
+  function tipAt(R, i, p) {
+    var a = (START + i * (SEG + GAP) + SEG * p) * Math.PI / 180;
+    R.tip.setAttribute('cx', (300 + R.r * Math.cos(a)).toFixed(1));
+    R.tip.setAttribute('cy', (300 + R.r * Math.sin(a)).toFixed(1));
+  }
+  function ringState(R, s) { R.g.setAttribute('class', 'xd-ring is-' + s); }
+  function lightTicks(n) {
+    if (n === lit) { return; }
+    for (var i = Math.min(n, lit); i < Math.max(n, lit); i++) { ticks[i].classList.toggle('is-lit', i < n); }
+    lit = n;
+  }
+  function log(who, msg) {
+    var li = document.createElement('li'), b = document.createElement('b'), s = document.createElement('span');
+    li.className = 'is-new'; b.textContent = who; s.textContent = msg;
+    li.appendChild(b); li.appendChild(s);
+    list.insertBefore(li, list.firstChild);
+    while (list.children.length > 3) { list.removeChild(list.lastChild); }
+  }
+  /* a hand-off: a spark runs in from the ring that finished to the ring that starts */
+  function spark(r0, r1) {
+    var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    c.setAttribute('class', 'xd-spark'); c.setAttribute('r', '4.5');
+    c.setAttribute('cx', '300'); c.setAttribute('cy', String(300 - r0));
+    svg.appendChild(c);
+    if (!c.animate) { c.remove(); return; }
+    var d = (r0 - r1).toFixed(1);
+    c.animate([{ transform: 'translateY(0)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1, offset: 0.12 },
+               { transform: 'translateY(' + d + 'px)', opacity: 1, offset: 0.82 }, { transform: 'translateY(' + d + 'px)', opacity: 0 }],
+              { duration: 950, easing: 'cubic-bezier(.45,0,.2,1)' }).onfinish = function () { c.remove(); };
+  }
+  function show(k, i) {
+    focus = k;
+    swap(kEl, NAMES[k] + ' · step ' + (i + 1) + ' of ' + PLAN[k].steps.length);
+    swap(stepEl, PLAN[k].steps[i][0]);
+    text(subEl, ' ');
   }
 
   function reset() {
-    vt = 0; doneAt = -1; doneCount = 0; outboundAt = -1; meetIdx = 0;
+    vt = 0; doneAt = -1; doneCount = 0; outboundAt = -1; meetIdx = 0; focus = null;
     metric = { accounts: 0, emails: 0, records: 0, meetings: 0 };
     shown = { accounts: 0, emails: 0, records: 0, meetings: 0 };
     keys.forEach(function (k) {
-      var L = lanes[k];
-      L.i = -1; L.t0 = 0; L.base = null;
-      L.bar.style.transform = 'scaleX(0)';
-      text(L.num, '—');
-      text(L.sub, '0 of ' + L.plan.steps.length + ' steps');
-      if (L.plan.deps.length) {
-        setState(L, 'wait', 'Waiting');
-        text(L.step, L.plan.deps.length > 2 ? 'Waiting on everyone else'
-          : 'Waiting on ' + L.plan.deps.map(function (d) { return NAMES[d]; }).join(' & '));
-      } else {
-        setState(L, 'queued', 'Queued');
-        text(L.step, L.plan.steps[0][0]);
-      }
+      var R = rings[k];
+      R.i = -1; R.t0 = 0; R.base = null;
+      R.fills.forEach(function (f) { setFill(f, 0); f.classList.remove('is-live'); });
+      ringState(R, R.plan.deps.length ? 'wait' : 'queued');
     });
+    lightTicks(0);
     Object.keys(metricEl).forEach(function (m) { text(metricEl[m], '0'); });
-    list.innerHTML = '';
-    log('night', 'shift started · 6 agents on duty');
+    list.textContent = '';
+    log('run', 'plan loaded · 6 agents, 18 steps');
+    text(pn, '0');
+    swap(kEl, 'Plan loaded');
+    swap(stepEl, 'Six agents, eighteen steps');
+    text(subEl, 'starting now');
     slept.classList.add('ops-running');
-    text(word, 'Running'); text(nDone, '0');
-    track.style.transform = 'scaleX(0)';
+    slept.classList.remove('is-complete');
   }
 
-  function begin(k, L, i) {
-    var s = L.plan.steps[i];
-    L.i = i; L.t0 = vt;
-    L.base = s[3] && s[3].m ? metric[s[3].m[0]] : null;
-    if (i === 0) { setState(L, 'running', 'Running'); }
-    swap(L.step, s[0]);
-    text(L.sub, (i + 1) + ' of ' + L.plan.steps.length + ' steps');
+  function begin(k, R, i) {
+    var s = R.plan.steps[i];
+    R.i = i; R.t0 = vt;
+    R.base = s[3] && s[3].m ? metric[s[3].m[0]] : null;
+    if (i === 0) {
+      ringState(R, 'live');
+      R.plan.deps.forEach(function (d) { spark(rings[d].r, R.r); });
+    } else {
+      setFill(R.fills[i - 1], 1);
+      R.fills[i - 1].classList.remove('is-live');
+    }
+    R.fills[i].classList.add('is-live');
+    tipAt(R, i, 0);
+    show(k, i);
     if (s[2]) { log(k, s[2]); }
   }
 
-  function finish(k, L) {
-    var d = L.plan.done;
-    L.i = L.plan.steps.length;
-    setState(L, 'done', 'Done');
-    swap(L.step, d[0]);
-    text(L.num, d[1]);
-    text(L.sub, L.plan.steps.length + ' of ' + L.plan.steps.length + ' steps');
-    L.bar.style.transform = 'scaleX(1)';
-    log(k, d[2], 'ok');
+  function finish(k, R) {
+    var d = R.plan.done;
+    R.i = R.plan.steps.length;
+    R.fills.forEach(function (f) { setFill(f, 1); f.classList.remove('is-live'); });
+    ringState(R, 'done');
+    log(k, d[2]);
     doneCount++;
-    text(nDone, String(doneCount));
     if (k === 'outbound') { outboundAt = vt; }
+    if (focus === k) { swap(kEl, NAMES[k] + ' · done'); swap(stepEl, d[0]); text(subEl, d[1]); }
   }
 
-  function depsDone(L) {
-    return L.plan.deps.every(function (d) { return lanes[d].i >= lanes[d].plan.steps.length; });
+  function depsDone(R) {
+    return R.plan.deps.every(function (d) { return rings[d].i >= rings[d].plan.steps.length; });
   }
 
   function frame(now) {
@@ -274,27 +311,27 @@ var ALLOW_EMBED = false;
     last = now; vt += dt;
     var total = 0;
     keys.forEach(function (k) {
-      var L = lanes[k], n = L.plan.steps.length;
-      if (L.i === -1 && depsDone(L)) { begin(k, L, 0); }
-      if (L.i > -1 && L.i < n) {
-        var s = L.plan.steps[L.i], p = Math.min(1, (vt - L.t0) / s[1]);
-        L.bar.style.transform = 'scaleX(' + ((L.i + p) / n).toFixed(4) + ')';
+      var R = rings[k], n = R.plan.steps.length;
+      if (R.i === -1 && doneAt < 0 && depsDone(R)) { begin(k, R, 0); }
+      if (R.i > -1 && R.i < n) {
+        var s = R.plan.steps[R.i], p = Math.min(1, (vt - R.t0) / s[1]);
+        setFill(R.fills[R.i], p);
+        tipAt(R, R.i, p);
         var e = 1 - Math.pow(1 - p, 2);
-        if (s[3] && s[3].n) {
-          text(L.num, fmt(Math.round(s[3].n[0] + (s[3].n[1] - s[3].n[0]) * e)) + s[3].n[2]);
+        if (s[3] && s[3].n && focus === k) {
+          text(subEl, fmt(Math.round(s[3].n[0] + (s[3].n[1] - s[3].n[0]) * e)) + s[3].n[2]);
         }
         if (s[3] && s[3].m) {
-          metric[s[3].m[0]] = Math.round(L.base + s[3].m[1] * e);
-          text(L.num, fmt(metric[s[3].m[0]]));
+          metric[s[3].m[0]] = Math.round(R.base + s[3].m[1] * e);
+          if (focus === k) { text(subEl, fmt(metric[s[3].m[0]]) + ' ' + s[3].m[0]); }
         }
-        if (p >= 1) { if (L.i + 1 < n) { begin(k, L, L.i + 1); } else { finish(k, L); } }
+        if (p >= 1) { if (R.i + 1 < n) { begin(k, R, R.i + 1); } else { finish(k, R); } }
       }
-      total += L.i < 0 ? 0 : Math.min(n, L.i + (L.i < n ? Math.min(1, (vt - L.t0) / L.plan.steps[L.i][1]) : 0)) / n;
+      total += R.i < 0 ? 0 : Math.min(n, R.i + (R.i < n ? Math.min(1, (vt - R.t0) / R.plan.steps[R.i][1]) : 0)) / n;
     });
-    /* replies turn into booked meetings while the rest of the night runs */
     if (outboundAt > -1 && meetIdx < MEETINGS.length && vt - outboundAt >= MEETINGS[meetIdx][0]) {
       metric.meetings++;
-      log('meeting', 'booked · ' + MEETINGS[meetIdx][1], 'meet');
+      log('meeting', 'booked · ' + MEETINGS[meetIdx][1]);
       meetIdx++;
     }
     Object.keys(metric).forEach(function (m) {
@@ -307,30 +344,60 @@ var ALLOW_EMBED = false;
         el._t = setTimeout(function () { el.classList.remove('is-bump'); }, 450);
       }
     });
-    track.style.transform = 'scaleX(' + (total / keys.length).toFixed(4) + ')';
+    if (!unwinding && doneAt < 0) {
+      var frac = total / keys.length;
+      text(pn, String(Math.round(frac * 100)));
+      lightTicks(Math.round(frac * ticks.length));
+    }
     if (doneCount === keys.length && meetIdx >= MEETINGS.length && doneAt < 0) {
       doneAt = vt;
       slept.classList.remove('ops-running');
-      slept.classList.add('run-seen');
-      text(word, 'Run complete');
-      log('night', 'run complete · nothing waiting on you but three decisions', 'ok');
+      slept.classList.add('run-seen', 'is-complete');
+      text(pn, '100'); lightTicks(ticks.length);
+      swap(kEl, 'Run complete'); swap(stepEl, '3 decisions for you'); text(subEl, 'nothing else waiting on you');
+      log('run', 'run complete · nothing waiting on you but three decisions');
     }
-    if (doneAt > -1 && vt - doneAt > HOLD) { reset(); }
+    /* after the hold the arcs wind back, then the next run starts */
+    if (doneAt > -1 && !unwinding && vt - doneAt > HOLD) {
+      unwinding = true;
+      dial.classList.add('is-unwind');
+      slept.classList.remove('is-complete');
+      keys.forEach(function (k) { rings[k].fills.forEach(function (f) { f.style.strokeDashoffset = '100'; }); });
+      lightTicks(0); text(pn, '0');
+      swap(kEl, 'Next run'); swap(stepEl, 'Loading the plan'); text(subEl, ' ');
+    }
+    if (unwinding && vt - doneAt > HOLD + UNWIND) {
+      unwinding = false;
+      dial.classList.remove('is-unwind');
+      reset();
+    }
     raf = requestAnimationFrame(frame);
   }
 
   function run(on) {
     live = on;
-    if (on) {
-      if (!started) { started = true; slept.classList.add('run-ready'); reset(); }
-      if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+    if (on && !started) {
+      started = true;
+      slept.classList.add('run-ready');
+      reset();
+      dial.classList.add('is-in');
+      /* the dial finishes arriving before the first steps start */
+      setTimeout(function () {
+        dial.classList.remove('is-armed', 'is-in');
+        if (live && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
+      }, 1300);
+      return;
     }
+    if (on && started && !raf && !dial.classList.contains('is-armed')) { last = performance.now(); raf = requestAnimationFrame(frame); }
   }
-  new IntersectionObserver(function (e) { run(e[0].isIntersecting && e[0].intersectionRatio > 0.2); },
-    { threshold: [0, 0.2, 0.4] }).observe(ops);
+  dial.classList.add('is-armed');
+  new IntersectionObserver(function (e) {
+    var x = e[0], need = Math.min(x.boundingClientRect.height, innerHeight) * 0.4;
+    run(x.isIntersecting && x.intersectionRect.height >= need);
+  }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1] }).observe(dial);
   })();
 
-  /* ---- the system: five agents, one open at a time --------------------
+  /* ---- the system: five capabilities, one open at a time --------------
      CSS does the moving; this decides which card is open. The open card's
      timer is a CSS animation, so when it ends the next card opens, and
      pausing it (pointer over the row, or the frame off screen) is exact.

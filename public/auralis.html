@@ -41,10 +41,13 @@
 
       <!-- Blogs has no section on this page — point at the real route when it exists -->
       <li><a href="/blogs">Blogs</a></li>
+      <!-- on a phone the Log in button moves into this menu -->
+      <li class="nav-login"><a href="#connect" data-connect="login">Log in</a></li>
     </ul>
     <button class="navtoggle" type="button" id="navtoggle" aria-expanded="false"
             aria-controls="navlinks" aria-label="Menu"><i></i><i></i></button>
     <div class="navcta">
+      <button class="nav-ghost" type="button" data-connect="login">Log in</button>
       <button class="nav-solid" type="button" data-connect="intro">Meet MARA</button>
     </div>
   </nav>
@@ -75,78 +78,74 @@
   <span class="slept-dawn" aria-hidden="true"></span>
   <span class="slept-veil" aria-hidden="true"></span>
   <span class="slept-warm" aria-hidden="true"></span>
-  <div class="wrap slept-in">
+  <div class="wrap slept-in xrun">
+    <!-- how a run executes: six agents as six rings on one dial, each ring
+         in three arcs for its three steps. The markup is the finished run;
+         the script replays it live while the frame is on screen. -->
+    <div class="xrun-copy">
+      <span class="slept-eyebrow">Live run &middot; end to end</span>
+      <h2>How Red Marten <span class="em">executes</span></h2>
+      <p class="xrun-lead">One plan, split across six agents. Each works its own steps, hands off the
+         moment it&rsquo;s done, and nothing waits on a person.</p>
+    </div>
 
-    <div class="ops-head">
-      <div>
-        <span class="slept-eyebrow">Last night &middot; unattended</span>
-        <h2>What happened <span class="em">while you slept</span></h2>
+    <div class="xd">
+      <svg class="xd-svg" viewBox="0 0 600 600" aria-hidden="true">
+          <g class="xd-bezel"><line class="xd-tick is-major is-lit" style="--i:0" x1="300.0" y1="30.0" x2="300.0" y2="8.0"/><line class="xd-tick is-lit" style="--i:1" x1="324.3" y1="22.1" x2="325.2" y2="12.1"/><line class="xd-tick is-lit" style="--i:2" x1="348.4" y1="25.2" x2="350.2" y2="15.4"/><line class="xd-tick is-lit" style="--i:3" x1="372.2" y1="30.5" x2="374.8" y2="20.8"/><line class="xd-tick is-lit" style="--i:4" x1="395.4" y1="37.8" x2="398.8" y2="28.4"/><line class="xd-tick is-lit" style="--i:5" x1="417.9" y1="47.1" x2="422.1" y2="38.1"/><line class="xd-tick is-major is-lit" style="--i:6" x1="435.0" y1="66.2" x2="446.0" y2="47.1"/><line class="xd-tick is-lit" style="--i:7" x1="460.0" y1="71.5" x2="465.8" y2="63.3"/><line class="xd-tick is-lit" style="--i:8" x1="479.3" y1="86.3" x2="485.8" y2="78.6"/><line class="xd-tick is-lit" style="--i:9" x1="497.3" y1="102.7" x2="504.4" y2="95.6"/><line class="xd-tick is-lit" style="--i:10" x1="513.7" y1="120.7" x2="521.4" y2="114.2"/><line class="xd-tick is-lit" style="--i:11" x1="528.5" y1="140.0" x2="536.7" y2="134.2"/><line class="xd-tick is-major is-lit" style="--i:12" x1="533.8" y1="165.0" x2="552.9" y2="154.0"/><line class="xd-tick is-lit" style="--i:13" x1="552.9" y1="182.1" x2="561.9" y2="177.9"/><line class="xd-tick is-lit" style="--i:14" x1="562.2" y1="204.6" x2="571.6" y2="201.2"/><line class="xd-tick is-lit" style="--i:15" x1="569.5" y1="227.8" x2="579.2" y2="225.2"/><line class="xd-tick is-lit" style="--i:16" x1="574.8" y1="251.6" x2="584.6" y2="249.8"/><line class="xd-tick is-lit" style="--i:17" x1="577.9" y1="275.7" x2="587.9" y2="274.8"/><line class="xd-tick is-major is-lit" style="--i:18" x1="570.0" y1="300.0" x2="592.0" y2="300.0"/><line class="xd-tick is-lit" style="--i:19" x1="577.9" y1="324.3" x2="587.9" y2="325.2"/><line class="xd-tick is-lit" style="--i:20" x1="574.8" y1="348.4" x2="584.6" y2="350.2"/><line class="xd-tick is-lit" style="--i:21" x1="569.5" y1="372.2" x2="579.2" y2="374.8"/><line class="xd-tick is-lit" style="--i:22" x1="562.2" y1="395.4" x2="571.6" y2="398.8"/><line class="xd-tick is-lit" style="--i:23" x1="552.9" y1="417.9" x2="561.9" y2="422.1"/><line class="xd-tick is-major is-lit" style="--i:24" x1="533.8" y1="435.0" x2="552.9" y2="446.0"/><line class="xd-tick is-lit" style="--i:25" x1="528.5" y1="460.0" x2="536.7" y2="465.8"/><line class="xd-tick is-lit" style="--i:26" x1="513.7" y1="479.3" x2="521.4" y2="485.8"/><line class="xd-tick is-lit" style="--i:27" x1="497.3" y1="497.3" x2="504.4" y2="504.4"/><line class="xd-tick is-lit" style="--i:28" x1="479.3" y1="513.7" x2="485.8" y2="521.4"/><line class="xd-tick is-lit" style="--i:29" x1="460.0" y1="528.5" x2="465.8" y2="536.7"/><line class="xd-tick is-major is-lit" style="--i:30" x1="435.0" y1="533.8" x2="446.0" y2="552.9"/><line class="xd-tick is-lit" style="--i:31" x1="417.9" y1="552.9" x2="422.1" y2="561.9"/><line class="xd-tick is-lit" style="--i:32" x1="395.4" y1="562.2" x2="398.8" y2="571.6"/><line class="xd-tick is-lit" style="--i:33" x1="372.2" y1="569.5" x2="374.8" y2="579.2"/><line class="xd-tick is-lit" style="--i:34" x1="348.4" y1="574.8" x2="350.2" y2="584.6"/><line class="xd-tick is-lit" style="--i:35" x1="324.3" y1="577.9" x2="325.2" y2="587.9"/><line class="xd-tick is-major is-lit" style="--i:36" x1="300.0" y1="570.0" x2="300.0" y2="592.0"/><line class="xd-tick is-lit" style="--i:37" x1="275.7" y1="577.9" x2="274.8" y2="587.9"/><line class="xd-tick is-lit" style="--i:38" x1="251.6" y1="574.8" x2="249.8" y2="584.6"/><line class="xd-tick is-lit" style="--i:39" x1="227.8" y1="569.5" x2="225.2" y2="579.2"/><line class="xd-tick is-lit" style="--i:40" x1="204.6" y1="562.2" x2="201.2" y2="571.6"/><line class="xd-tick is-lit" style="--i:41" x1="182.1" y1="552.9" x2="177.9" y2="561.9"/><line class="xd-tick is-major is-lit" style="--i:42" x1="165.0" y1="533.8" x2="154.0" y2="552.9"/><line class="xd-tick is-lit" style="--i:43" x1="140.0" y1="528.5" x2="134.2" y2="536.7"/><line class="xd-tick is-lit" style="--i:44" x1="120.7" y1="513.7" x2="114.2" y2="521.4"/><line class="xd-tick is-lit" style="--i:45" x1="102.7" y1="497.3" x2="95.6" y2="504.4"/><line class="xd-tick is-lit" style="--i:46" x1="86.3" y1="479.3" x2="78.6" y2="485.8"/><line class="xd-tick is-lit" style="--i:47" x1="71.5" y1="460.0" x2="63.3" y2="465.8"/><line class="xd-tick is-major is-lit" style="--i:48" x1="66.2" y1="435.0" x2="47.1" y2="446.0"/><line class="xd-tick is-lit" style="--i:49" x1="47.1" y1="417.9" x2="38.1" y2="422.1"/><line class="xd-tick is-lit" style="--i:50" x1="37.8" y1="395.4" x2="28.4" y2="398.8"/><line class="xd-tick is-lit" style="--i:51" x1="30.5" y1="372.2" x2="20.8" y2="374.8"/><line class="xd-tick is-lit" style="--i:52" x1="25.2" y1="348.4" x2="15.4" y2="350.2"/><line class="xd-tick is-lit" style="--i:53" x1="22.1" y1="324.3" x2="12.1" y2="325.2"/><line class="xd-tick is-major is-lit" style="--i:54" x1="30.0" y1="300.0" x2="8.0" y2="300.0"/><line class="xd-tick is-lit" style="--i:55" x1="22.1" y1="275.7" x2="12.1" y2="274.8"/><line class="xd-tick is-lit" style="--i:56" x1="25.2" y1="251.6" x2="15.4" y2="249.8"/><line class="xd-tick is-lit" style="--i:57" x1="30.5" y1="227.8" x2="20.8" y2="225.2"/><line class="xd-tick is-lit" style="--i:58" x1="37.8" y1="204.6" x2="28.4" y2="201.2"/><line class="xd-tick is-lit" style="--i:59" x1="47.1" y1="182.1" x2="38.1" y2="177.9"/><line class="xd-tick is-major is-lit" style="--i:60" x1="66.2" y1="165.0" x2="47.1" y2="154.0"/><line class="xd-tick is-lit" style="--i:61" x1="71.5" y1="140.0" x2="63.3" y2="134.2"/><line class="xd-tick is-lit" style="--i:62" x1="86.3" y1="120.7" x2="78.6" y2="114.2"/><line class="xd-tick is-lit" style="--i:63" x1="102.7" y1="102.7" x2="95.6" y2="95.6"/><line class="xd-tick is-lit" style="--i:64" x1="120.7" y1="86.3" x2="114.2" y2="78.6"/><line class="xd-tick is-lit" style="--i:65" x1="140.0" y1="71.5" x2="134.2" y2="63.3"/><line class="xd-tick is-major is-lit" style="--i:66" x1="165.0" y1="66.2" x2="154.0" y2="47.1"/><line class="xd-tick is-lit" style="--i:67" x1="182.1" y1="47.1" x2="177.9" y2="38.1"/><line class="xd-tick is-lit" style="--i:68" x1="204.6" y1="37.8" x2="201.2" y2="28.4"/><line class="xd-tick is-lit" style="--i:69" x1="227.8" y1="30.5" x2="225.2" y2="20.8"/><line class="xd-tick is-lit" style="--i:70" x1="251.6" y1="25.2" x2="249.8" y2="15.4"/><line class="xd-tick is-lit" style="--i:71" x1="275.7" y1="22.1" x2="274.8" y2="12.1"/></g>
+          <g class="xd-ring is-done" data-a="ads" style="--r:0">
+            <path class="xd-track" d="M300.00 52.00A248 248 0 0 1 547.40 317.30" pathLength="100"/><path class="xd-fill" d="M300.00 52.00A248 248 0 0 1 547.40 317.30" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M545.59 334.51A248 248 0 0 1 248.44 542.58" pathLength="100"/><path class="xd-fill" d="M545.59 334.51A248 248 0 0 1 248.44 542.58" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M231.64 538.39A248 248 0 0 1 66.96 215.18" pathLength="100"/><path class="xd-fill" d="M231.64 538.39A248 248 0 0 1 66.96 215.18" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="52"/>
+            <text class="xd-lab" x="286" y="56.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>Ads</text>
+          </g>
+          <g class="xd-ring is-done" data-a="growth" style="--r:1">
+            <path class="xd-track" d="M300.00 78.00A222 222 0 0 1 521.46 315.49" pathLength="100"/><path class="xd-fill" d="M300.00 78.00A222 222 0 0 1 521.46 315.49" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M519.84 330.90A222 222 0 0 1 253.84 517.15" pathLength="100"/><path class="xd-fill" d="M519.84 330.90A222 222 0 0 1 253.84 517.15" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M238.81 513.40A222 222 0 0 1 91.39 224.07" pathLength="100"/><path class="xd-fill" d="M238.81 513.40A222 222 0 0 1 91.39 224.07" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="78"/>
+            <text class="xd-lab" x="286" y="82.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>Growth</text>
+          </g>
+          <g class="xd-ring is-done" data-a="outbound" style="--r:2">
+            <path class="xd-track" d="M300.00 104.00A196 196 0 0 1 495.52 313.67" pathLength="100"/><path class="xd-fill" d="M300.00 104.00A196 196 0 0 1 495.52 313.67" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M494.09 327.28A196 196 0 0 1 259.25 491.72" pathLength="100"/><path class="xd-fill" d="M494.09 327.28A196 196 0 0 1 259.25 491.72" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M245.98 488.41A196 196 0 0 1 115.82 232.96" pathLength="100"/><path class="xd-fill" d="M245.98 488.41A196 196 0 0 1 115.82 232.96" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="104"/>
+            <text class="xd-lab" x="286" y="108.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>Outbound</text>
+          </g>
+          <g class="xd-ring is-done" data-a="crm" style="--r:3">
+            <path class="xd-track" d="M300.00 130.00A170 170 0 0 1 469.59 311.86" pathLength="100"/><path class="xd-fill" d="M300.00 130.00A170 170 0 0 1 469.59 311.86" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M468.35 323.66A170 170 0 0 1 264.66 466.29" pathLength="100"/><path class="xd-fill" d="M468.35 323.66A170 170 0 0 1 264.66 466.29" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M253.14 463.41A170 170 0 0 1 140.25 241.86" pathLength="100"/><path class="xd-fill" d="M253.14 463.41A170 170 0 0 1 140.25 241.86" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="130"/>
+            <text class="xd-lab" x="286" y="134.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>CRM</text>
+          </g>
+          <g class="xd-ring is-done" data-a="finance" style="--r:4">
+            <path class="xd-track" d="M300.00 156.00A144 144 0 0 1 443.65 310.04" pathLength="100"/><path class="xd-fill" d="M300.00 156.00A144 144 0 0 1 443.65 310.04" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M442.60 320.04A144 144 0 0 1 270.06 440.85" pathLength="100"/><path class="xd-fill" d="M442.60 320.04A144 144 0 0 1 270.06 440.85" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M260.31 438.42A144 144 0 0 1 164.68 250.75" pathLength="100"/><path class="xd-fill" d="M260.31 438.42A144 144 0 0 1 164.68 250.75" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="156"/>
+            <text class="xd-lab" x="286" y="160.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>Finance</text>
+          </g>
+          <g class="xd-ring is-done" data-a="reporting" style="--r:5">
+            <path class="xd-track" d="M300.00 182.00A118 118 0 0 1 417.71 308.23" pathLength="100"/><path class="xd-fill" d="M300.00 182.00A118 118 0 0 1 417.71 308.23" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M416.85 316.42A118 118 0 0 1 275.47 415.42" pathLength="100"/><path class="xd-fill" d="M416.85 316.42A118 118 0 0 1 275.47 415.42" pathLength="100" style="stroke-dashoffset:0"/><path class="xd-track" d="M267.47 413.43A118 118 0 0 1 189.12 259.64" pathLength="100"/><path class="xd-fill" d="M267.47 413.43A118 118 0 0 1 189.12 259.64" pathLength="100" style="stroke-dashoffset:0"/>
+            <circle class="xd-tip" r="4.5" cx="300" cy="182"/>
+            <text class="xd-lab" x="286" y="186.0" text-anchor="end"><tspan class="xd-ok">&#10003; </tspan>Reporting</text>
+          </g>
+        </svg>
+      <span class="xd-sweep" aria-hidden="true"></span>
+      <div class="xd-core">
+        <b class="xd-pct"><span class="xd-pn">100</span><i>%</i></b>
+        <span class="xd-k">Run complete</span>
+        <span class="xd-step">3 decisions for you</span>
+        <span class="xd-sub">nothing else waiting on you</span>
       </div>
-      <dl class="ops-metrics">
+    </div>
+
+    <div class="xrun-data">
+      <dl class="ops-metrics xrun-metrics">
         <div><dt>Accounts found</dt><dd data-m="accounts">32</dd></div>
         <div><dt>Emails personalized</dt><dd data-m="emails">118</dd></div>
         <div><dt>Records updated</dt><dd data-m="records">512</dd></div>
         <div><dt>Meetings booked</dt><dd data-m="meetings">4</dd></div>
       </dl>
+      <ol class="xrun-log" aria-label="Latest from the run">
+        <li><b>run</b><span>run complete &middot; nothing waiting on you but three decisions</span></li>
+        <li><b>reporting</b><span>3 decisions flagged for you</span></li>
+        <li><b>meeting</b><span>booked &middot; Corvus Payments</span></li>
+      </ol>
+      <p class="slept-close">One plan, six agents.<br><span class="em">Nobody had to press go.</span></p>
     </div>
-    <div class="ops">
-      <div class="ops-bar" aria-hidden="true">
-        <span class="ops-state"><i></i><b class="ops-word">Run complete</b></span>
-        <span class="ops-track"><i></i></span>
-        <span class="ops-count"><b class="ops-n">6</b>/6 agents</span>
-      </div>
-      <div class="ops-grid">
-        <ol class="lanes" aria-label="Agents">
-          <li class="lane is-done" data-a="ads">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>Ads Agent</b><em>Meta &amp; LinkedIn</em></span>
-            <span class="ln-task"><span class="ln-step">Campaign performance analyzed</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">14 campaigns</span>
-            <span class="ln-state">Done</span>
-          </li>
-          <li class="lane is-done" data-a="growth">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>Growth Agent</b><em>Intent signals</em></span>
-            <span class="ln-task"><span class="ln-step">32 new accounts identified</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">32 accounts</span>
-            <span class="ln-state">Done</span>
-          </li>
-          <li class="lane is-done" data-a="outbound">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>Outbound Agent</b><em>Email &amp; LinkedIn</em></span>
-            <span class="ln-task"><span class="ln-step">Personalized outreach launched</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">118 emails</span>
-            <span class="ln-state">Done</span>
-          </li>
-          <li class="lane is-done" data-a="crm">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>CRM Agent</b><em>Your CRM</em></span>
-            <span class="ln-task"><span class="ln-step">CRM records updated</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">512 records</span>
-            <span class="ln-state">Done</span>
-          </li>
-          <li class="lane is-done" data-a="finance">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>Finance Agent</b><em>Pipeline &amp; revenue</em></span>
-            <span class="ln-task"><span class="ln-step">Forecast generated</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">Q3 model</span>
-            <span class="ln-state">Done</span>
-          </li>
-          <li class="lane is-done" data-a="reporting">
-            <span class="ln-ic" aria-hidden="true"><i class="ln-spin"></i><svg class="ln-ok" viewBox="0 0 14 14"><path d="M3 7.4 6 10.4 11.4 4.4"/></svg></span>
-            <span class="ln-who"><b>Reporting Agent</b><em>For the morning</em></span>
-            <span class="ln-task"><span class="ln-step">Executive summary prepared</span><span class="ln-meta"><span class="ln-bar" aria-hidden="true"><i></i></span><span class="ln-sub">3 of 3 steps</span></span></span>
-            <span class="ln-num">3 decisions</span>
-            <span class="ln-state">Done</span>
-          </li>
-        </ol>
-        <div class="feed" aria-hidden="true">
-          <div class="fd-head"><span>Event stream</span><span class="fd-live"><i></i>Live</span></div>
-          <ol class="fd-list"><li class="is-ok"><span class="fd-a">growth</span><span class="fd-t">32 new accounts identified</span></li><li class="is-ok"><span class="fd-a">crm</span><span class="fd-t">512 records updated, 9 duplicates merged</span></li><li class="is-ok"><span class="fd-a">ads</span><span class="fd-t">budget moved to the 3 strongest campaigns</span></li><li class="is-ok"><span class="fd-a">outbound</span><span class="fd-t">118 personalized emails scheduled</span></li><li class="is-ok"><span class="fd-a">finance</span><span class="fd-t">forecast generated from the live pipeline</span></li><li class="is-ok"><span class="fd-a">meeting</span><span class="fd-t">booked · Kestrel Analytics</span></li><li class="is-ok"><span class="fd-a">reporting</span><span class="fd-t">3 decisions flagged for your morning</span></li></ol>
-        </div>
-      </div>
-    </div>
-    <p class="slept-close">You were offline.<br><span class="em">Your business wasn&rsquo;t.</span></p>
   </div>
 </section>
 </div>
@@ -167,9 +166,10 @@
      inline style on its .bc-art span:
        assets/card-content.jpg   Content automation
        assets/card-whatsapp.jpg  WhatsApp outreach
-       assets/card-email.jpg     Email outreach & retargeting
-       (none; paper card)        LinkedIn outreach
-       assets/card-5.jpg         LinkedIn & Meta ads -->
+       assets/card-outreach.jpg  Email outreach & retargeting
+       assets/card-linkedin.jpg  LinkedIn outreach
+       assets/card-ads.jpg       LinkedIn & Meta ads (an illustration on its own
+                                 paper, so its type is set in ink, not white) -->
 <section class="sec" id="services" style="padding-top:clamp(22px,min(5vw,4.4vh),72px)">
   <div class="wrap">
     <div class="shead">
@@ -200,7 +200,7 @@
         </div>
       </article>
       <article class="bc bc--c is-photo">
-        <span class="bc-art" style="background-image:url('assets/card-email.jpg')" aria-hidden="true"></span>
+        <span class="bc-art" style="background-image:url('assets/card-outreach.jpg')" aria-hidden="true"></span>
         <span class="bc-veil" aria-hidden="true"></span>
         <div class="bc-in">
           <span class="bc-lbl">Email</span>
@@ -209,7 +209,9 @@
           <span class="bc-meta">One prompt · 30 min setup</span>
         </div>
       </article>
-      <article class="bc bc--d is-paper">
+      <article class="bc bc--d is-art" style="--art-paper:#FCEED6">
+        <span class="bc-art" style="background-image:url('assets/card-linkedin.jpg')" aria-hidden="true"></span>
+        <span class="bc-veil" aria-hidden="true"></span>
         <div class="bc-in">
           <span class="bc-lbl">LinkedIn</span>
           <h3>LinkedIn outreach</h3>
@@ -217,8 +219,8 @@
           <span class="bc-meta">One prompt · 10 min setup</span>
         </div>
       </article>
-      <article class="bc bc--e is-photo">
-        <span class="bc-art" style="background-image:url('assets/card-5.jpg')" aria-hidden="true"></span>
+      <article class="bc bc--e is-art">
+        <span class="bc-art" style="background-image:url('assets/card-ads.jpg')" aria-hidden="true"></span>
         <span class="bc-veil" aria-hidden="true"></span>
         <div class="bc-in">
           <span class="bc-lbl">Ads</span>
@@ -240,84 +242,85 @@
 
       <header class="sys-head">
         <div>
-          <span class="sys-chip"><i aria-hidden="true">&#9673;</i> Right now</span>
+          <span class="sys-chip"><i aria-hidden="true">&#9673;</i> Beyond the agents</span>
           <h2>The system <span class="em">at work</span></h2>
         </div>
-        <p>Five agents, each carrying its part of the business end to end. Nothing here
-           was scheduled by a person &mdash; open a card to see what it handled last night.</p>
+        <p>Agents do the work. What makes it autonomous is the system around them: it plans
+           from your goals, remembers everything, learns what works, keeps to your rules and
+           keeps itself running.</p>
       </header>
 
-      <!-- five agents as tall photo cards: one stands open with what it did last
-           night, the rest wait as slim strips, and the open card hands over to the
-           next every few seconds; hover or click opens any of them -->
+      <!-- what makes it autonomous, beyond the agents: five tall photo cards, one
+           open at a time; the open card hands over to the next every few seconds,
+           and hover or click opens any of them -->
       <div class="fold">
-        <article class="fold-card is-open" data-agent="growth" tabindex="0" role="button" aria-expanded="true">
-          <span class="fold-ph" aria-hidden="true"><img src="assets/agent-growth.jpg" alt="" loading="lazy" decoding="async" style="object-position:58% 60%"></span>
-          <span class="fold-shade" aria-hidden="true"></span>
+        <article class="fold-card is-open" data-cap="plan" style="--bg:#FDF4E3;--ink:#1B1A17;--ac:#0060D0" tabindex="0" role="button" aria-expanded="true">
+          <span class="fold-art" aria-hidden="true"><img src="assets/sys-goal.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 62%"></span>
+          <span class="fold-scrim" aria-hidden="true"></span>
           <span class="fold-n" aria-hidden="true">01</span>
-          <span class="fold-tag" aria-hidden="true">Growth Agent</span>
-          <span class="fold-live" aria-hidden="true"><i></i>Running</span>
+          <span class="fold-tag" aria-hidden="true">Goals, not tasks</span>
+          <span class="fold-live" aria-hidden="true"><i></i>Always on</span>
           <div class="fold-txt">
-            <span class="fold-k">01 / 05 &middot; Last night</span>
-            <h3>Growth Agent</h3>
-            <p>Reads intent across your market and scores every account for fit, so the next conversation is always with the right company.</p>
-            <ul class="fold-figs"><li><b>32</b><span>new accounts</span></li><li><b>1,900</b><span>signals read</span></li><li><b>214</b><span>scored for fit</span></li></ul>
+            <span class="fold-k">01 / 05 &middot; Planning</span>
+            <h3>Goals, not tasks</h3>
+            <p>Give it a target, say 40 meetings this month, and it plans the work across every team, then re-plans as the results come in.</p>
+            <ul class="fold-figs"><li><b>1</b><span>goal from you</span></li><li><b>186</b><span>tasks planned</span></li><li><b>3</b><span>re-plans this week</span></li></ul>
           </div>
           <span class="fold-bar" aria-hidden="true"><i></i></span>
         </article>
-        <article class="fold-card" data-agent="crm" tabindex="0" role="button" aria-expanded="false">
-          <span class="fold-ph" aria-hidden="true"><img src="assets/agent-crm.jpg" alt="" loading="lazy" decoding="async" style="object-position:52% 55%"></span>
-          <span class="fold-shade" aria-hidden="true"></span>
+        <article class="fold-card" data-cap="memory" style="--bg:#FFFFFE;--ink:#151515;--ac:#151515" tabindex="0" role="button" aria-expanded="false">
+          <span class="fold-art" aria-hidden="true"><img src="assets/sys-remember.jpg" alt="" loading="lazy" decoding="async" style="object-position:40% 50%"></span>
+          <span class="fold-scrim" aria-hidden="true"></span>
           <span class="fold-n" aria-hidden="true">02</span>
-          <span class="fold-tag" aria-hidden="true">CRM Agent</span>
-          <span class="fold-live" aria-hidden="true"><i></i>Running</span>
+          <span class="fold-tag" aria-hidden="true">It remembers everything</span>
+          <span class="fold-live" aria-hidden="true"><i></i>Always on</span>
           <div class="fold-txt">
-            <span class="fold-k">02 / 05 &middot; Last night</span>
-            <h3>CRM Agent</h3>
-            <p>Writes back every call, email and meeting as it happens, and reads your team&rsquo;s changes straight back. The CRM stays the truth.</p>
-            <ul class="fold-figs"><li><b>512</b><span>records updated</span></li><li><b>9</b><span>duplicates merged</span></li><li><b>0</b><span>typed by hand</span></li></ul>
+            <span class="fold-k">02 / 05 &middot; Memory</span>
+            <h3>It remembers everything</h3>
+            <p>Every account, thread, call and outcome lands in one company memory, so context never leaves when people do.</p>
+            <ul class="fold-figs"><li><b>2.4M</b><span>events remembered</span></li><li><b>18 mo</b><span>of history</span></li><li><b>0</b><span>notes to write</span></li></ul>
           </div>
           <span class="fold-bar" aria-hidden="true"><i></i></span>
         </article>
-        <article class="fold-card" data-agent="finance" tabindex="0" role="button" aria-expanded="false">
-          <span class="fold-ph" aria-hidden="true"><img src="assets/agent-finance.jpg" alt="" loading="lazy" decoding="async" style="object-position:55% 58%"></span>
-          <span class="fold-shade" aria-hidden="true"></span>
+        <article class="fold-card" data-cap="learn" style="--bg:#EDECE1;--ink:#1D1D19;--ac:#E03020" tabindex="0" role="button" aria-expanded="false">
+          <span class="fold-art" aria-hidden="true"><img src="assets/sys-better.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 50%"></span>
+          <span class="fold-scrim" aria-hidden="true"></span>
           <span class="fold-n" aria-hidden="true">03</span>
-          <span class="fold-tag" aria-hidden="true">Finance Agent</span>
-          <span class="fold-live" aria-hidden="true"><i></i>Running</span>
+          <span class="fold-tag" aria-hidden="true">Better every week</span>
+          <span class="fold-live" aria-hidden="true"><i></i>Always on</span>
           <div class="fold-txt">
-            <span class="fold-k">03 / 05 &middot; Last night</span>
-            <h3>Finance Agent</h3>
-            <p>Turns the live pipeline into a forecast you can plan on, and flags the deals drifting before the quarter feels it.</p>
-            <ul class="fold-figs"><li><b>$1.24M</b><span>Q3 forecast</span></li><li><b>84</b><span>invoices matched</span></li><li><b>3</b><span>deals at risk</span></li></ul>
+            <span class="fold-k">03 / 05 &middot; Learning</span>
+            <h3>Better every week</h3>
+            <p>It watches what works, which first lines get replies and which deals close, and rewrites its own playbooks to match.</p>
+            <ul class="fold-figs"><li><b>+31%</b><span>reply rate, 8 weeks</span></li><li><b>12</b><span>playbooks rewritten</span></li><li><b>100%</b><span>outcomes scored</span></li></ul>
           </div>
           <span class="fold-bar" aria-hidden="true"><i></i></span>
         </article>
-        <article class="fold-card" data-agent="outbound" tabindex="0" role="button" aria-expanded="false">
-          <span class="fold-ph" aria-hidden="true"><img src="assets/agent-outbound.jpg" alt="" loading="lazy" decoding="async" style="object-position:62% 52%"></span>
-          <span class="fold-shade" aria-hidden="true"></span>
+        <article class="fold-card" data-cap="rules" style="--bg:#FEFEFE;--ink:#111111;--ac:#1282FE" tabindex="0" role="button" aria-expanded="false">
+          <span class="fold-art" aria-hidden="true"><img src="assets/sys-rules.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 82%"></span>
+          <span class="fold-scrim" aria-hidden="true"></span>
           <span class="fold-n" aria-hidden="true">04</span>
-          <span class="fold-tag" aria-hidden="true">Outbound Agent</span>
-          <span class="fold-live" aria-hidden="true"><i></i>Running</span>
+          <span class="fold-tag" aria-hidden="true">Your rules, kept</span>
+          <span class="fold-live" aria-hidden="true"><i></i>Always on</span>
           <div class="fold-txt">
-            <span class="fold-k">04 / 05 &middot; Last night</span>
-            <h3>Outbound Agent</h3>
-            <p>Writes a real first line for every contact and sends it into their morning. Replies become meetings on your calendar.</p>
-            <ul class="fold-figs"><li><b>118</b><span>personal emails</span></li><li><b>32</b><span>accounts reached</span></li><li><b>4</b><span>meetings booked</span></li></ul>
+            <span class="fold-k">04 / 05 &middot; Control</span>
+            <h3>Your rules, kept</h3>
+            <p>Set budgets, brand voice, discount limits and approvals once. Anything outside the lines comes to you first, and every action can be traced and undone.</p>
+            <ul class="fold-figs"><li><b>$0</b><span>over budget</span></li><li><b>3</b><span>calls sent to you</span></li><li><b>100%</b><span>actions logged</span></li></ul>
           </div>
           <span class="fold-bar" aria-hidden="true"><i></i></span>
         </article>
-        <article class="fold-card" data-agent="success" tabindex="0" role="button" aria-expanded="false">
-          <span class="fold-ph" aria-hidden="true"><img src="assets/agent-success.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 58%"></span>
-          <span class="fold-shade" aria-hidden="true"></span>
+        <article class="fold-card" data-cap="resilience" style="--bg:#2E2D42;--ink:#FFFFFF;--ac:#E8604F" tabindex="0" role="button" aria-expanded="false">
+          <span class="fold-art" aria-hidden="true"><img src="assets/sys-running.jpg" alt="" loading="lazy" decoding="async" style="object-position:0% 55%"></span>
+          <span class="fold-scrim" aria-hidden="true"></span>
           <span class="fold-n" aria-hidden="true">05</span>
-          <span class="fold-tag" aria-hidden="true">Customer Success Agent</span>
-          <span class="fold-live" aria-hidden="true"><i></i>Running</span>
+          <span class="fold-tag" aria-hidden="true">Keeps itself running</span>
+          <span class="fold-live" aria-hidden="true"><i></i>Always on</span>
           <div class="fold-txt">
-            <span class="fold-k">05 / 05 &middot; Last night</span>
-            <h3>Customer Success Agent</h3>
-            <p>Watches every account for the quiet signs of a wobble, and books the call before the renewal is in doubt.</p>
-            <ul class="fold-figs"><li><b>2</b><span>renewals flagged</span></li><li><b>46</b><span>accounts watched</span></li><li><b>1</b><span>QBR booked</span></li></ul>
+            <span class="fold-k">05 / 05 &middot; Resilience</span>
+            <h3>Keeps itself running</h3>
+            <p>When an API fails or an email bounces, it retries, reroutes and carries on, and only tells you if it can&rsquo;t.</p>
+            <ul class="fold-figs"><li><b>99.9%</b><span>runs completed</span></li><li><b>46</b><span>failures self-fixed</span></li><li><b>0</b><span>3 a.m. alerts</span></li></ul>
           </div>
           <span class="fold-bar" aria-hidden="true"><i></i></span>
         </article>
