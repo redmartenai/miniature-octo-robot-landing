@@ -458,7 +458,7 @@ section[id],header[id]{scroll-margin-top:calc(var(--navh) + 8px)}
    The photo is dimmed hard and desaturated, then three fog banks drift
    across it at different speeds with a slow push-in behind them. */
 .final{position:relative;isolation:isolate;overflow:hidden;color:#fff;
-  border-radius:var(--r-xl);margin:0 10px;background:#080D0A;
+  border-radius:var(--r-xl);margin:clamp(32px,6vw,88px) 10px 0;background:#080D0A;
   padding:clamp(44px,min(11vw,8.4vh),150px) clamp(24px,5vw,64px);text-align:center}
 .final-photo{position:absolute;inset:-8%;z-index:-4;background-image:url('assets/last.jpg');
   background-size:cover;background-position:50% 46%;background-repeat:no-repeat;
