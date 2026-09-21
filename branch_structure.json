@@ -1,0 +1,27 @@
+{
+  "default_branch": "master",
+  "branches": [
+    "dev_environment",
+    "main",
+    "master",
+    "origin",
+    "origin/data-changes",
+    "overall-changes"
+  ],
+  "parent": {
+    "dev_environment": "master",
+    "main": "master",
+    "master": null,
+    "origin": "master",
+    "origin/data-changes": "master",
+    "overall-changes": "master"
+  },
+  "order": [
+    "master",
+    "dev_environment",
+    "main",
+    "origin",
+    "origin/data-changes",
+    "overall-changes"
+  ]
+}

@@ -5,3 +5,4 @@ tsconfig.tsbuildinfo
 .devlog.txt
 .DS_Store
 *.log
+config.bat
